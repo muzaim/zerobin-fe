@@ -78,7 +78,6 @@ export default function Hero() {
       text-neutral-500
       transition-all
       duration-300
-      hover:-translate-y-1
       hover:text-[#195A00]
     "
 						>
@@ -91,7 +90,6 @@ export default function Hero() {
       text-neutral-500
       transition-all
       duration-300
-      hover:-translate-y-1
       hover:text-[#195A00]
     "
 						>
@@ -104,7 +102,6 @@ export default function Hero() {
       text-neutral-500
       transition-all
       duration-300
-      hover:-translate-y-1
       hover:text-[#195A00]
     "
 						>
