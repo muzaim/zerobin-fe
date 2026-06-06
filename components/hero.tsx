@@ -55,46 +55,167 @@ export default function Hero() {
 						</div>
 					</div>
 
-					<div className="relative mx-auto aspect-[0.92] w-full max-w-[620px] lg:max-w-none">
-						<div className="absolute inset-x-10 bottom-8 top-10 rounded-[22px] border border-[var(--line)] bg-[rgb(255_253_247_/_0.65)] shadow-[var(--shadow-soft)]" />
-						<div className="absolute left-4 top-4 z-20 hidden max-w-[210px] rounded-[14px] border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-soft)] sm:block">
-							<div className="flex items-center gap-2 text-sm font-bold text-[var(--brand-dark)]">
-								<MapPin size={16} />
-								Near you
-							</div>
-							<p className="mt-2 text-sm leading-6 text-[var(--muted)]">
-								Fresh soup available until 7 PM, two blocks
-								away.
-							</p>
+					<div className="relative mx-auto h-[700px] w-full max-w-[760px]">
+						{/* Green Background */}
+
+						<div
+							className="
+			absolute
+
+			-right-20
+			-top-[-80px]
+
+			h-[780px]
+			w-[780px]
+
+			bg-[#195A00]
+
+			z-0
+		"
+							style={{
+								borderRadius:
+									"45% 55% 55% 45% / 35% 40% 60% 65%",
+							}}
+						/>
+
+						{/* Decorative Text */}
+
+						<div
+							className="
+			absolute
+
+			right-10
+			bottom-0
+
+			z-10
+
+			text-[220px]
+			font-black
+
+			leading-none
+
+			text-white/5
+		"
+						>
+							C
 						</div>
+
+						{/* Top Leaf */}
+
 						<Image
 							src="/assets/daunatas.png"
 							alt=""
 							width={260}
 							height={260}
-							className="absolute left-0 top-16 z-20 w-[26%] -rotate-12"
+							className="
+			absolute
+
+			left-8
+			top-32
+
+			z-20
+
+			w-[180px]
+
+			-rotate-[12deg]
+		"
 						/>
+
+						{/* Cabbage Bottom Left */}
+
 						<Image
 							src="/assets/food/hero-bowl.svg"
 							alt=""
-							width={520}
-							height={520}
-							className="absolute -bottom-4 -left-8 z-10 w-[60%] -rotate-12"
+							width={400}
+							height={400}
+							className="
+			absolute
+
+			-bottom-10
+			-left-6
+
+			z-10
+
+			w-[320px]
+		"
 						/>
+
+						{/* Bottom Leaf */}
+
 						<Image
 							src="/assets/daunbawah.png"
 							alt=""
 							width={260}
 							height={260}
-							className="absolute bottom-6 right-8 z-20 w-[25%] rotate-12"
+							className="
+			absolute
+
+			bottom-4
+			right-16
+
+			z-20
+
+			w-[180px]
+
+			rotate-[12deg]
+		"
 						/>
+
+						{/* Small Floating Card */}
+
+						<div
+							className="
+			absolute
+
+			left-8
+			top-10
+
+			z-30
+
+			hidden
+
+			rounded-2xl
+
+			bg-white
+
+			px-4
+			py-3
+
+			shadow-xl
+
+			sm:block
+		"
+						>
+							<div className="flex items-center gap-2 text-sm font-semibold text-[#195A00]">
+								<MapPin size={15} />
+								Near You
+							</div>
+
+							<p className="mt-1 text-xs text-neutral-500">
+								Fresh meals available nearby
+							</p>
+						</div>
+
+						{/* Main Bowl */}
+
 						<Image
 							src="/assets/food1.svg"
 							alt="A fresh prepared meal bowl"
 							width={900}
 							height={900}
 							priority
-							className="absolute inset-x-0 top-1/2 z-30 mx-auto w-[94%] -translate-y-1/2"
+							className="
+			absolute
+
+			right-[-40px]
+			top-1/2
+
+			z-30
+
+			w-[760px]
+
+			-translate-y-1/2
+		"
 						/>
 					</div>
 				</div>
