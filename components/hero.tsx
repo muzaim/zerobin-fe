@@ -1,336 +1,100 @@
 import Image from "next/image";
-import { LucidePaintBucket, Globe, Mail } from "lucide-react";
+import { ArrowDown, MapPin, PackageCheck } from "lucide-react";
+
+const stats = [
+	{ value: "10K+", label: "meals shared" },
+	{ value: "5K+", label: "neighbors reached" },
+	{ value: "25T", label: "food kept useful" },
+];
+
 export default function Hero() {
 	return (
-		<section className="relative min-h-screen overflow-hidden">
-			{/* SHAPE */}
-
-			{/* GREEN SHAPE */}
-
-			<Image
-				src="/assets/vector/vector1.png"
-				alt=""
-				width={3000}
-				height={3000}
-				priority
-				className="
-    absolute
-    right-[-320px]
-    top-[-180px]
-
-    z-0
-
-    w-[1100]
-    max-w-none
-  "
-			/>
-
-			{/* WHITE OVERLAY */}
-
-			<Image
-				src="/assets/vector/vector2.png"
-				alt=""
-				width={3000}
-				height={3000}
-				priority
-				className="
-    absolute
-    right-[-100px]
-    top-[-0px]
-
-    z-10
-
-    w-[1300]
-    max-w-none
-
-    opacity-100
-  "
-			/>
-
-			{/* CONTENT */}
-
-			<div className="relative z-10 mx-auto max-w-7xl ">
-				<div
-					className="
-      grid
-      min-h-screen
-      items-center
-
-      lg:grid-cols-[90px_1.1fr_1fr]
-    "
-				>
-					{/* SOCIAL */}
-					<div
-						className="
-    hidden
-    lg:flex
-    flex-col
-    items-center
-    justify-center
-    gap-8
-  "
-					>
-						<div className="h-24 w-px bg-neutral-300" />
-
-						<a
-							href="#"
-							className="
-      text-neutral-500
-      transition-all
-      duration-300
-      hover:text-[#195A00]
-    "
-						>
-							<Globe size={18} />
-						</a>
-
-						<a
-							href="#"
-							className="
-      text-neutral-500
-      transition-all
-      duration-300
-      hover:text-[#195A00]
-    "
-						>
-							<Mail size={18} />
-						</a>
-
-						<a
-							href="#"
-							className="
-      text-neutral-500
-      transition-all
-      duration-300
-      hover:text-[#195A00]
-    "
-						>
-							<LucidePaintBucket size={18} />
-						</a>
-
-						<div className="h-24 w-px bg-neutral-300" />
-					</div>
-
-					{/* CONTENT */}
-
-					<div className="max-w-3xl pl-6">
-						{/* Heading */}
-
-						<h1
-							className="
-          mt-8
-
-          text-7xl
-
-          font-extrabold
-
-          leading-[1.02]
-
-          tracking-[-0.05em]
-
-          text-neutral-900
-        "
-						>
-							Every meal deserves
-							<br />a plate,
-							<span className="text-[#195A00]"> not a bin.</span>
+		<section className="relative isolate overflow-hidde sm:pt-32 lg:min-h-screen lg:pt-5">
+			<div className="site-shell relative z-10">
+				<div className="grid min-h-[calc(100vh-80px)] items-center gap-12 pb-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:pb-6">
+					<div className="max-w-3xl">
+						<h1 className="display-title mt-5 text-[clamp(3.4rem,12vw,4.8rem)]">
+							Every meal deserve a plate,{" "}
+							<span className="text-[#195A00]">not a bin.</span>
 						</h1>
 
-						{/* Description */}
-
-						<p
-							className="
-          mt-8
-
-          max-w-xl
-
-          text-lg
-
-          leading-8
-
-          text-neutral-500
-        "
-						>
-							Share surplus food with people nearby before it goes
-							to waste. List extra meals, discover available food
-							around you, and help your community while reducing
-							food waste.
+						<p className="section-copy mt-6 max-w-2xl">
+							Cellar helps people list extra meals, coordinate
+							simple pickups, and pass food to someone nearby
+							while it is still at its best.
 						</p>
 
-						{/* CTA */}
-
-						<div className="mt-10 flex flex-wrap gap-4">
-							<button
-								className="
-            rounded-full
-
-            bg-[#195A00]
-
-            px-8
-            py-4
-
-            text-sm
-            font-semibold
-            text-white
-
-            transition-all
-            duration-300
-
-            hover:shadow-xl
-            hover:shadow-green-900/20
-          "
+						<div className="mt-8 flex flex-col gap-3 sm:flex-row">
+							<a
+								href="#download"
+								className="primary-button gap-2"
 							>
-								Share Food
-							</button>
-
-							<button
-								className="
-            rounded-full
-
-            border
-            border-neutral-200
-
-            bg-white
-
-            px-8
-            py-4
-
-            text-sm
-            font-semibold
-
-            text-neutral-700
-
-            transition-all
-            duration-300
-
-            hover:bg-neutral-50
-          "
+								<PackageCheck size={18} />
+								Share surplus food
+							</a>
+							<a
+								href="#how-it-works"
+								className="secondary-button gap-2"
 							>
-								Find Food Nearby
-							</button>
+								<ArrowDown size={18} />
+								See how it works
+							</a>
 						</div>
 
-						{/* Stats */}
-
-						<div className="mt-14 flex gap-14">
-							<div>
-								<h3 className="text-3xl font-bold text-neutral-900">
-									10K+
-								</h3>
-
-								<p className="mt-1 text-sm text-neutral-500">
-									Meals Shared
-								</p>
-							</div>
-
-							<div>
-								<h3 className="text-3xl font-bold text-neutral-900">
-									5K+
-								</h3>
-
-								<p className="mt-1 text-sm text-neutral-500">
-									People Helped
-								</p>
-							</div>
-
-							<div>
-								<h3 className="text-3xl font-bold text-neutral-900">
-									25T
-								</h3>
-
-								<p className="mt-1 text-sm text-neutral-500">
-									Food Saved
-								</p>
-							</div>
+						<div className="mt-10 grid max-w-2xl grid-cols-3 gap-3  py-5">
+							{stats.map((stat) => (
+								<div key={stat.label}>
+									<p className="font-[var(--font-display)] text-3xl font-semibold text-[var(--brand-dark)] sm:text-4xl">
+										{stat.value}
+									</p>
+									<p className="mt-1 text-sm leading-5 text-[var(--muted)]">
+										{stat.label}
+									</p>
+								</div>
+							))}
 						</div>
 					</div>
 
-					{/* IMAGE */}
-
-					<div className="relative h-[750px]">
-						{/* LEFT LEAF */}
-
+					<div className="relative mx-auto aspect-[0.92] w-full max-w-[620px] lg:max-w-none">
+						<div className="absolute inset-x-10 bottom-8 top-10 rounded-[22px] border border-[var(--line)] bg-[rgb(255_253_247_/_0.65)] shadow-[var(--shadow-soft)]" />
+						<div className="absolute left-4 top-4 z-20 hidden max-w-[210px] rounded-[14px] border border-[var(--line)] bg-[var(--surface)] p-4 shadow-[var(--shadow-soft)] sm:block">
+							<div className="flex items-center gap-2 text-sm font-bold text-[var(--brand-dark)]">
+								<MapPin size={16} />
+								Near you
+							</div>
+							<p className="mt-2 text-sm leading-6 text-[var(--muted)]">
+								Fresh soup available until 7 PM, two blocks
+								away.
+							</p>
+						</div>
 						<Image
 							src="/assets/daunatas.png"
 							alt=""
 							width={260}
 							height={260}
-							className="
-		absolute
-
-		left-[-50px]
-		top-[140px]
-
-		z-10
-
-		w-[250px]
-
-		-rotate-[10deg]
-	"
+							className="absolute left-0 top-16 z-20 w-[26%] -rotate-12"
 						/>
-
-						{/* LETTUCE */}
-
 						<Image
-							src="/assets/kubis.png"
+							src="/assets/food/hero-bowl.svg"
 							alt=""
-							width={320}
-							height={320}
-							className="
-		absolute
-
-		left-[-160px]
-		bottom-[20px]
-
-		z-10
-
-		w-[600px]
-
-		-rotate-[15deg]
-	"
+							width={520}
+							height={520}
+							className="absolute -bottom-4 -left-8 z-10 w-[60%] -rotate-12"
 						/>
-
-						{/* BOTTOM LEAF */}
-
 						<Image
 							src="/assets/daunbawah.png"
 							alt=""
 							width={260}
 							height={260}
-							className="
-		absolute
-
-		bottom-[-10px]
-		right-[120px]
-
-		z-10
-
-		rotate-[10deg]
-
-		w-[250px]
-	"
+							className="absolute bottom-6 right-8 z-20 w-[25%] rotate-12"
 						/>
-
-						{/* MAIN FOOD */}
-
 						<Image
 							src="/assets/food1.svg"
-							alt="Food Bowl"
+							alt="A fresh prepared meal bowl"
 							width={900}
 							height={900}
 							priority
-							className="
-		absolute
-
-		right-[-40px]
-		top-1/2
-
-		z-20
-
-		w-[760px]
-
-		-translate-y-1/2
-	"
+							className="absolute inset-x-0 top-1/2 z-30 mx-auto w-[94%] -translate-y-1/2"
 						/>
 					</div>
 				</div>

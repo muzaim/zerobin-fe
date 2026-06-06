@@ -1,181 +1,61 @@
 import Image from "next/image";
-import { Play } from "lucide-react";
+import { Play, ShieldCheck } from "lucide-react";
 
 export default function About() {
 	return (
-		<section className="py-32">
-			<div className="mx-auto max-w-7xl px-8">
-				<div className="grid items-center gap-20 lg:grid-cols-2">
-					{/* LEFT IMAGES */}
-
-					<div className="space-y-6">
+		<section id="about" className="section-pad">
+			<div className="site-shell">
+				<div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+					<div className="grid gap-4 sm:grid-cols-[1.2fr_0.8fr]">
 						<Image
-							src="/assets/food2.svg"
-							alt="Food Sharing"
-							width={600}
-							height={400}
-							className="
-								h-[320px]
-								w-full
-								rounded-3xl
-								object-cover
-								shadow-xl
-							"
+							src="/assets/food/share-platter.svg"
+							alt="Fresh food ready to be shared"
+							width={720}
+							height={520}
+							className="h-[300px] w-full rounded-[14px] border border-[var(--line)] bg-[var(--surface-soft)] object-cover sm:col-span-2 md:h-[390px]"
 						/>
-
-						<div className="grid grid-cols-2 gap-6">
-							<Image
-								src="/assets/food3.svg"
-								alt="Community"
-								width={300}
-								height={250}
-								className="
-									h-[220px]
-									w-full
-									rounded-3xl
-									object-cover
-									shadow-lg
-								"
-							/>
-
-							<Image
-								src="/assets/food4.svg"
-								alt="Food Donation"
-								width={300}
-								height={250}
-								className="
-									h-[220px]
-									w-full
-									rounded-3xl
-									object-cover
-									shadow-lg
-								"
-							/>
-						</div>
+						<Image
+							src="/assets/food/community-pickup.svg"
+							alt="Community food pickup"
+							width={360}
+							height={300}
+							className="h-[210px] w-full rounded-[14px] border border-[var(--line)] bg-[var(--surface-soft)] object-cover"
+						/>
+						<Image
+							src="/assets/food/sandwich.svg"
+							alt="Community food pickup"
+							width={360}
+							height={300}
+							className="h-[210px] w-full rounded-[14px] border border-[var(--line)] bg-[var(--surface-soft)] object-cover"
+						/>
 					</div>
 
-					{/* RIGHT CONTENT */}
-
 					<div>
-						<div className="flex items-center gap-4">
-							<span
-								className="
-									font-[var(--font-playfair)]
-									text-lg
-									italic
-									text-[#195A00]
-								"
-							>
-								About Cellar
-							</span>
-
-							<div className="h-px w-20 bg-[#195A00]" />
-						</div>
-
-						<h2
-							className="
-								mt-6
-								text-5xl
-								font-extrabold
-								leading-tight
-								tracking-tight
-								text-neutral-900
-							"
-						>
-							Give food a second
-							<br />
-							chance to matter.
+						<p className="eyebrow">About Cellar</p>
+						<h2 className="section-title mt-5">
+							A calmer way to share what would be wasted.
 						</h2>
-
-						<p
-							className="
-								mt-8
-								text-lg
-								leading-8
-								text-neutral-500
-							"
-						>
-							Cellar connects people with surplus food to those
-							who can use it. Instead of letting good meals go to
-							waste, we make it easy to share food with nearby
-							communities and help create a more sustainable
-							future.
+						<p className="section-copy mt-6 max-w-2xl">
+							Cellar is built around the ordinary moments where
+							good food needs a second route: a cafe closing
+							early, a family cooking too much, a community group
+							with extra portions after an event.
+						</p>
+						<p className="section-copy mt-4 max-w-2xl">
+							The goal is not to turn meals into a marketplace. It
+							is to make sharing clear, local, and respectful.
 						</p>
 
-						<p
-							className="
-								mt-5
-								text-lg
-								leading-8
-								text-neutral-500
-							"
-						>
-							Every shared meal reduces waste, saves resources,
-							and helps someone in need.
-						</p>
-
-						<div className="mt-10 flex items-center gap-6">
+						<div className="mt-8 flex flex-col gap-3 sm:flex-row">
+							<a href="#impact" className="primary-button">
+								Read the impact
+							</a>
 							<button
-								className="
-									rounded-full
-									bg-[#195A00]
-									px-8
-									py-4
-									font-semibold
-									text-white
-
-									transition-all
-									duration-300
-
-									hover:-translate-y-1
-									hover:shadow-xl
-									hover:shadow-green-900/20
-								"
+								type="button"
+								className="secondary-button gap-3"
 							>
-								Show More
-							</button>
-
-							<button
-								className="
-									group
-									flex
-									items-center
-									gap-4
-								"
-							>
-								<div
-									className="
-										flex
-										h-14
-										w-14
-										items-center
-										justify-center
-
-										rounded-full
-
-										border
-										border-[#195A00]
-
-										text-[#195A00]
-
-										transition-all
-										duration-300
-
-										group-hover:bg-[#195A00]
-										group-hover:text-white
-									"
-								>
-									<Play size={18} fill="currentColor" />
-								</div>
-
-								<span
-									className="
-										font-semibold
-										text-neutral-800
-									"
-								>
-									Watch Video
-								</span>
+								<Play size={17} fill="currentColor" />
+								Watch story
 							</button>
 						</div>
 					</div>

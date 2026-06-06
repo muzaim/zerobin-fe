@@ -1,145 +1,96 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 
-const navItems = ["Features", "Solutions", "Pricing", "Resources"];
+const navItems = [
+	{ label: "About", href: "#about" },
+	{ label: "How it works", href: "#how-it-works" },
+	{ label: "Impact", href: "#impact" },
+	{ label: "FAQ", href: "#faq" },
+];
 
 export default function Navbar() {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
-		<header
-			className=" absolute
-    inset-x-0
-    top-0
-    z-50"
-		>
-			<div className="mx-auto max-w-7xl px-8">
-				<nav className="flex h-24 items-center justify-between">
-					{/* Logo */}
-					<Link href="/" className="group flex items-center gap-3">
-						<span
-							className="
-                font-[var(--font-manrope)]
-                text-3xl
-                font-extrabold
-                tracking-tight
-                text-neutral-900
-              "
-						>
+		<header className=" inset-x-0 top-0 -z-1 border-b border-black/5 bg-transparent backdrop-blur-xl">
+			<div className="site-shell">
+				<nav className="flex h-20 items-center justify-between">
+					<Link
+						href="/"
+						className="flex items-center gap-3"
+						onClick={() => setIsOpen(false)}
+					>
+						<span className="flex h-10 w-10 items-center justify-center rounded-[8px] bg-[var(--brand-dark)] font-bold text-white">
+							C
+						</span>
+						<span className="text-2xl font-black text-[var(--foreground)]">
 							Cellar
 						</span>
 					</Link>
 
-					{/* Center Menu */}
-					<ul className="hidden items-center gap-12 lg:flex">
-						<li>
-							<Link
-								href="/"
-								className="
-                  relative
-                  text-[15px]
-                  font-bold
-                  text-[#14532D]
-                "
-							>
-								Home
-								<span
-									className="
-                    absolute
-                    -bottom-2
-                    left-0
-                    h-[2px]
-                    w-full
-                    rounded-full
-                    bg-[#14532D]
-                  "
-								/>
-							</Link>
-						</li>
-
+					<ul className="hidden items-center gap-8 lg:flex">
 						{navItems.map((item) => (
-							<li key={item}>
+							<li key={item.href}>
 								<Link
-									href="#"
-									className="
-                    group
-                    relative
-                    text-[15px]
-                    font-semibold
-                    tracking-tight
-                    text-neutral-500
-                    transition-all
-                    duration-300
-                    hover:text-[#14532D]
-                  "
+									href={item.href}
+									className="text-sm font-semibold text-[var(--muted)] transition hover:text-[var(--brand-dark)]"
 								>
-									{item}
-
-									<span
-										className="
-                      absolute
-                      -bottom-2
-                      left-0
-                      h-[2px]
-                      w-0
-                      rounded-full
-                      bg-[#14532D]
-                      transition-all
-                      duration-300
-                      group-hover:w-full
-                    "
-									/>
+									{item.label}
 								</Link>
 							</li>
 						))}
 					</ul>
 
-					{/* Right Side */}
-					<div className="flex items-center gap-6">
-						<button
-							className="
-                text-[15px]
-                font-semibold
-                text-neutral-600
-                transition
-                hover:text-[#14532D]
-              "
-						>
-							Login
-						</button>
-
-						<button
-							className="
-                group
-                flex
-                items-center
-                gap-2
-                rounded-full
-                bg-[#14532D]
-                px-6
-                py-3
-                text-sm
-                font-semibold
-                text-white
-                transition-all
-                duration-300
-                hover:shadow-xl
-                hover:shadow-green-900/20
-              "
-						>
-							Start Free
-							<ArrowRight
-								size={16}
-								className="
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                "
-							/>
-						</button>
+					<div className="hidden items-center gap-3 sm:flex">
+						<Link href="#download" className="secondary-button">
+							Download
+						</Link>
+						<Link href="#about" className="primary-button gap-2">
+							Start sharing
+							<ArrowRight size={16} />
+						</Link>
 					</div>
+
+					<button
+						type="button"
+						aria-label={isOpen ? "Close menu" : "Open menu"}
+						aria-expanded={isOpen}
+						onClick={() => setIsOpen((value) => !value)}
+						className="flex h-11 w-11 items-center justify-center rounded-[8px] border border-[var(--line)] bg-white text-[var(--foreground)] lg:hidden"
+					>
+						{isOpen ? <X size={20} /> : <Menu size={20} />}
+					</button>
 				</nav>
 			</div>
+
+			{isOpen ? (
+				<div className="border-t border-[var(--line)] bg-[var(--surface)] lg:hidden">
+					<div className="site-shell py-4">
+						<div className="grid gap-2">
+							{navItems.map((item) => (
+								<Link
+									key={item.href}
+									href={item.href}
+									onClick={() => setIsOpen(false)}
+									className="rounded-[8px] px-2 py-3 text-base font-semibold text-[var(--ink-soft)]"
+								>
+									{item.label}
+								</Link>
+							))}
+							<Link
+								href="#download"
+								onClick={() => setIsOpen(false)}
+								className="primary-button mt-3"
+							>
+								Download app
+							</Link>
+						</div>
+					</div>
+				</div>
+			) : null}
 		</header>
 	);
 }
