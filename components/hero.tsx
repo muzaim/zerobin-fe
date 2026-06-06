@@ -248,6 +248,71 @@ export default function Hero() {
 					{/* IMAGE */}
 
 					<div className="relative h-[750px]">
+						{/* LEFT LEAF */}
+
+						<Image
+							src="/assets/daunatas.png"
+							alt=""
+							width={260}
+							height={260}
+							className="
+		absolute
+
+		left-[-50px]
+		top-[140px]
+
+		z-10
+
+		w-[250px]
+
+		-rotate-[10deg]
+	"
+						/>
+
+						{/* LETTUCE */}
+
+						<Image
+							src="/assets/kubis.png"
+							alt=""
+							width={320}
+							height={320}
+							className="
+		absolute
+
+		left-[-160px]
+		bottom-[20px]
+
+		z-10
+
+		w-[600px]
+
+		-rotate-[15deg]
+	"
+						/>
+
+						{/* BOTTOM LEAF */}
+
+						<Image
+							src="/assets/daunbawah.png"
+							alt=""
+							width={260}
+							height={260}
+							className="
+		absolute
+
+		bottom-[-10px]
+		right-[120px]
+
+		z-10
+
+		rotate-[10deg]
+
+		w-[250px]
+	"
+						/>
+
+						{/* MAIN FOOD */}
+
 						<Image
 							src="/assets/food1.svg"
 							alt="Food Bowl"
@@ -255,17 +320,17 @@ export default function Hero() {
 							height={900}
 							priority
 							className="
-          absolute
+		absolute
 
-          right-[-40px]
-          top-1/2
+		right-[-40px]
+		top-1/2
 
-          z-20
+		z-20
 
-          w-[760px]
+		w-[760px]
 
-          -translate-y-1/2
-        "
+		-translate-y-1/2
+	"
 						/>
 					</div>
 				</div>
