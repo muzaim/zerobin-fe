@@ -1,11 +1,21 @@
-import About from "@/components/about";
-import Hero from "@/components/hero";
+import About from "@/components/sections/about";
+import DownloadApp from "@/components/sections/download";
+import Faq from "@/components/sections/faq";
+import Hero from "@/components/sections/hero";
+import HowItWorks from "@/components/sections/howItWorks";
+import Impact from "@/components/sections/impact";
+import StorySection from "@/components/sections/story";
 
 export default function Home() {
 	return (
-		<main>
+		<>
 			<Hero />
 			<About />
-		</main>
+			<HowItWorks />
+			<StorySection />
+			<Impact />
+			<Faq />
+			<DownloadApp />
+		</>
 	);
 }
