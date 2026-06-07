@@ -98,16 +98,14 @@ export default function DownloadApp() {
 
 						{/* App screenshot — no phone frame */}
 						<div className="relative w-[260px] sm:w-[310px] lg:w-[340px] z-10">
-							<div className="relative aspect-[9/19.5] overflow-hidden rounded-[28px] shadow-[0_30px_70px_rgba(31,36,22,0.14)] border border-[var(--line)]">
-								<Image
-									src="/assets/app/cellar-screen.png"
-									alt="Cellar App Interface"
-									fill
-									priority
-									className="object-cover object-top"
-									sizes="(max-width: 640px) 260px, 340px"
-								/>
-							</div>
+							<Image
+								src="/assets/app/cellar-screen.png"
+								alt="Cellar App Interface"
+								width={600}
+								height={1220}
+								priority
+								className="w-full h-auto"
+							/>
 
 							{/* Feature card — top left, outside phone */}
 							<div className="absolute -left-[110px] top-[60px] w-[100px] bg-white border border-[var(--line)] rounded-2xl p-3 shadow-[0_8px_20px_rgba(31,36,22,0.08)] hidden sm:block">
