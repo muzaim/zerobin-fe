@@ -1,6 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function StorySection() {
+	const { language } = useLanguageStore();
+	const t = translations[language].story;
+
 	return (
 		<section className="relative isolate overflow-hidden bg-[var(--brand-dark)] py-20 text-white sm:py-24">
 			<Image
@@ -15,23 +23,24 @@ export default function StorySection() {
 				<div className="grid items-end gap-8 md:grid-cols-[1fr_auto]">
 					<div className="max-w-3xl">
 						<p className="font-[var(--font-display)] text-lg italic text-[var(--brand-soft)]">
-							A small action can still feel human.
+							{t.eyebrow}
 						</p>
 						<h2 className="display-title mt-4 text-[clamp(2.75rem,7vw,6rem)] text-white">
-							Every meal has a little more story left in it.
+							{t.title}
 						</h2>
 					</div>
 					<div className="max-w-sm md:text-right">
 						<p className="leading-8 text-white/72">
-							Do not let it end in a bin by default. Good food can still feed
-							someone, save resources, and connect people nearby.
+							{t.desc}
 						</p>
-						<a href="/#download" className="secondary-button mt-6 bg-white text-[var(--brand-dark)]">
-							Start sharing
-						</a>
+						<Link href="/#download" className="secondary-button mt-6 bg-white text-[var(--brand-dark)]">
+							{t.btnStart}
+						</Link>
 					</div>
 				</div>
 			</div>
 		</section>
 	);
 }
+
+

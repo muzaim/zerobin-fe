@@ -1,52 +1,54 @@
-import Image from "next/image";
+"use client";
 
-const steps = [
-	{
-		step: "01",
-		title: "List it honestly",
-		description:
-			"Add a photo, quantity, ingredients, pickup window, and any safety notes people should know.",
-		image: "/assets/food/list-food.svg",
-		alt: "Food listing illustration",
-	},
-	{
-		step: "02",
-		title: "Choose the handoff",
-		description:
-			"Neighbors can request a pickup, then both sides confirm the place and timing that feels right.",
-		image: "/assets/food/match-food.svg",
-		alt: "Food pickup illustration",
-	},
-	{
-		step: "03",
-		title: "Close the loop",
-		description:
-			"Mark it shared, keep a small impact record, and make tomorrow's surplus easier to route.",
-		image: "/assets/food/share-impact.svg",
-		alt: "Community impact illustration",
-	},
-];
+import Image from "next/image";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function HowItWorks() {
+	const { language } = useLanguageStore();
+	const t = translations[language].howItWorks;
+
+	const stepsData = [
+		{
+			step: "01",
+			title: t.steps[0].title,
+			description: t.steps[0].desc,
+			image: "/assets/food/list-food.svg",
+			alt: "Food listing illustration",
+		},
+		{
+			step: "02",
+			title: t.steps[1].title,
+			description: t.steps[1].desc,
+			image: "/assets/food/match-food.svg",
+			alt: "Food pickup illustration",
+		},
+		{
+			step: "03",
+			title: t.steps[2].title,
+			description: t.steps[2].desc,
+			image: "/assets/food/share-impact.svg",
+			alt: "Community impact illustration",
+		},
+	];
+
 	return (
 		<section id="how-it-works" className="section-pad">
 			<div className="site-shell">
 				<div className="mx-auto max-w-3xl text-center">
 					<p className="eyebrow centered justify-center">
-						How it works
+						{t.eyebrow}
 					</p>
 					<h2 className="section-title mt-5">
-						Three steps, with room for real life.
+						{t.title}
 					</h2>
 					<p className="section-copy mt-6">
-						Sharing food only works when the details are clear.
-						Cellar keeps the flow short, but leaves space for notes
-						that matter.
+						{t.desc}
 					</p>
 				</div>
 
 				<div className="mt-12 grid gap-4 md:grid-cols-3 lg:mt-16">
-					{steps.map((item) => (
+					{stepsData.map((item) => (
 						<article
 							key={item.step}
 							className="group border-t border-[var(--line)] bg-[rgb(255_253_247_/_0.52)] p-5 transition hover:bg-[var(--surface)] sm:p-6"
@@ -76,3 +78,4 @@ export default function HowItWorks() {
 		</section>
 	);
 }
+

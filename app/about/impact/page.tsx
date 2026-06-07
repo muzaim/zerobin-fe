@@ -1,25 +1,30 @@
-import Image from "next/image";
-import Link from "next/link";
-import { TrendingUp, ShieldCheck, Heart, ArrowRight, CheckCircle } from "lucide-react";
+"use client";
 
-export const metadata = {
-	title: "Our Impact — Cellar",
-	description: "Measuring our collective difference. Learn how much food waste has been prevented by our community.",
-};
+import { useEffect } from "react";
+import Image from "next/image";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function OurImpactPage() {
+	const { language } = useLanguageStore();
+	const t = translations[language].innerAboutImpact;
+
+	useEffect(() => {
+		document.title = `${t.eyebrow} — Cellar`;
+	}, [t.eyebrow]);
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
 			{/* Impact Hero */}
 			<section className="relative overflow-hidden py-16 sm:py-24">
 				<div className="site-shell">
 					<div className="max-w-3xl">
-						<span className="eyebrow">Our Impact</span>
+						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.8rem,8vw,4.5rem)] leading-[1.1]">
-							Measuring our collective <span className="text-[#195A00]">difference</span>.
+							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>
 						</h1>
 						<p className="section-copy mt-8 max-w-2xl">
-							Every shared meal is a vote for a more sustainable, connected world. Here is how our community's small daily actions add up to a significant impact.
+							{t.desc}
 						</p>
 					</div>
 				</div>
@@ -29,60 +34,51 @@ export default function OurImpactPage() {
 			<section className="py-12 border-b border-[var(--line)]">
 				<div className="site-shell">
 					<div className="grid gap-12 sm:grid-cols-3 sm:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-[var(--line)]">
-						<div className="py-6 sm:py-0 sm:px-8 text-center sm:text-left first:pl-0">
-							<h3 className="font-[var(--font-display)] text-5xl font-bold text-[#195A00] tracking-tight">25 Tons</h3>
-							<p className="mt-3 text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">Food Kept Useful</p>
-							<p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-								Edible meals, fresh ingredients, and baked goods redirected to local tables instead of ending up in composting or landfills.
-							</p>
-						</div>
-
-						<div className="py-6 sm:py-0 sm:px-8 text-center sm:text-left">
-							<h3 className="font-[var(--font-display)] text-5xl font-bold text-[var(--clay)] tracking-tight">10K+</h3>
-							<p className="mt-3 text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">Meals Shared</p>
-							<p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-								Direct sharing interactions between neighbors, fostering trust and warm connections in local circles.
-							</p>
-						</div>
-
-						<div className="py-6 sm:py-0 sm:px-8 text-center sm:text-left last:pr-0">
-							<h3 className="font-[var(--font-display)] text-5xl font-bold text-[var(--gold)] tracking-tight">5K+</h3>
-							<p className="mt-3 text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">Active Neighbors</p>
-							<p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
-								Families, local bakers, market stalls, and volunteers actively keeping their immediate community vibrant and waste-free.
-							</p>
-						</div>
+						{t.metrics.map((metric, idx) => (
+							<div key={idx} className="py-6 sm:py-0 sm:px-8 text-center sm:text-left first:pl-0">
+								<h3 className="font-[var(--font-display)] text-5xl font-bold text-[#195A00] tracking-tight">
+									{metric.value}
+								</h3>
+								<p className="mt-3 text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">
+									{metric.label}
+								</p>
+								<p className="mt-4 text-sm text-[var(--muted)] leading-relaxed">
+									{metric.desc}
+								</p>
+							</div>
+						))}
 					</div>
 				</div>
 			</section>
 
-			{/* Sustainability Goals */}
+			{/* Pillars of our impact */}
 			<section className="py-20 sm:py-28">
 				<div className="site-shell">
 					<div className="grid gap-16 lg:grid-cols-2 items-center">
 						<div className="space-y-6">
-							<span className="eyebrow text-[#195A00]">Our Goals</span>
+							<span className="eyebrow text-[#195A00]">{t.eyebrow}</span>
 							<h3 className="font-[var(--font-display)] text-3xl sm:text-4xl font-semibold tracking-tight text-[var(--foreground)]">
-								Connecting surplus with community needs
+								{t.pillarsTitle}
 							</h3>
 							<p className="text-[var(--muted)] leading-relaxed text-lg">
-								Our goal is not just environmental. By sharing food, we decrease isolation, build social trust, and support families with access to excellent, fresh produce that would otherwise go unused. No barriers, just neighbors helping neighbors.
+								{t.pillarsDesc}
 							</p>
 							
-							<div className="relative pl-6 border-l-2 border-[#195A00] py-1">
-								<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block mb-1">
-									Environmental Benchmark
-								</span>
-								<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
-									Measuring our carbon footprint reduction
-								</h4>
-								<p className="text-sm text-[var(--muted)] leading-relaxed mt-2">
-									For every kilogram of food saved from landfills, we prevent approximately 2.5 kg of CO2 equivalents from entering the atmosphere. Our community has collectively prevented over 60,000 kg of greenhouse gas emissions.
-								</p>
+							<div className="space-y-6 mt-8">
+								{t.pillars.map((pillar, idx) => (
+									<div key={idx} className="relative pl-6 border-l-2 border-[#195A00] py-1">
+										<h4 className="font-[var(--font-display)] text-lg font-semibold text-[var(--foreground)]">
+											{pillar.title}
+										</h4>
+										<p className="text-sm text-[var(--muted)] leading-relaxed mt-2">
+											{pillar.desc}
+										</p>
+									</div>
+								))}
 							</div>
 						</div>
 
-						{/* Clean HD Image representing community impact with Cellar borders & decorations */}
+						{/* Collage/Image */}
 						<div className="relative">
 							{/* Floating organic background shape */}
 							<div
@@ -110,3 +106,4 @@ export default function OurImpactPage() {
 		</div>
 	);
 }
+

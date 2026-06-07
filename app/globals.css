@@ -152,6 +152,31 @@ button {
 		background: var(--brand);
 	}
 
+	.download-nav-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9999px;
+		padding: 10px 22px;
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: white;
+		background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+		box-shadow: 0 4px 14px rgba(31, 95, 42, 0.22);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+		cursor: pointer;
+	}
+
+	.download-nav-button:hover {
+		box-shadow: 0 6px 20px rgba(31, 95, 42, 0.32);
+		background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+	}
+
+	.download-nav-button:active {
+		transform: translateY(0);
+	}
+
 	.secondary-button {
 		border: 1px solid var(--line);
 		background: rgb(255 255 255 / 0.62);

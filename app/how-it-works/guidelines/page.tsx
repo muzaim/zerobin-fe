@@ -1,25 +1,30 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+"use client";
 
-export const metadata = {
-	title: "Community Guidelines — Cellar",
-	description: "How to share and receive food respectfully. Check out the guidelines that keep our community safe and friendly.",
-};
+import { useEffect } from "react";
+import Image from "next/image";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function CommunityGuidelines() {
+	const { language } = useLanguageStore();
+	const t = translations[language].innerHowItWorks.guidelines;
+
+	useEffect(() => {
+		document.title = `${t.eyebrow} — Cellar`;
+	}, [t.eyebrow]);
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
 			{/* Hero */}
 			<section className="relative overflow-hidden py-16 sm:py-20">
 				<div className="site-shell">
 					<div className="max-w-3xl">
-						<span className="eyebrow">The Golden Rules</span>
+						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.5rem,7vw,4rem)] leading-[1.15]">
-							How to not be a <span className="text-[#195A00]">weird neighbor.</span>
+							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>
 						</h1>
 						<p className="section-copy mt-6 max-w-xl">
-							Cellar runs entirely on trust and mutual respect. We are not a delivery service or a store—just neighbors helping neighbors. Here is how we keep it comfortable for everyone.
+							{t.desc}
 						</p>
 					</div>
 				</div>
@@ -42,8 +47,8 @@ export default function CommunityGuidelines() {
 							<div className="relative aspect-square w-full overflow-hidden rounded-[28px] border border-[var(--line)] bg-white p-4 shadow-[0_12px_24px_rgba(0,0,0,0.03)] rotate-[-1.5deg]">
 								<div className="relative w-full h-full overflow-hidden rounded-[20px]">
 									<Image
-										src="https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?auto=format&fit=crop&w=800&h=800&q=80"
-										alt="Neighbors happily talking and sharing a warm moment outdoors"
+										src="https://images.unsplash.com/photo-1593113630400-ea4288922497?auto=format&fit=crop&w=800&h=800&q=80"
+										alt={t.photoAlt}
 										fill
 										className="object-cover"
 										sizes="(max-width: 1024px) 100vw, 500px"
@@ -56,39 +61,23 @@ export default function CommunityGuidelines() {
 						<div className="space-y-8">
 							<div className="space-y-3">
 								<h3 className="font-[var(--font-display)] text-3xl font-bold tracking-tight text-[var(--foreground)]">
-									Keep it friendly, keep it respectful.
+									{t.guideTitle}
 								</h3>
 								<p className="text-[var(--muted)] leading-relaxed text-base">
-									Cellar is not a store, a commercial delivery network, or an anonymous food drive. It is a local pathway built on neighbor-to-neighbor trust. Because we share directly from our own kitchens and gardens, a few simple boundaries keep things comfortable, safe, and welcoming for everyone.
+									{t.guideDesc}
 								</p>
 							</div>
 
-							<div className="space-y-3 pt-6 border-t border-[var(--line)]">
-								<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
-									Only share what is good
-								</h4>
-								<p className="text-sm text-[var(--muted)] leading-relaxed">
-									The gold standard is simple: only list food you would happily eat yourself. Fresh garden vegetables, home-baked bread, unopened pantry staples, or leftover portions from a family event are perfect. Moldy, expired, or half-eaten food belongs in the compost, not in a neighbor’s hands.
-								</p>
-							</div>
-
-							<div className="space-y-3 pt-6 border-t border-[var(--line)]">
-								<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
-									Show up when you say you will
-								</h4>
-								<p className="text-sm text-[var(--muted)] leading-relaxed">
-									Neighbors coordinate their days to list and hand off food. If you agree on a 5:30 PM pickup, show up at 5:30 PM. If plans change, send a quick note in the app chat immediately so nobody is left waiting.
-								</p>
-							</div>
-
-							<div className="space-y-3 pt-6 border-t border-[var(--line)]">
-								<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
-									Keep transactions completely out of it
-								</h4>
-								<p className="text-sm text-[var(--muted)] leading-relaxed">
-									Everything shared here is 100% free. Offering cash, requesting tips, bartering, or pitching local business offers is strictly forbidden. A friendly smile and a warm thank-you are the only exchanges we support.
-								</p>
-							</div>
+							{t.items.map((item, idx) => (
+								<div key={idx} className="space-y-3 pt-6 border-t border-[var(--line)]">
+									<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
+										{item.title}
+									</h4>
+									<p className="text-sm text-[var(--muted)] leading-relaxed">
+										{item.desc}
+									</p>
+								</div>
+							))}
 						</div>
 
 					</div>
@@ -98,3 +87,4 @@ export default function CommunityGuidelines() {
 		</div>
 	);
 }
+

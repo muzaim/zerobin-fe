@@ -1,21 +1,29 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-const platformLinks = [
-	{ label: "About Us", href: "/about" },
-	{ label: "How It Works", href: "/how-it-works/donors" },
-	{ label: "Community Guidelines", href: "/how-it-works/guidelines" },
-	{ label: "Our Impact", href: "/impact/statistics" },
-];
-
-const resourceLinks = [
-	{ label: "FAQ", href: "/faq" },
-	{ label: "Contact Support", href: "/contact" },
-	{ label: "Success Stories", href: "/impact/stories" },
-	{ label: "Sustainability Goals", href: "/impact/goals" },
-];
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function Footer() {
+	const { language } = useLanguageStore();
+	const t = translations[language].footer;
+	const n = translations[language].navbar;
+
+	const platformLinks = [
+		{ label: n.aboutUs, href: "/about" },
+		{ label: n.howItWorks, href: "/how-it-works/donors" },
+		{ label: n.communityGuidelines, href: "/how-it-works/guidelines" },
+		{ label: n.ourImpact, href: "/impact/statistics" },
+	];
+
+	const resourceLinks = [
+		{ label: n.faq, href: "/faq" },
+		{ label: n.contactSupport, href: "/contact" },
+		{ label: n.successStories, href: "/impact/stories" },
+		{ label: n.sustainabilityGoals, href: "/impact/goals" },
+	];
+
 	return (
 		<footer className="bg-[var(--brand-dark)] text-white">
 
@@ -23,29 +31,28 @@ export default function Footer() {
 			<div className="site-shell pt-20 sm:pt-24">
 				<div className="border-b border-white/10 pb-14 sm:pb-20">
 					<p className="font-mono text-[11px] font-bold tracking-[0.2em] uppercase text-[var(--brand-soft)] mb-5">
-						Cellar · Food sharing platform
+						{t.tagline}
 					</p>
 					<h2 className="font-[var(--font-display)] text-[clamp(2.4rem,8vw,5.5rem)] font-bold leading-[1.1] tracking-tight text-white max-w-4xl">
-						One extra portion.{" "}
-						<span className="text-[var(--brand-soft)] italic">Someone's dinner.</span>
+						{t.headlinePrefix}
+						<span className="text-[var(--brand-soft)] italic">{t.headlineItalic}</span>
 					</h2>
 					<p className="mt-6 max-w-xl text-white/60 leading-7 text-base sm:text-lg">
-						Cellar is free, local, and built for the ordinary moment when you have
-						more than you need. Pass it on before it ends in the bin.
+						{t.desc}
 					</p>
 					<div className="mt-8 flex flex-wrap gap-4">
 						<Link
 							href="/#download"
 							className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-[var(--brand-dark)] transition duration-200"
 						>
-							Get the app
+							{n.downloadApp}
 							<ArrowRight size={15} />
 						</Link>
 						<Link
 							href="/how-it-works/donors"
 							className="inline-flex items-center gap-2 rounded-xl border border-white/20 px-5 py-3 text-sm font-medium text-white/80 transition duration-200 hover:text-white hover:border-white/40"
 						>
-							See how it works
+							{n.howItWorks}
 						</Link>
 					</div>
 				</div>
@@ -63,8 +70,7 @@ export default function Footer() {
 							</span>
 						</Link>
 						<p className="mt-5 text-sm leading-7 text-white/52 max-w-[230px]">
-							A quieter way to share surplus food with someone nearby — before it
-							goes to waste.
+							{t.brandDesc}
 						</p>
 						<div className="mt-7 flex gap-5 text-sm font-semibold text-white/45">
 							<a href="#" className="hover:text-white transition duration-200">Instagram</a>
@@ -76,7 +82,7 @@ export default function Footer() {
 					{/* Platform links */}
 					<div>
 						<p className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand-soft)] mb-5">
-							Platform
+							{t.about}
 						</p>
 						<div className="grid gap-3.5">
 							{platformLinks.map((link) => (
@@ -94,7 +100,7 @@ export default function Footer() {
 					{/* Resource links */}
 					<div>
 						<p className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand-soft)] mb-5">
-							Resources
+							{t.howItWorks}
 						</p>
 						<div className="grid gap-3.5">
 							{resourceLinks.map((link) => (
@@ -112,28 +118,28 @@ export default function Footer() {
 					{/* Newsletter */}
 					<div>
 						<p className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand-soft)] mb-5">
-							Stay updated
+							{t.stayUpdated}
 						</p>
 						<p className="text-sm leading-7 text-white/52 mb-5">
-							Community stories and product notes, occasionally — nothing more.
+							{t.newsletterDesc}
 						</p>
 						<form className="flex overflow-hidden rounded-xl border border-white/12 bg-white/6">
 							<input
 								type="email"
-								placeholder="Your email"
+								placeholder={t.emailPlaceholder}
 								aria-label="Email address"
-								className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-white outline-none placeholder:text-white/30"
+								className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-white outline-none placeholder:text-white/30 animate-none"
 							/>
 							<button
 								type="submit"
 								aria-label="Subscribe"
-								className="flex w-12 shrink-0 items-center justify-center bg-white text-[var(--brand-dark)] transition duration-200"
+								className="flex w-12 shrink-0 items-center justify-center bg-white text-[var(--brand-dark)] transition duration-200 cursor-pointer"
 							>
 								<ArrowRight size={16} />
 							</button>
 						</form>
 						<p className="mt-3 text-[11px] text-white/30">
-							No spam. Unsubscribe any time.
+							{t.noSpam}
 						</p>
 					</div>
 
@@ -143,8 +149,8 @@ export default function Footer() {
 			{/* Bottom bar */}
 			<div className="site-shell border-t border-white/8 py-6">
 				<div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-white/30 font-medium">
-					<p>© 2026 Cellar. Built with care, not scale.</p>
-					<p className="font-mono tracking-wider">Every meal deserves a plate, not a bin.</p>
+					<p>{t.rightsText}</p>
+					<p className="font-mono tracking-wider">{n.communityGuidelines}</p>
 				</div>
 			</div>
 
