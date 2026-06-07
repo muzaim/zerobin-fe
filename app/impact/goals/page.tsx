@@ -1,6 +1,11 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+export const metadata = {
+	title: "Sustainability Goals — Cellar",
+	description: "Goals that matter to our neighborhoods. Learn about our commitment to zero food waste.",
+};
+
 export default function SustainabilityGoals() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">

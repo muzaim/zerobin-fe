@@ -149,7 +149,6 @@ button {
 	}
 
 	.primary-button:hover {
-		transform: translateY(-2px);
 		background: var(--brand);
 	}
 

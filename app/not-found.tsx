@@ -1,7 +1,14 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
+	useEffect(() => {
+		document.title = "404 - Page Not Found — Cellar";
+	}, []);
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] flex items-center justify-center px-6">
 			<div className="max-w-xl w-full text-center">

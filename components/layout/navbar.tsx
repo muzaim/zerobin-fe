@@ -209,6 +209,14 @@ export default function Navbar() {
 								</div>
 							</li>
 						))}
+						<li key="Blog">
+							<Link
+								href="/blog"
+								className="text-[15px] font-medium text-neutral-700 hover:text-[var(--brand)] transition-colors duration-200"
+							>
+								Blog
+							</Link>
+						</li>
 					</ul>
 
 	
@@ -306,6 +314,15 @@ export default function Navbar() {
 									</div>
 								</li>
 							))}
+							<li key="Blog" className="border-b border-[var(--line)]/50 pb-3">
+								<Link
+									href="/blog"
+									onClick={() => setIsOpen(false)}
+									className="block text-base font-semibold text-[var(--foreground)] py-1 hover:text-[var(--brand)] transition-colors"
+								>
+									Blog
+								</Link>
+							</li>
 						</ul>
 
 						<div className="mt-6 pt-6 border-t border-[var(--line)]/50 flex flex-col gap-3">

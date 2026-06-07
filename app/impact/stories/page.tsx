@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Quote } from "lucide-react";
 
+export const metadata = {
+	title: "Success Stories — Cellar",
+	description: "Real food, real people, real stories. Read inspiring stories of neighborhood sharing on Cellar.",
+};
+
 export default function SuccessStories() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">

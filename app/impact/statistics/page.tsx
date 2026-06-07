@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+export const metadata = {
+	title: "Food Waste Statistics — Cellar",
+	description: "The real cost of wasted food. Check out the statistics and environmental impact of food waste.",
+};
+
 export default function FoodWasteFacts() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
