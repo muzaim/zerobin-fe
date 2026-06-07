@@ -42,8 +42,8 @@ export default function CommunityGuidelines() {
 							<div className="relative aspect-square w-full overflow-hidden rounded-[28px] border border-[var(--line)] bg-white p-4 shadow-[0_12px_24px_rgba(0,0,0,0.03)] rotate-[-1.5deg]">
 								<div className="relative w-full h-full overflow-hidden rounded-[20px]">
 									<Image
-										src="https://images.unsplash.com/photo-1516880711640-ef7db81be3e1?auto=format&fit=crop&w=800&h=800&q=80"
-										alt="Neighbors happily talking and sharing a warm moment outdoors"
+										src="https://images.unsplash.com/photo-1593113630400-ea4288922497?auto=format&fit=crop&w=800&h=800&q=80"
+										alt="A neighbor happily donating a box of fresh food to another neighbor"
 										fill
 										className="object-cover"
 										sizes="(max-width: 1024px) 100vw, 500px"

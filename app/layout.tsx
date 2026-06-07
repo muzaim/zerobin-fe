@@ -4,6 +4,7 @@ import Footer from "@/components/layout/footer";
 import Navbar from "@/components/layout/navbar";
 import SmoothScroll from "@/components/layout/smooth-scroll";
 import BackToTop from "@/components/layout/back-to-top";
+import CookieConsent from "@/components/layout/cookie-consent";
 import "./globals.css";
 
 const sans = Geist({
@@ -35,6 +36,7 @@ export default function RootLayout({
 					<main>{children}</main>
 					<Footer />
 					<BackToTop />
+					<CookieConsent />
 				</SmoothScroll>
 			</body>
 		</html>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 
@@ -215,6 +215,14 @@ export default function Navbar() {
 								className="text-[15px] font-medium text-neutral-700 hover:text-[var(--brand)] transition-colors duration-200"
 							>
 								Blog
+							</Link>
+						</li>
+						<li key="Download">
+							<Link
+								href="/#download"
+								className="primary-button !min-h-0 !py-2.5 !px-5 text-sm"
+							>
+								Download App
 							</Link>
 						</li>
 					</ul>

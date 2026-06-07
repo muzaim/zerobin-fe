@@ -30,8 +30,8 @@ export default function AboutUsPage() {
 				<div className="site-shell">
 					<div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden rounded-[24px] border border-[var(--line)] shadow-sm bg-[var(--surface-soft)]">
 						<Image
-							src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1600&q=85"
-							alt="Community food sharing table outdoors"
+							src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1600&q=85"
+							alt="A happy group of community volunteers and neighbors working together"
 							fill
 							priority
 							className="object-cover"
