@@ -9,13 +9,22 @@ import { useLanguageStore } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function BlogPage() {
-	const { language } = useLanguageStore();
+	const { language, startLoading, stopLoading } = useLanguageStore();
 	const tBlog = translations[language].innerBlog;
 
 	const [featured, ...rest] = blogPosts;
 	const [visibleCount, setVisibleCount] = useState(7); // 1 featured + 6 initial grid items
 	const [isLoading, setIsLoading] = useState(false);
 	const loaderRef = useRef<HTMLDivElement | null>(null);
+
+	// Simulate API fetching progress bar on mount
+	useEffect(() => {
+		startLoading();
+		const timer = setTimeout(() => {
+			stopLoading();
+		}, 600);
+		return () => clearTimeout(timer);
+	}, [startLoading, stopLoading]);
 
 	useEffect(() => {
 		document.title = `${tBlog.eyebrow} — Cellar`;

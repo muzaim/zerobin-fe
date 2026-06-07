@@ -16,10 +16,19 @@ export default function BlogPostPage({
 	const { slug } = use(params);
 	const post = getBlogPost(slug);
 	const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
-	const { language } = useLanguageStore();
+	const { language, startLoading, stopLoading } = useLanguageStore();
 	const tBlog = translations[language].innerBlog;
 
 	const postLocal = post ? post[language] : null;
+
+	// Simulate API fetching progress bar on mount/slug change
+	useEffect(() => {
+		startLoading();
+		const timer = setTimeout(() => {
+			stopLoading();
+		}, 700);
+		return () => clearTimeout(timer);
+	}, [slug, startLoading, stopLoading]);
 
 	// Handle scroll to top, dynamic title, and client-side random articles
 	useEffect(() => {

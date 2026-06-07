@@ -17,7 +17,7 @@ export default function Hero() {
 	];
 
 	return (
-		<section className="relative isolate overflow-hidden pt-28 sm:pt-32 lg:min-h-screen lg:pt-5">
+		<section className="relative isolate overflow-hidden pt-28 sm:pt-32 lg:min-h-screen lg:pt-28">
 			<div className="site-shell relative z-10">
 				<div className="grid min-h-[calc(100vh-80px)] items-center gap-12 pb-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:pb-6">
 					<div className="relative z-10 max-w-3xl">

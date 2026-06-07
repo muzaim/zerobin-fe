@@ -301,6 +301,16 @@ export type TranslationDict = {
 		btnBack: string;
 		relatedTitle: string;
 	};
+	subscribeModal: {
+		title: string;
+		desc: string;
+		placeholder: string;
+		btnSubmit: string;
+		btnSubmitting: string;
+		btnDismiss: string;
+		successTitle: string;
+		successDesc: string;
+	};
 };
 
 export const translations: { en: TranslationDict; id: TranslationDict } = {
@@ -663,6 +673,16 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			btnBack: "Back to Blog",
 			relatedTitle: "Related Articles",
 		},
+		subscribeModal: {
+			title: "Stay in the loop",
+			desc: "Join our small group of neighbors. We share stories, surplus recipes, and stats from the block — once a month, no spam.",
+			placeholder: "Enter your email address",
+			btnSubmit: "Subscribe",
+			btnSubmitting: "Subscribing...",
+			btnDismiss: "No thanks, I'll browse first",
+			successTitle: "You're in!",
+			successDesc: "Thanks for joining us. We'll send you our next neighborhood dispatch soon.",
+		},
 	},
 	id: {
 		navbar: {
@@ -1022,6 +1042,16 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			notFoundDesc: "Maaf, artikel yang Anda cari tidak dapat ditemukan atau sudah dihapus.",
 			btnBack: "Kembali ke Blog",
 			relatedTitle: "Artikel Menarik Lainnya",
+		},
+		subscribeModal: {
+			title: "Tetap Terhubung",
+			desc: "Bergabunglah dengan warga sekitar. Kami membagikan kisah inspiratif, tips mengolah kelebihan pangan, dan info menarik lainnya—cukup sekali sebulan, bebas spam.",
+			placeholder: "Masukkan alamat email Anda",
+			btnSubmit: "Ikuti Kabar",
+			btnSubmitting: "Mengirim...",
+			btnDismiss: "Tidak, terima kasih. Saya ingin melihat-lihat dulu",
+			successTitle: "Berhasil Terhubung!",
+			successDesc: "Terima kasih telah bergabung. Kami akan segera mengirimkan kabar lingkungan terbaru untuk Anda.",
 		},
 	},
 };
