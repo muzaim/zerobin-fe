@@ -1,0 +1,30 @@
+A. Fitur Interaktif & Keterlibatan Pengguna (UX & Wow Effect)
+Simulasi Feed/Daftar Makanan Lokal Interaktif (Landing Page)
+
+Deskripsi: Menambahkan widget interaktif di Landing Page yang mensimulasikan feed aplikasi Cellar secara real-time. Pengunjung bisa melihat kartu-kartu makanan surplus di sekitar mereka (misal: "Roti Sourdough Sarah", "Sup Tomat Budi"), mengeklik salah satunya untuk melihat detail bahan & alergen, atau mencoba menekan tombol "Bagikan Makanan" untuk memicu form input mini (pop-up) yang mensimulasikan proses posting makanan.
+Tujuan: Memberikan pemahaman instan tentang bagaimana aplikasi bekerja secara visual tanpa pengguna harus mengunduh aplikasinya terlebih dahulu.
+Kalkulator Jejak Karbon & Air Makanan (Halaman Dampak/Statistik)
+
+Deskripsi: Di halaman /impact/statistics, kita bisa membuat kalkulator sederhana yang interaktif. Pengunjung dapat memasukkan jenis dan jumlah makanan yang sering mereka buang (misal: "3 potong roti", "2 porsi nasi", "5 buah apel"). Sistem akan menghitung secara instan berapa liter air, emisi CO2, dan energi yang berhasil diselamatkan jika makanan tersebut dibagikan melalui Cellar (menggunakan visual animasi konter angka yang bergerak naik).
+Tujuan: Mengubah data statistik kering menjadi edukasi personal yang interaktif dan berkesan.
+Pencarian & Filter Kategori Real-Time (FAQ & Blog)
+
+Deskripsi: Menambahkan kolom pencarian instan (client-side) dan pil filter kategori (seperti "Panduan Berbagi", "Keamanan Pangan", "Kisah Warga") di halaman FAQ (/faq) dan Blog (/blog). Hasil pencarian akan langsung ter-update secara real-time dengan efek transisi memudar yang halus saat pengguna mengetik.
+Tujuan: Mempermudah navigasi informasi saat jumlah konten FAQ atau blog bertambah banyak.
+B. Estetika Visual & Mikro-Interaksi
+Skeleton Loader Premium (Blog & Detail Blog)
+
+Deskripsi: Saat blog dibuka dan progress bar hijau di navbar berjalan, konten halaman yang kosong bisa diisi dengan Skeleton Loader (kerangka abu-abu yang berdenyut halus/shimmer effect) yang menyerupai bentuk asli kartu artikel blog.
+Tujuan: Menghilangkan transisi kasar "halaman kosong lalu muncul tiba-tiba", memberikan kesan pemuatan data yang modern dan berkelas.
+Scroll-Driven Storytelling Animation (Halaman Kisah Kami/Cara Kerja)
+
+Deskripsi: Memanfaatkan CSS Scroll-driven animations atau Intersection Observer untuk membuat elemen teks, foto, dan timeline di halaman /about/story dan /how-it-works/donors memudar dan bergeser naik secara perlahan (scroll reveal) saat halaman digulirkan ke bawah.
+Tujuan: Membuat penyampaian cerita (storytelling) terasa lebih hidup, sinematik, dan premium.
+Dark Mode Toggle / Tema Warna Organik Switcher
+
+Deskripsi: Menyediakan tombol pengubah tema yang sangat elegan (menggunakan transisi lingkaran membesar / view transitions jika browser mendukung). Selain Dark Mode standar, kita bisa memberikan pilihan tema warna organik hangat lainnya yang cocok dengan Cellar (seperti Forest Green, Terracotta Earth, atau Warm Sand).
+Tujuan: Memberikan opsi personalisasi kenyamanan membaca bagi pengguna.
+C. Optimasi Teknis & SEO
+Bilingual SEO Metadata Optimization
+Deskripsi: Karena website sekarang menggunakan bilingual (EN/ID) tanpa reload via Zustand, mesin pencari (Google) secara default hanya membaca metadata statis (Judul & Deskripsi) dalam bahasa Inggris. Kita bisa melakukan optimasi agar Googlebot dapat mengindeks versi bahasa Indonesia dengan baik, misalnya dengan penataan rute statis atau integrasi header alternatif.
+Tujuan: Memastikan website Cellar mudah ditemukan di pencarian Google untuk kata kunci bahasa Inggris maupun bahasa Indonesia.
