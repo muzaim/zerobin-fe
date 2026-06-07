@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { TrendingUp, ShieldCheck, Heart, ArrowRight, CheckCircle } from "lucide-react";
 
+export const metadata = {
+	title: "Our Impact — Cellar",
+	description: "Measuring our collective difference. Learn how much food waste has been prevented by our community.",
+};
+
 export default function OurImpactPage() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">

@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+export const metadata = {
+	title: "Community Guidelines — Cellar",
+	description: "How to share and receive food respectfully. Check out the guidelines that keep our community safe and friendly.",
+};
+
 export default function CommunityGuidelines() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">

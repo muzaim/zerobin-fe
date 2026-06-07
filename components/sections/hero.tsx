@@ -55,45 +55,37 @@ export default function Hero() {
 						</div>
 					</div>
 
-					<div className="relative z-0 mx-auto h-[400px] sm:h-[550px] lg:h-[650px] w-full max-w-[650px] flex items-center justify-center overflow-visible">
-						{/* Simplified hero background blob */}
-						<div className="absolute -right-8 -top-12 w-96 h-96 bg-green-200 rounded-full -z-10 opacity-80 blur-lg pointer-events-none"></div>
+					<div className="relative z-0 mx-auto h-[400px] sm:h-[550px] lg:h-[620px] w-full max-w-[620px] flex items-center justify-center overflow-visible">
+						{/* Soft organic green background blob */}
+						<div 
+							className="absolute -inset-4 bg-[var(--brand-soft)]/70 -z-20 blur-xl opacity-90" 
+							style={{ borderRadius: "60% 40% 50% 50% / 50% 60% 40% 50%" }} 
+						/>
 
-						{/* Polaroid 1 (Main community dining/sharing) - Hover effects disabled */}
-						<div className="absolute w-[76%] aspect-[4/3] bg-white p-3 pb-8 sm:p-4 sm:pb-10 rounded-2xl sm:rounded-3xl border border-[var(--line)] shadow-[0_15px_35px_rgba(0,0,0,0.08)] rotate-[-3deg] transition-all duration-500 z-10">
-							<div className="relative w-full h-full overflow-hidden rounded-lg sm:rounded-xl">
+						{/* Soft green background organic card border shape */}
+						<div 
+							className="absolute w-[88%] aspect-[4/3] bg-[#195A00]/8 rounded-3xl -z-10 rotate-[2.5deg] border border-[#195A00]/12"
+						/>
+
+						{/* Single Large Polaroid Card */}
+						<div className="absolute w-[86%] aspect-[4/3] bg-white p-3.5 pb-8 sm:p-5 sm:pb-12 rounded-3xl border border-[var(--line)] shadow-[0_20px_45px_rgba(0,0,0,0.06)] rotate-[-1.5deg] transition-all duration-500 z-10">
+							<div className="relative w-full h-full overflow-hidden rounded-xl sm:rounded-2xl">
 								<Image
-									src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=800&h=600&q=85"
+									src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1000&h=750&q=85"
 									alt="Neighbors sharing home-cooked food at a community table"
 									fill
 									priority
 									className="object-cover"
-									sizes="(max-width: 1024px) 100vw, 500px"
+									sizes="(max-width: 1024px) 100vw, 550px"
 								/>
 							</div>
-							<p className="mt-2 text-center text-[10px] sm:text-xs font-mono text-[var(--muted)] font-bold tracking-wider uppercase">
+							<p className="mt-3 text-center text-[10px] sm:text-xs font-mono text-[var(--muted)] font-bold tracking-wider uppercase">
 								Sunday Neighborhood Table
 							</p>
 						</div>
 
-						{/* Polaroid 2 (Secondary fresh garden harvest) - Hover effects disabled */}
-						<div className="absolute left-[2%] bottom-[6%] w-[48%] aspect-[4/3] bg-white p-2.5 pb-6 sm:p-3 sm:pb-8 rounded-xl sm:rounded-2xl border border-[var(--line)] shadow-[0_12px_24px_rgba(0,0,0,0.08)] rotate-[6deg] transition-all duration-500 z-20">
-							<div className="relative w-full h-full overflow-hidden rounded-md sm:rounded-lg">
-								<Image
-									src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=500&h=375&q=85"
-									alt="Freshly harvested backyard vegetables"
-									fill
-									className="object-cover"
-									sizes="(max-width: 1024px) 50vw, 250px"
-								/>
-							</div>
-							<p className="mt-1.5 text-center text-[8px] sm:text-[10px] font-mono text-[var(--muted)] font-bold tracking-wider uppercase">
-								Sarah's garden surplus
-							</p>
-						</div>
-
 						{/* Floating Badge 1 (Sarah's Sourdough Bread Listing) */}
-						<div className="absolute left-[-2%] top-[12%] z-30 flex items-center gap-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-[var(--line)] shadow-[0_10px_25px_rgba(31,36,22,0.08)] transition-transform duration-300 sm:flex hidden">
+						<div className="absolute left-[-4%] top-[14%] z-20 flex items-center gap-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-[var(--line)] shadow-[0_10px_25px_rgba(31,36,22,0.08)] hover:-translate-y-1 transition-transform duration-300 sm:flex hidden">
 							<div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[var(--line)] font-sans">
 								<Image
 									src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=80&h=80&q=85"
@@ -119,7 +111,7 @@ export default function Hero() {
 						</div>
 
 						{/* Floating Badge 2 (James's Fresh Plums Listing) */}
-						<div className="absolute right-[-4%] bottom-[22%] z-30 flex items-center gap-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-[var(--line)] shadow-[0_10px_25px_rgba(31,36,22,0.08)] transition-transform duration-300 sm:flex hidden">
+						<div className="absolute right-[-2%] bottom-[16%] z-20 flex items-center gap-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-[var(--line)] shadow-[0_10px_25px_rgba(31,36,22,0.08)] hover:-translate-y-1 transition-transform duration-300 sm:flex hidden">
 							<div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[var(--line)] font-sans">
 								<Image
 									src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&w=80&h=80&q=85"

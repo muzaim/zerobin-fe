@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+export const metadata = {
+	title: "For Donors — Cellar",
+	description: "Giving away extra food shouldn't feel like a part-time job. Learn how to list your surplus food in under a minute.",
+};
+
 export default function HowItWorksDonors() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">

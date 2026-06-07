@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Users, Heart, Sprout, ArrowRight, ShieldCheck } from "lucide-react";
 
+export const metadata = {
+	title: "About Us — Cellar",
+	description: "We believe good food belongs on plates, not in landfills. Learn more about Cellar.",
+};
+
 export default function AboutUsPage() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">

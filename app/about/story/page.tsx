@@ -2,6 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, Calendar, ShieldCheck, Heart, ArrowRight } from "lucide-react";
 
+export const metadata = {
+	title: "Our Story — Cellar",
+	description: "How a simple neighborly act became Cellar. Read the history and journey of our community.",
+};
+
 export default function OurStoryPage() {
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
