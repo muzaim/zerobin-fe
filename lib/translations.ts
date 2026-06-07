@@ -997,8 +997,8 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			},
 			stories: {
 				eyebrow: "Kisah Berbagi",
-				titlePrefix: "Makanan asli, warga nyata, ",
-				titleHighlight: "cerita apa adanya.",
+				titlePrefix: "Makanan yang dibagikan, orang yang terbantu, ",
+				titleHighlight: "cerita yang menginspirasi.",
 				desc: "Kami bukan lembaga amal besar, melainkan hanya wadah bertemunya sesama warga. Berikut adalah cerita-cerita kecil yang menghangatkan hati dari lingkungan sekitar kita.",
 				storiesTitle: "Momen kebersamaan antartetangga",
 				storiesDesc: "Mengunggah makanan hanya butuh satu menit, namun kebaikan dan hubungan akrab yang terjalin bisa bertahan selamanya. Berikut cuplikan keseharian warga Cellar.",
