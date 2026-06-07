@@ -4,17 +4,22 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { blogPosts } from "../../lib/blog-data";
+import { blogPosts } from "@/lib/blog-data";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function BlogPage() {
+	const { language } = useLanguageStore();
+	const tBlog = translations[language].innerBlog;
+
 	const [featured, ...rest] = blogPosts;
 	const [visibleCount, setVisibleCount] = useState(7); // 1 featured + 6 initial grid items
 	const [isLoading, setIsLoading] = useState(false);
 	const loaderRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-		document.title = "Blog — Cellar";
-	}, []);
+		document.title = `${tBlog.eyebrow} — Cellar`;
+	}, [tBlog.eyebrow]);
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -48,29 +53,36 @@ export default function BlogPage() {
 	const displayedGridPosts = rest.slice(0, visibleCount - 1);
 	const hasMore = visibleCount < blogPosts.length;
 
+	// Extract local data helper
+	const getLocalPost = (post: typeof featured) => {
+		return post[language];
+	};
+
+	const featuredLocal = featured ? getLocalPost(featured) : null;
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-24">
 			<div className="site-shell">
 
 				{/* Header */}
 				<div className="max-w-2xl mb-16">
-					<p className="eyebrow">Blog</p>
+					<p className="eyebrow">{tBlog.eyebrow}</p>
 					<h1 className="display-title mt-4 text-[clamp(2.4rem,7vw,3.8rem)]">
-						Stories from the kitchen and front yard.
+						{tBlog.title}
 					</h1>
 					<p className="section-copy mt-5">
-						Guides, real stories, and light reading about food sharing — from the Cellar community.
+						{tBlog.desc}
 					</p>
 				</div>
 
 				{/* Featured Article */}
-				{featured && (
+				{featured && featuredLocal && (
 					<Link href={`/blog/${featured.slug}`} className="group block mb-12">
 						<div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 border border-[var(--line)] rounded-[20px] overflow-hidden bg-[var(--surface)] hover:border-[var(--brand)] transition-colors duration-200">
 							<div className="relative aspect-[16/9] lg:aspect-auto min-h-[260px]">
 								<Image
 									src={featured.coverImage}
-									alt={featured.title}
+									alt={featuredLocal.title}
 									fill
 									className="object-cover"
 									sizes="(max-width: 1024px) 100vw, 560px"
@@ -80,24 +92,24 @@ export default function BlogPage() {
 							<div className="p-7 sm:p-10 flex flex-col justify-center">
 								<div className="flex items-center gap-3 mb-4">
 									<span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand)]">
-										{featured.category}
+										{featuredLocal.category}
 									</span>
 									<span className="text-[var(--muted)] text-xs">·</span>
 									<span className="text-[var(--muted)] text-xs">
-										{featured.readTime} read
+										{featuredLocal.readTime} {tBlog.readTime}
 									</span>
 								</div>
 								<h2 className="font-[var(--font-display)] text-2xl sm:text-3xl font-bold text-[var(--foreground)] leading-snug group-hover:text-[var(--brand)] transition-colors">
-									{featured.title}
+									{featuredLocal.title}
 								</h2>
 								<p className="mt-3 text-[var(--muted)] leading-relaxed text-sm sm:text-base">
-									{featured.excerpt}
+									{featuredLocal.excerpt}
 								</p>
 								<div className="mt-6 flex items-center gap-2 text-sm font-semibold text-[var(--brand)]">
-									Read more <ArrowRight size={15} />
+									{tBlog.readMore} <ArrowRight size={15} />
 								</div>
 								<p className="mt-4 text-xs text-[var(--muted)]">
-									{featured.date} · {featured.author}
+									{featuredLocal.date} · {featured.author}
 								</p>
 							</div>
 						</div>
@@ -106,41 +118,44 @@ export default function BlogPage() {
 
 				{/* Article Grid */}
 				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-					{displayedGridPosts.map((post) => (
-						<Link
-							key={post.slug}
-							href={`/blog/${post.slug}`}
-							className="group block border border-[var(--line)] rounded-[16px] overflow-hidden bg-[var(--surface)] hover:border-[var(--brand)] transition-colors duration-200"
-						>
-							<div className="relative aspect-[16/9]">
-								<Image
-									src={post.coverImage}
-									alt={post.title}
-									fill
-									className="object-cover group-hover:scale-102 transition-transform duration-300"
-									sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-								/>
-							</div>
-							<div className="p-5 sm:p-6">
-								<div className="flex items-center gap-3 mb-3">
-									<span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand)]">
-										{post.category}
-									</span>
-									<span className="text-[var(--muted)] text-xs">·</span>
-									<span className="text-[var(--muted)] text-xs">
-										{post.readTime} read
-									</span>
+					{displayedGridPosts.map((post) => {
+						const postLocal = getLocalPost(post);
+						return (
+							<Link
+								key={post.slug}
+								href={`/blog/${post.slug}`}
+								className="group block border border-[var(--line)] rounded-[16px] overflow-hidden bg-[var(--surface)] hover:border-[var(--brand)] transition-colors duration-200"
+							>
+								<div className="relative aspect-[16/9]">
+									<Image
+										src={post.coverImage}
+										alt={postLocal.title}
+										fill
+										className="object-cover group-hover:scale-102 transition-transform duration-300"
+										sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+									/>
 								</div>
-								<h3 className="font-[var(--font-display)] text-lg font-bold text-[var(--foreground)] leading-snug group-hover:text-[var(--brand)] transition-colors line-clamp-2">
-									{post.title}
-								</h3>
-								<p className="mt-2 text-sm text-[var(--muted)] leading-relaxed line-clamp-2">
-									{post.excerpt}
-								</p>
-								<p className="mt-4 text-xs text-[var(--muted)]">{post.date}</p>
-							</div>
-						</Link>
-					))}
+								<div className="p-5 sm:p-6">
+									<div className="flex items-center gap-3 mb-3">
+										<span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand)]">
+											{postLocal.category}
+										</span>
+										<span className="text-[var(--muted)] text-xs">·</span>
+										<span className="text-[var(--muted)] text-xs">
+											{postLocal.readTime} {tBlog.readTime}
+										</span>
+									</div>
+									<h3 className="font-[var(--font-display)] text-lg font-bold text-[var(--foreground)] leading-snug group-hover:text-[var(--brand)] transition-colors line-clamp-2">
+										{postLocal.title}
+									</h3>
+									<p className="mt-2 text-sm text-[var(--muted)] leading-relaxed line-clamp-2">
+										{postLocal.excerpt}
+									</p>
+									<p className="mt-4 text-xs text-[var(--muted)]">{postLocal.date}</p>
+								</div>
+							</Link>
+						);
+					})}
 
 					{/* Skeletons while loading */}
 					{isLoading && (

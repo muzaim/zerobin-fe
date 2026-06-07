@@ -27,7 +27,7 @@ export default function NotFound() {
 						This plate is empty.
 					</h1>
 					<p className="mt-4 text-[var(--muted)] leading-relaxed text-base max-w-sm mx-auto">
-						The page you're looking for seems to have moved, or maybe it was shared with someone else already.
+						The page you&apos;re looking for seems to have moved, or maybe it was shared with someone else already.
 					</p>
 				</div>
 

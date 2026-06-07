@@ -1,18 +1,25 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function Impact() {
+	const { language } = useLanguageStore();
+	const t = translations[language].impact;
+
 	return (
 		<section id="impact" className="section-pad bg-[var(--background)] border-t border-[var(--line)]">
 			<div className="site-shell">
 				<div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
 					<div className="space-y-8">
 						<div>
-							<span className="eyebrow text-[#195A00]">Our Impact</span>
+							<span className="eyebrow text-[#195A00]">{t.eyebrow}</span>
 							<h2 className="font-[var(--font-display)] text-4xl sm:text-5xl font-bold tracking-tight text-[var(--foreground)] mt-4 leading-[1.15]">
-								Good food belongs on tables, not in bins.
+								{t.title}
 							</h2>
 							<p className="text-[var(--muted)] leading-relaxed text-lg mt-6 max-w-2xl">
-								Cellar is built for the hands that actually move food: home cooks sharing an extra batch of soup, local cafes listing pastries before closing, and neighbors picking up garden surplus. We keep it personal, simple, and entirely local.
+								{t.desc}
 							</p>
 						</div>
 
@@ -20,25 +27,25 @@ export default function Impact() {
 						<div className="grid gap-8 sm:grid-cols-2 pt-6 border-t border-[var(--line)]">
 							<div className="space-y-1">
 								<p className="font-[var(--font-display)] text-5xl font-bold text-[#195A00] tracking-tight">
-									25 Tons
+									{t.stat1Value}
 								</p>
 								<p className="text-xs uppercase tracking-widest font-mono text-[var(--muted)]">
-									Surplus food saved & shared
+									{t.stat1Label}
 								</p>
 								<p className="text-sm text-[var(--muted)] mt-2">
-									Redirected from local landfills straight to neighboring dinner plates.
+									{t.stat1Desc}
 								</p>
 							</div>
 
 							<div className="space-y-1">
 								<p className="font-[var(--font-display)] text-5xl font-bold text-[var(--clay)] tracking-tight">
-									4.8 / 5
+									{t.stat2Value}
 								</p>
 								<p className="text-xs uppercase tracking-widest font-mono text-[var(--muted)]">
-									Average pickup rating
+									{t.stat2Label}
 								</p>
 								<p className="text-sm text-[var(--muted)] mt-2">
-									Built on trust, safety, and friendly hand-offs between neighbors.
+									{t.stat2Desc}
 								</p>
 							</div>
 						</div>
@@ -53,7 +60,7 @@ export default function Impact() {
 								alt="Hands handing over a bag of fresh community food sharing"
 								fill
 								className="object-cover"
-								sizes="(max-width: 1024px) 100vw, 500px"
+								sizes="(max-width: 1024px) 100vw, 550px"
 							/>
 						</div>
 
@@ -73,3 +80,4 @@ export default function Impact() {
 		</section>
 	);
 }
+

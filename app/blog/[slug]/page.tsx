@@ -4,7 +4,9 @@ import { use, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, Tag, ArrowRight } from "lucide-react";
-import { blogPosts, getBlogPost, BlogPost } from "../../../lib/blog-data";
+import { blogPosts, getBlogPost, BlogPost } from "@/lib/blog-data";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function BlogPostPage({
 	params,
@@ -14,6 +16,10 @@ export default function BlogPostPage({
 	const { slug } = use(params);
 	const post = getBlogPost(slug);
 	const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
+	const { language } = useLanguageStore();
+	const tBlog = translations[language].innerBlog;
+
+	const postLocal = post ? post[language] : null;
 
 	// Handle scroll to top, dynamic title, and client-side random articles
 	useEffect(() => {
@@ -23,32 +29,34 @@ export default function BlogPostPage({
 			document.body.scrollTo({ top: 0, behavior: "auto" });
 		}
 
-		if (post) {
-			document.title = `${post.title} — Cellar`;
+		if (postLocal) {
+			document.title = `${postLocal.title} — Cellar`;
 		}
 
 		const filtered = blogPosts.filter((p) => p.slug !== slug);
 		const shuffled = [...filtered]
 			.sort(() => 0.5 - Math.random())
 			.slice(0, 3);
-		setRelatedPosts(shuffled);
-	}, [slug, post]);
+		setTimeout(() => {
+			setRelatedPosts(shuffled);
+		}, 0);
+	}, [slug, postLocal]);
 
-	if (!post) {
+	if (!post || !postLocal) {
 		return (
 			<div className="min-h-screen bg-[var(--background)] pt-32 pb-24 flex items-center justify-center">
 				<div className="site-shell text-center max-w-md">
 					<h1 className="font-[var(--font-display)] text-3xl font-bold text-[var(--foreground)]">
-						Article not found
+						{tBlog.notFoundTitle}
 					</h1>
 					<p className="mt-4 text-[var(--muted)] leading-relaxed text-sm">
-						Sorry, the article you are looking for could not be found or has been deleted.
+						{tBlog.notFoundDesc}
 					</p>
 					<Link
 						href="/blog"
 						className="primary-button inline-flex mt-8 gap-2"
 					>
-						<ArrowLeft size={16} /> Back to Blog
+						<ArrowLeft size={16} /> {tBlog.btnBack}
 					</Link>
 				</div>
 			</div>
@@ -66,7 +74,7 @@ export default function BlogPostPage({
 						className="group inline-flex items-center gap-2 text-sm font-semibold text-[var(--muted)] hover:text-[var(--brand)] transition-colors duration-200"
 					>
 						<ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-200" />
-						Back to Blog
+						{tBlog.btnBack}
 					</Link>
 				</div>
 
@@ -76,17 +84,17 @@ export default function BlogPostPage({
 						<div className="flex flex-wrap items-center gap-3 mb-5">
 							<span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[var(--brand-soft)] text-[var(--brand-dark)] text-xs font-semibold tracking-wider uppercase font-mono">
 								<Tag size={12} />
-								{post.category}
+								{postLocal.category}
 							</span>
 							<span className="text-[var(--line)]">|</span>
 							<span className="inline-flex items-center gap-1.5 text-xs text-[var(--muted)]">
 								<Clock size={12} />
-								{post.readTime} read
+								{postLocal.readTime} {tBlog.readTime}
 							</span>
 						</div>
 
 						<h1 className="font-[var(--font-display)] text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--foreground)] leading-tight tracking-tight">
-							{post.title}
+							{postLocal.title}
 						</h1>
 
 						<div className="flex items-center gap-3 mt-6 pt-6 border-t border-[var(--line)] text-sm text-[var(--muted)]">
@@ -96,7 +104,7 @@ export default function BlogPostPage({
 							<div>
 								<span className="font-semibold text-[var(--foreground)]">{post.author}</span>
 								<span className="mx-2">·</span>
-								<span>{post.date}</span>
+								<span>{postLocal.date}</span>
 							</div>
 						</div>
 					</header>
@@ -105,7 +113,7 @@ export default function BlogPostPage({
 					<div className="relative aspect-[16/9] w-full overflow-hidden rounded-[24px] border border-[var(--line)] shadow-sm bg-[var(--surface-soft)] mb-12">
 						<Image
 							src={post.coverImage}
-							alt={post.title}
+							alt={postLocal.title}
 							fill
 							priority
 							className="object-cover"
@@ -115,7 +123,7 @@ export default function BlogPostPage({
 
 					{/* Article Body */}
 					<div className="prose max-w-none text-[var(--foreground)] leading-relaxed text-[16px] sm:text-[18px]">
-						{parseMarkdown(post.content)}
+						{parseMarkdown(postLocal.content)}
 					</div>
 				</article>
 
@@ -123,37 +131,40 @@ export default function BlogPostPage({
 				{relatedPosts.length > 0 && (
 					<section className="max-w-4xl mx-auto mt-20 pt-12 border-t border-[var(--line)]">
 						<h3 className="font-[var(--font-display)] text-2xl font-bold text-[var(--foreground)] mb-8">
-							Related Articles
+							{tBlog.relatedTitle}
 						</h3>
 						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-							{relatedPosts.map((p) => (
-								<Link
-									key={p.slug}
-									href={`/blog/${p.slug}`}
-									className="group block border border-[var(--line)] rounded-[16px] overflow-hidden bg-[var(--surface)] hover:border-[var(--brand)] transition-colors duration-200"
-								>
-									<div className="relative aspect-[16/9] overflow-hidden">
-										<Image
-											src={p.coverImage}
-											alt={p.title}
-											fill
-											className="object-cover group-hover:scale-105 transition-transform duration-500"
-											sizes="(max-width: 640px) 100vw, 380px"
-										/>
-									</div>
-									<div className="p-5">
-										<span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand)] block mb-2">
-											{p.category}
-										</span>
-										<h4 className="font-[var(--font-display)] text-base font-bold text-[var(--foreground)] leading-snug group-hover:text-[var(--brand)] transition-colors line-clamp-2">
-											{p.title}
-										</h4>
-										<div className="mt-4 flex items-center gap-1.5 text-xs text-[var(--brand)] font-semibold">
-											Read more <ArrowRight size={13} />
+							{relatedPosts.map((p) => {
+								const pLocal = p[language];
+								return (
+									<Link
+										key={p.slug}
+										href={`/blog/${p.slug}`}
+										className="group block border border-[var(--line)] rounded-[16px] overflow-hidden bg-[var(--surface)] hover:border-[var(--brand)] transition-colors duration-200"
+									>
+										<div className="relative aspect-[16/9] overflow-hidden">
+											<Image
+												src={p.coverImage}
+												alt={pLocal.title}
+												fill
+												className="object-cover group-hover:scale-105 transition-transform duration-500"
+												sizes="(max-width: 640px) 100vw, 380px"
+											/>
 										</div>
-									</div>
-								</Link>
-							))}
+										<div className="p-5">
+											<span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--brand)] block mb-2">
+												{pLocal.category}
+											</span>
+											<h4 className="font-[var(--font-display)] text-base font-bold text-[var(--foreground)] leading-snug group-hover:text-[var(--brand)] transition-colors line-clamp-2">
+												{pLocal.title}
+											</h4>
+											<div className="mt-4 flex items-center gap-1.5 text-xs text-[var(--brand)] font-semibold">
+												{tBlog.readMore} <ArrowRight size={13} />
+											</div>
+										</div>
+									</Link>
+								);
+							})}
 						</div>
 					</section>
 				)}

@@ -1,24 +1,31 @@
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-export const metadata = {
-	title: "Sustainability Goals — Cellar",
-	description: "Goals that matter to our neighborhoods. Learn about our commitment to zero food waste.",
-};
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function SustainabilityGoals() {
+	const { language } = useLanguageStore();
+	const t = translations[language].innerImpact.goals;
+
+	useEffect(() => {
+		document.title = `${t.eyebrow} — Cellar`;
+	}, [t.eyebrow]);
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
 			{/* Hero */}
 			<section className="relative overflow-hidden py-16 sm:py-20">
 				<div className="site-shell">
 					<div className="max-w-3xl">
-						<span className="eyebrow">Sustainability Goals</span>
+						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.5rem,7vw,4rem)] leading-[1.15]">
-							Goals that matter to <span className="text-[#195A00]">our neighborhoods.</span>
+							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>
 						</h1>
 						<p className="section-copy mt-6 max-w-xl">
-							We aren't trying to change the entire world in a day. We are focusing on our own streets, one kitchen and one neighborhood at a time. Here is what we are working toward.
+							{t.desc}
 						</p>
 					</div>
 				</div>
@@ -30,55 +37,35 @@ export default function SustainabilityGoals() {
 					<div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
 						{/* Sticky Left Sidebar */}
 						<div className="lg:sticky lg:top-36 h-fit space-y-6">
-							<span className="eyebrow text-[#195A00]">Our Commitment</span>
+							<span className="eyebrow text-[#195A00]">
+								{language === "en" ? "Our Commitment" : "Komitmen Kami"}
+							</span>
 							<h3 className="font-[var(--font-display)] text-3xl font-bold text-[var(--foreground)] tracking-tight">
-								Real milestones for local communities
+								{language === "en" ? "Real milestones for local communities" : "Langkah nyata untuk komunitas lokal"}
 							</h3>
 							<p className="text-[var(--muted)] leading-relaxed text-base">
-								Cellar targets concrete local changes. Rather than purchasing carbon credits or publishing corporate compliance spreadsheets, we invest our efforts directly in preventing local waste, building neighborhood trust, and supporting families.
+								{language === "en"
+									? "Cellar targets concrete local changes. Rather than purchasing carbon credits or publishing corporate compliance spreadsheets, we invest our efforts directly in preventing local waste, building neighborhood trust, and supporting families."
+									: "Cellar menyasar perubahan lokal yang konkret. Alih-alih membeli sertifikat karbon atau menerbitkan laporan kepatuhan korporat, kami mencurahkan tenaga kami langsung untuk mencegah sampah makanan lokal, membangun rasa saling percaya antar tetangga, dan membantu sesama."
+								}
 							</p>
 						</div>
 
 						{/* Stack of Commitments (Right Column) */}
 						<div className="divide-y divide-[var(--line)]">
-							{/* Goal 1 */}
-							<div className="pb-10 space-y-3">
-								<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
-									Goal 01 / Zero Food Waste
-								</span>
-								<h4 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)] mt-2">
-									Zero edible food in local bins
-								</h4>
-								<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-									If food can be eaten, it shouldn't be discarded. We want to normalize local food sharing so that whenever a household or local shop has extra portions, their first instinct is to open the map and invite a neighbor, not dump it in the trash bin.
-								</p>
-							</div>
-
-							{/* Goal 2 */}
-							<div className="py-10 space-y-3">
-								<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
-									Goal 02 / Social Integration
-								</span>
-								<h4 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)] mt-2">
-									Supporting neighbors directly
-								</h4>
-								<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-									Sharing bread builds relationship. We connect home cooks and small businesses with families living blocks away, removing the charity stigma and replacing it with respectful, friendly local handoffs.
-								</p>
-							</div>
-
-							{/* Goal 3 */}
-							<div className="pt-10 space-y-3">
-								<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
-									Goal 03 / Environmental Protection
-								</span>
-								<h4 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)] mt-2">
-									Landfill diversion at the source
-								</h4>
-								<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-									Every apple and portion of catering saved is a victory. Keeping organic matter out of local waste dumps prevents direct methane gas generation, bypassing the municipal processing loop entirely.
-								</p>
-							</div>
+							{t.goals.map((goal, idx) => (
+								<div key={idx} className={`${idx > 0 ? "py-10" : "pb-10"} space-y-3`}>
+									<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
+										{language === "en" ? `Goal 0${idx + 1}` : `Target 0${idx + 1}`}
+									</span>
+									<h4 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)] mt-2">
+										{goal.title}
+									</h4>
+									<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
+										{goal.desc}
+									</p>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
@@ -89,13 +76,16 @@ export default function SustainabilityGoals() {
 				<div className="site-shell">
 					<div className="max-w-2xl mx-auto text-center">
 						<h3 className="font-[var(--font-display)] text-2xl sm:text-3xl font-bold mb-6">
-							How we measure progress
+							{language === "en" ? "How we measure progress" : "Bagaimana kami mengukur kemajuan"}
 						</h3>
 						<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-6">
-							We don't count success in terms of arbitrary "credits" or corporate reports. We measure it by checking how active our neighborhood hubs are, how many requests are successfully completed, and how much food gets saved. Simple, real-world metrics that actually translate to healthier neighborhoods.
+							{language === "en"
+								? "We don't count success in terms of arbitrary 'credits' or corporate reports. We measure it by checking how active our neighborhood hubs are, how many requests are successfully completed, and how much food gets saved. Simple, real-world metrics that actually translate to healthier neighborhoods."
+								: "Kami tidak mengukur kesuksesan lewat sertifikat buatan atau laporan korporat. Kami mengukurnya dengan melihat seberapa aktif hub lingkungan kami, berapa banyak serah-terima makanan yang berhasil diselesaikan, dan seberapa banyak makanan yang terselamatkan. Indikator nyata di dunia nyata yang benar-benar membawa manfaat langsung bagi warga sekitar."
+							}
 						</p>
 						<Link href="/impact/statistics" className="primary-button justify-center gap-2 text-sm py-2 px-5 inline-flex">
-							See our latest statistics <ArrowRight size={16} />
+							{language === "en" ? "See our latest statistics" : "Lihat statistik terbaru kami"} <ArrowRight size={16} />
 						</Link>
 					</div>
 				</div>
@@ -104,3 +94,4 @@ export default function SustainabilityGoals() {
 		</div>
 	);
 }
+

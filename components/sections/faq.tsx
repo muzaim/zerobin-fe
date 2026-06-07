@@ -1,32 +1,13 @@
 "use client";
 
 import { useState } from "react";
-
-const faqs = [
-	{
-		question: "Can I share homemade meals?",
-		answer: "Yes. Homemade meals are welcome when they are fresh, clearly described, and shared with ingredient or allergen notes.",
-	},
-	{
-		question: "What happens if nobody claims my food?",
-		answer: "You can adjust the pickup window, update the listing, or remove it. Cellar keeps the listing under your control.",
-	},
-	{
-		question: "Is Cellar free to use?",
-		answer: "Yes. Cellar is centered on reducing waste and helping nearby people, not selling leftover food.",
-	},
-	{
-		question: "Can restaurants and cafes join?",
-		answer: "Yes. Local food businesses can share surplus items, set pickup rules, and keep recurring handoffs easy to manage.",
-	},
-	{
-		question: "Do I have to meet someone at my home?",
-		answer: "No. You can choose a public pickup point or another arrangement that feels comfortable for both sides.",
-	},
-];
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function Faq() {
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
+	const { language } = useLanguageStore();
+	const t = translations[language].faq;
 
 	const toggleFaq = (index: number) => {
 		setOpenIndex(openIndex === index ? null : index);
@@ -37,17 +18,16 @@ export default function Faq() {
 			<div className="site-shell">
 				<div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
 					<div className="lg:sticky lg:top-28 lg:h-fit">
-						<p className="eyebrow">Questions before sharing</p>
+						<p className="eyebrow">{t.eyebrow}</p>
 						<h2 className="section-title mt-5">
-							The basics should be clear.
+							{t.title}
 						</h2>
 						<p className="section-copy mt-6 max-w-md">
-							Food sharing works best when people understand the expectations
-							before the first pickup.
+							{t.desc}
 						</p>
 						<div className="mt-8 border-l-2 border-[var(--brand)] pl-5">
 							<p className="text-sm text-[var(--muted)]">
-								Still deciding?
+								{t.deciding}
 							</p>
 							<a
 								href="mailto:hello@cellar.id"
@@ -59,7 +39,7 @@ export default function Faq() {
 					</div>
 
 					<div className="divide-y divide-[var(--line)] border-y border-[var(--line)]">
-						{faqs.map((faq, index) => {
+						{t.items.map((faq, index) => {
 							const isOpen = openIndex === index;
 							return (
 								<div key={faq.question} className="group">
@@ -93,3 +73,4 @@ export default function Faq() {
 		</section>
 	);
 }
+

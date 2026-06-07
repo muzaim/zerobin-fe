@@ -2,9 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { Cookie } from "lucide-react";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function CookieConsent() {
 	const [isVisible, setIsVisible] = useState(false);
+	const { language } = useLanguageStore();
+	const t = translations[language].cookie;
 
 	useEffect(() => {
 		// Check if consent has already been given
@@ -65,15 +69,13 @@ export default function CookieConsent() {
 						id="cookie-title"
 						className="font-[var(--font-display)] text-lg font-bold italic text-[var(--foreground)]"
 					>
-						Keeping things fresh.
+						{t.title}
 					</h3>
 					<p
 						id="cookie-desc"
 						className="mt-2 text-sm text-[var(--muted)] leading-relaxed"
 					>
-						Like a well-kept cellar, we only store what's truly useful. We use tiny
-						digital crumbs (cookies) to remember your preferences and keep our community
-						running smoothly. No corporate trackers, just neighbors sharing surplus.
+						{t.body}
 					</p>
 
 					<div className="mt-5 flex items-center justify-end gap-3">
@@ -81,13 +83,13 @@ export default function CookieConsent() {
 							onClick={() => handleConsent("essential")}
 							className="secondary-button !min-h-0 !py-2 !px-4 text-xs font-semibold"
 						>
-							Only essential
+							{t.essential}
 						</button>
 						<button
 							onClick={() => handleConsent("accepted")}
 							className="primary-button !min-h-0 !py-2 !px-4 text-xs font-bold"
 						>
-							Accept crumbs
+							{t.accept}
 						</button>
 					</div>
 				</div>
@@ -95,3 +97,4 @@ export default function CookieConsent() {
 		</div>
 	);
 }
+

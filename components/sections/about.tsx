@@ -1,7 +1,14 @@
+"use client";
+
 import Image from "next/image";
-import { Play, ShieldCheck } from "lucide-react";
+import { Play } from "lucide-react";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function About() {
+	const { language } = useLanguageStore();
+	const t = translations[language].about;
+
 	return (
 		<section id="about" className="section-pad">
 			<div className="site-shell">
@@ -31,31 +38,27 @@ export default function About() {
 					</div>
 
 					<div>
-						<p className="eyebrow">About Cellar</p>
+						<p className="eyebrow">{t.eyebrow}</p>
 						<h2 className="section-title mt-5">
-							A calmer way to share what would be wasted.
+							{t.title}
 						</h2>
 						<p className="section-copy mt-6 max-w-2xl">
-							Cellar is built around the ordinary moments where
-							good food needs a second route: a cafe closing
-							early, a family cooking too much, a community group
-							with extra portions after an event.
+							{t.desc1}
 						</p>
 						<p className="section-copy mt-4 max-w-2xl">
-							The goal is not to turn meals into a marketplace. It
-							is to make sharing clear, local, and respectful.
+							{t.desc2}
 						</p>
 
 						<div className="mt-8 flex flex-col gap-3 sm:flex-row">
 							<a href="#impact" className="primary-button">
-								Read the impact
+								{t.btnImpact}
 							</a>
 							<button
 								type="button"
 								className="secondary-button gap-3"
 							>
 								<Play size={17} fill="currentColor" />
-								Watch story
+								{t.btnWatch}
 							</button>
 						</div>
 					</div>
@@ -64,3 +67,4 @@ export default function About() {
 		</section>
 	);
 }
+

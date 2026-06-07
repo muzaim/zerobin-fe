@@ -2,35 +2,73 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useLanguageStore } from "@/lib/store";
 
-const faqs = [
+const faqsBilingual = [
 	{
-		question: "What is Cellar, exactly?",
-		answer: "Cellar is a community utility app designed to stop good food from ending up in trash bins. It connects neighbors who have surplus food—whether that's fresh garden tomatoes, leftover catering, or extra groceries—with people nearby who are happy to eat it.",
+		en: {
+			question: "What is Cellar, exactly?",
+			answer: "Cellar is a community utility app designed to stop good food from ending up in trash bins. It connects neighbors who have surplus food—whether that's fresh garden tomatoes, leftover catering, or extra groceries—with people nearby who are happy to eat it.",
+		},
+		id: {
+			question: "Apa itu Cellar sebenarnya?",
+			answer: "Cellar adalah aplikasi komunitas yang dirancang untuk mencegah makanan layak konsumsi terbuang di tong sampah. Kami menghubungkan tetangga yang memiliki kelebihan makanan—baik itu tomat segar hasil kebun, sisa makanan katering, atau kelebihan belanjaan—dengan orang-orang di sekitar yang senang menyantapnya.",
+		}
 	},
 	{
-		question: "Who is this app for?",
-		answer: "Everyone. It’s for home cooks who accidentally made a double batch of lasagna, gardeners with too many pumpkins, cafes with extra pastries at closing time, or anyone who hates seeing food go to waste.",
+		en: {
+			question: "Who is this app for?",
+			answer: "Everyone. It’s for home cooks who accidentally made a double batch of lasagna, gardeners with too many pumpkins, cafes with extra pastries at closing time, or anyone who hates seeing food go to waste.",
+		},
+		id: {
+			question: "Untuk siapa aplikasi ini?",
+			answer: "Semua orang. Aplikasi ini cocok bagi masakan rumah tangga yang tidak sengaja membuat lasagna porsi ganda, pekebun yang kelebihan buah labu, kafe yang memiliki sisa kue saat jam tutup, atau siapa saja yang tidak suka melihat makanan terbuang sia-sia.",
+		}
 	},
 	{
-		question: "Is there any cost or catch?",
-		answer: "No catch, and no cost. Everything listed on Cellar must be shared for free. We do not run ads, and we do not charge membership fees. This is purely a neighborhood safety net and climate utility.",
+		en: {
+			question: "Is there any cost or catch?",
+			answer: "No catch, and no cost. Everything listed on Cellar must be shared for free. We do not run ads, and we do not charge membership fees. This is purely a neighborhood safety net and climate utility.",
+		},
+		id: {
+			question: "Apakah ada biaya atau ketentuan tersembunyi?",
+			answer: "Sama sekali tidak ada ketentuan tersembunyi dan 100% gratis. Segala hal yang diunggah di Cellar harus dibagikan secara gratis. Kami tidak memasang iklan dan tidak mengenakan biaya keanggotaan. Gerakan ini murni jaring pengaman sosial lingkungan dan upaya menjaga iklim.",
+		}
 	},
 	{
-		question: "How does the handoff work?",
-		answer: "Once a neighbor requests your listing and you approve it, you coordinate details through the in-app chat. Some prefer leaving a bag on their porch or gate, meeting in a building lobby, or handing it over directly at a public park. Choose whatever feels safe and comfortable.",
+		en: {
+			question: "How does the handoff work?",
+			answer: "Once a neighbor requests your listing and you approve it, you coordinate details through the in-app chat. Some prefer leaving a bag on their porch or gate, meeting in a building lobby, or handing it over directly at a public park. Choose whatever feels safe and comfortable.",
+		},
+		id: {
+			question: "Bagaimana cara kerja serah-terima makanannya?",
+			answer: "Setelah tetangga sekitar meminta makanan Anda dan Anda menyetujuinya, Anda dapat mengoordinasikan rincian penjemputan melalui obrolan chat di aplikasi. Beberapa orang lebih suka meletakkan tas di teras atau pagar rumah, bertemu di lobi gedung, atau menyerahkannya secara langsung di taman umum. Pilih cara apa saja yang dirasa aman dan nyaman bagi kedua belah pihak.",
+		}
 	},
 	{
-		question: "Can I list raw ingredients or just cooked meals?",
-		answer: "Both! You can list fresh garden produce, unopened pantry staples (cans, flour, pasta), extra eggs, or fully cooked home meals. The only rule is: if you wouldn't feed it to your own friends or family, please don't share it here.",
+		en: {
+			question: "Can I list raw ingredients or just cooked meals?",
+			answer: "Both! You can list fresh garden produce, unopened pantry staples (cans, flour, pasta), extra eggs, or fully cooked home meals. The only rule is: if you wouldn't feed it to your own friends or family, please don't share it here.",
+		},
+		id: {
+			question: "Apakah saya bisa membagikan bahan mentah atau hanya makanan matang?",
+			answer: "Dua-duanya bisa! Anda bisa membagikan hasil kebun segar, bahan makanan kering di dapur yang belum dibuka (makanan kaleng, tepung, pasta), kelebihan telur, atau masakan rumah yang sudah matang sepenuhnya. Satu-satunya aturan emas kami: jika Anda sendiri tidak bersedia menyajikannya kepada teman atau keluarga Anda sendiri, harap tidak membagikannya di sini.",
+		}
 	},
 	{
-		question: "How do you handle privacy and safety?",
-		answer: "Your exact address is never shown publicly. The map only displays a general radius (about a 5-minute walk) around your location. The exact pickup spot is only revealed to the recipient after you explicitly accept their request in the app.",
+		en: {
+			question: "How do you handle privacy and safety?",
+			answer: "Your exact address is never shown publicly. The map only displays a general radius (about a 5-minute walk) around your location. The exact pickup spot is only revealed to the recipient after you explicitly accept their request in the app.",
+		},
+		id: {
+			question: "Bagaimana cara menjaga privasi dan keamanan?",
+			answer: "Alamat rumah lengkap Anda tidak pernah ditampilkan secara publik. Peta hanya menampilkan radius umum (sekitar 5 menit berjalan kaki) di sekitar lokasi Anda. Titik penjemputan yang tepat hanya akan diberitahukan kepada penerima setelah Anda secara sadar menerima permintaan mereka di aplikasi.",
+		}
 	},
 ];
 
 export default function FaqClient() {
+	const { language } = useLanguageStore();
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
 
 	const toggleFaq = (index: number) => {
@@ -45,10 +83,17 @@ export default function FaqClient() {
 					<div className="max-w-3xl">
 						<span className="eyebrow">FAQ</span>
 						<h1 className="display-title mt-6 text-[clamp(2.5rem,7vw,4rem)] leading-[1.15]">
-							Everything you need to <span className="text-[#195A00]">know about Cellar.</span>
+							{language === "en" ? (
+								<>Everything you need to <span className="text-[#195A00]">know about Cellar.</span></>
+							) : (
+								<>Segala hal yang perlu Anda <span className="text-[#195A00]">ketahui tentang Cellar.</span></>
+							)}
 						</h1>
 						<p className="section-copy mt-6 max-w-xl">
-							Have questions about how sharing works, privacy, or who can join? We’ve gathered the most common questions from our community here.
+							{language === "en"
+								? "Have questions about how sharing works, privacy, or who can join? We’ve gathered the most common questions from our community here."
+								: "Punya pertanyaan tentang cara kerja berbagi, privasi, atau siapa saja yang bisa bergabung? Kami telah merangkum pertanyaan yang paling sering diajukan oleh komunitas kami di sini."
+							}
 						</p>
 					</div>
 				</div>
@@ -58,7 +103,8 @@ export default function FaqClient() {
 			<section className="py-8">
 				<div className="site-shell">
 					<div className="divide-y divide-[var(--line)] border-y border-[var(--line)] max-w-3xl">
-						{faqs.map((faq, index) => {
+						{faqsBilingual.map((faqGroup, index) => {
+							const faq = faqGroup[language];
 							const isOpen = openIndex === index;
 							return (
 								<div key={faq.question} className="group">
@@ -93,9 +139,11 @@ export default function FaqClient() {
 			{/* Simple contact nudge */}
 			<section className="py-10 border-t border-[var(--line)]">
 				<div className="site-shell flex flex-wrap items-center justify-between gap-4">
-					<p className="text-sm text-[var(--muted)]">Still have a question? We're a message away.</p>
+					<p className="text-sm text-[var(--muted)]">
+						{language === "en" ? "Still have a question? We're a message away." : "Masih memiliki pertanyaan? Kami siap membantu Anda."}
+					</p>
 					<Link href="/contact" className="text-sm font-medium text-[var(--foreground)] hover:text-[var(--brand)] transition">
-						Contact support →
+						{language === "en" ? "Contact support →" : "Hubungi bantuan →"}
 					</Link>
 				</div>
 			</section>

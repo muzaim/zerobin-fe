@@ -1,44 +1,50 @@
-import Image from "next/image";
-import { ArrowDown, MapPin, PackageCheck } from "lucide-react";
+"use client";
 
-const stats = [
-	{ value: "10K+", label: "meals shared" },
-	{ value: "5K+", label: "neighbors reached" },
-	{ value: "25T", label: "food kept useful" },
-];
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowDown, PackageCheck } from "lucide-react";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function Hero() {
+	const { language } = useLanguageStore();
+	const t = translations[language].hero;
+
+	const stats = [
+		{ value: "10K+", label: t.statsShared },
+		{ value: "5K+", label: t.statsReached },
+		{ value: "25T", label: t.statsSaved },
+	];
+
 	return (
 		<section className="relative isolate overflow-hidden pt-28 sm:pt-32 lg:min-h-screen lg:pt-5">
 			<div className="site-shell relative z-10">
 				<div className="grid min-h-[calc(100vh-80px)] items-center gap-12 pb-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:pb-6">
 					<div className="relative z-10 max-w-3xl">
-						<h1 className="display-title mt-5 text-[clamp(3.4rem,12vw,4.8rem)]">
-							Every meal deserve a plate,{" "}
-							<span className="text-[#195A00]">not a bin.</span>
+						<h1 className="display-title mt-5 text-[clamp(2.5rem,8.5vw,4.6rem)]">
+							{t.titlePrefix}{" "}
+							<span className="text-[#195A00]">{t.titleHighlight}</span>
 						</h1>
 
 						<p className="section-copy mt-6 max-w-2xl">
-							Cellar helps people list extra meals, coordinate
-							simple pickups, and pass food to someone nearby
-							while it is still at its best.
+							{t.desc}
 						</p>
 
 						<div className="mt-8 flex flex-col gap-3 sm:flex-row">
-							<a
+							<Link
 								href="/#download"
 								className="primary-button gap-2"
 							>
 								<PackageCheck size={18} />
-								Share surplus food
-							</a>
-							<a
+								{t.btnShare}
+							</Link>
+							<Link
 								href="/#how-it-works"
 								className="secondary-button gap-2"
 							>
 								<ArrowDown size={18} />
-								See how it works
-							</a>
+								{t.btnHow}
+							</Link>
 						</div>
 
 						<div className="mt-10 grid max-w-2xl grid-cols-3 gap-3  py-5">
@@ -80,7 +86,7 @@ export default function Hero() {
 								/>
 							</div>
 							<p className="mt-3 text-center text-[10px] sm:text-xs font-mono text-[var(--muted)] font-bold tracking-wider uppercase">
-								Sunday Neighborhood Table
+								{t.polaroidCaption}
 							</p>
 						</div>
 
@@ -98,14 +104,14 @@ export default function Hero() {
 								<div className="flex items-center gap-1.5">
 									<span className="h-1.5 w-1.5 rounded-full bg-[var(--brand)] animate-pulse" />
 									<p className="text-[9px] font-bold tracking-wider uppercase font-mono text-[var(--brand)]">
-										Active Now
+										{t.badgeActive}
 									</p>
 								</div>
 								<p className="text-xs font-bold text-[var(--foreground)] mt-0.5">
-									Sarah's Sourdough
+									{t.badgeSarah}
 								</p>
 								<p className="text-[10px] text-[var(--muted)] font-medium">
-									200m away • 2 portions
+									{t.badgeSarahDetails}
 								</p>
 							</div>
 						</div>
@@ -127,10 +133,10 @@ export default function Hero() {
 									</p>
 								</div>
 								<p className="text-xs font-bold text-[var(--foreground)] mt-0.5">
-									James's Plums
+									{t.badgeJames}
 								</p>
 								<p className="text-[10px] text-[var(--muted)] font-medium">
-									400m away • 1 bag left
+									{t.badgeJamesDetails}
 								</p>
 							</div>
 						</div>
@@ -140,3 +146,4 @@ export default function Hero() {
 		</section>
 	);
 }
+

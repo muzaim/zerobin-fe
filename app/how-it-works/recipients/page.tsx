@@ -1,25 +1,30 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+"use client";
 
-export const metadata = {
-	title: "For Recipients — Cellar",
-	description: "Getting good food nearby is straightforward. Learn how to browse, request, and collect surplus food from your neighbors.",
-};
+import { useEffect } from "react";
+import Image from "next/image";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function HowItWorksRecipients() {
+	const { language } = useLanguageStore();
+	const t = translations[language].innerHowItWorks.recipients;
+
+	useEffect(() => {
+		document.title = `${t.eyebrow} — Cellar`;
+	}, [t.eyebrow]);
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
 			{/* Hero */}
 			<section className="relative overflow-hidden py-16 sm:py-20">
 				<div className="site-shell">
 					<div className="max-w-3xl">
-						<span className="eyebrow">How to Collect</span>
+						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.5rem,7vw,4rem)] leading-[1.15]">
-							Getting good food nearby <span className="text-[#195A00]">is straightforward.</span>
+							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>
 						</h1>
 						<p className="section-copy mt-6 max-w-xl">
-							Whether you want to rescue extra pastries from a bakery down the street or grab some surplus ingredients for dinner, Cellar makes neighborly sharing easy.
+							{t.desc}
 						</p>
 					</div>
 				</div>
@@ -30,41 +35,19 @@ export default function HowItWorksRecipients() {
 				<div className="site-shell">
 					<div className="grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24 items-center">
 						<div className="space-y-12">
-							<div className="space-y-3">
-								<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
-									Step 01
-								</span>
-								<h3 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)]">
-									Find something nearby
-								</h3>
-								<p className="text-[var(--muted)] leading-relaxed max-w-lg">
-									Open the local map in the app. You’ll see fresh food listed by neighbors and small local shops. Check description, dietary tags, and collection time.
-								</p>
-							</div>
-
-							<div className="space-y-3">
-								<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
-									Step 02
-								</span>
-								<h3 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)]">
-									Ask politely
-								</h3>
-								<p className="text-[var(--muted)] leading-relaxed max-w-lg">
-									Tap request and suggest a quick pickup time. A simple, friendly message in the chat helps confirm coordination and build neighborly trust.
-								</p>
-							</div>
-
-							<div className="space-y-3">
-								<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
-									Step 03
-								</span>
-								<h3 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)]">
-									Go collect it
-								</h3>
-								<p className="text-[var(--muted)] leading-relaxed max-w-lg">
-									Once approved, the app reveals the exact pickup spot. Show up on time, grab your food, say thank you, and mark it as collected to let neighbors know it’s safe.
-								</p>
-							</div>
+							{t.steps.map((step, idx) => (
+								<div key={idx} className="space-y-3">
+									<span className="font-mono text-xs uppercase tracking-widest text-[#195A00] block">
+										{language === "en" ? `Step ${step.num}` : `Langkah ${step.num}`}
+									</span>
+									<h3 className="font-[var(--font-display)] text-2xl font-semibold text-[var(--foreground)]">
+										{step.title}
+									</h3>
+									<p className="text-[var(--muted)] leading-relaxed max-w-lg">
+										{step.desc}
+									</p>
+								</div>
+							))}
 						</div>
 
 						{/* Polaroid Image Container */}
@@ -97,34 +80,43 @@ export default function HowItWorksRecipients() {
 				<div className="site-shell">
 					<div className="max-w-4xl mx-auto">
 						<h3 className="font-[var(--font-display)] text-3xl font-bold mb-12 text-center">
-							Important safety & sharing checks
+							{language === "en" ? "Important safety & sharing checks" : "Pemeriksaan penting tentang keamanan & berbagi"}
 						</h3>
 						
 						<div className="divide-y divide-[var(--line)]">
 							<div className="grid gap-4 py-8 md:grid-cols-[1fr_2fr]">
 								<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
-									Is the food safe to eat?
+									{language === "en" ? "Is the food safe to eat?" : "Apakah makanannya aman dikonsumsi?"}
 								</h4>
 								<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-									Yes, but use your judgment. Donors list when the food was prepared or expiry dates. Always look, smell, and inspect the food before eating. If something doesn't feel right, do not consume it.
+									{language === "en"
+										? "Yes, but use your judgment. Donors list when the food was prepared or expiry dates. Always look, smell, and inspect the food before eating. If something doesn't feel right, do not consume it."
+										: "Ya, tetapi gunakan penilaian Anda sendiri. Donor mencantumkan kapan makanan tersebut disiapkan atau tanggal kedaluwarsanya. Selalu lihat, cium aromanya, dan periksa makanan sebelum dimakan. Jika ada sesuatu yang tidak biasa, jangan dikonsumsi."
+									}
 								</p>
 							</div>
 
 							<div className="grid gap-4 py-8 md:grid-cols-[1fr_2fr]">
 								<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
-									Can I pay or tip the donor?
+									{language === "en" ? "Can I pay or tip the donor?" : "Apakah saya boleh membayar atau memberi tip kepada donor?"}
 								</h4>
 								<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-									No. Everything shared on Cellar is 100% free. Offering money or trading items is not allowed. A warm thank-you message is the only currency we support here.
+									{language === "en"
+										? "No. Everything shared on Cellar is 100% free. Offering money or trading items is not allowed. A warm thank-you message is the only currency we support here."
+										: "Tidak boleh. Semua yang dibagikan di Cellar 100% gratis. Menawarkan uang atau menukarkan barang tidak diperbolehkan. Pesan terima kasih yang tulus adalah satu-satunya 'mata uang' yang kami dukung di sini."
+									}
 								</p>
 							</div>
 
 							<div className="grid gap-4 py-8 md:grid-cols-[1fr_2fr]">
 								<h4 className="font-[var(--font-display)] text-xl font-semibold text-[var(--foreground)]">
-									What if I can't show up?
+									{language === "en" ? "What if I can't show up?" : "Bagaimana jika saya tidak bisa datang?"}
 								</h4>
 								<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
-									Message the donor immediately to cancel or reschedule. Neighbors set aside time to hand over food, so letting them know early is a basic matter of respect.
+									{language === "en"
+										? "Message the donor immediately to cancel or reschedule. Neighbors set aside time to hand over food, so letting them know early is a basic matter of respect."
+										: "Kirim pesan kepada donor segera untuk membatalkan atau menjadwal ulang. Tetangga meluangkan waktu mereka untuk menyerahkan makanan, jadi memberi tahu mereka lebih awal adalah bentuk saling menghormati."
+									}
 								</p>
 							</div>
 						</div>
@@ -135,3 +127,4 @@ export default function HowItWorksRecipients() {
 		</div>
 	);
 }
+

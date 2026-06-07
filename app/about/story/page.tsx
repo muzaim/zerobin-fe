@@ -1,25 +1,29 @@
-import Image from "next/image";
-import Link from "next/link";
-import { BookOpen, Calendar, ShieldCheck, Heart, ArrowRight } from "lucide-react";
+"use client";
 
-export const metadata = {
-	title: "Our Story — Cellar",
-	description: "How a simple neighborly act became Cellar. Read the history and journey of our community.",
-};
+import { useEffect } from "react";
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function OurStoryPage() {
+	const { language } = useLanguageStore();
+	const t = translations[language].innerAboutStory;
+
+	useEffect(() => {
+		document.title = `${t.eyebrow} — Cellar`;
+	}, [t.eyebrow]);
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
 			{/* Story Hero */}
 			<section className="relative overflow-hidden py-16 sm:py-24">
 				<div className="site-shell">
 					<div className="max-w-3xl">
-						<span className="eyebrow">Our Story</span>
+						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.8rem,8vw,4.5rem)] leading-[1.1]">
-							How a simple neighborly act became <span className="text-[#195A00]">Cellar</span>.
+							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>
 						</h1>
 						<p className="section-copy mt-8 max-w-2xl">
-							What started as a WhatsApp group between three neighbors trying to share excess garden vegetables has grown into a structured, reliable way to reduce local food waste.
+							{t.desc}
 						</p>
 					</div>
 				</div>
@@ -30,39 +34,23 @@ export default function OurStoryPage() {
 				<div className="site-shell">
 					<div className="grid gap-12 md:grid-cols-[1fr_2fr]">
 						<div>
-							<h3 className="font-[var(--font-display)] text-2xl font-bold">The Journey</h3>
+							<h3 className="font-[var(--font-display)] text-2xl font-bold">{t.narrativeTitle}</h3>
 							<p className="mt-4 text-[var(--muted)] leading-relaxed">
-								We believe in incremental, meaningful change. Here is how we grew our community from a local experiment to a dedicated platform.
+								{t.narrativeDesc1}
 							</p>
 						</div>
 
 						<div className="space-y-12">
-							<div className="border-l-2 border-[var(--brand)] pl-6 relative">
-								<div className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-[var(--brand)] border-4 border-[var(--background)]" />
-								<span className="text-sm font-bold text-[var(--brand)]">Early 2025</span>
-								<h4 className="font-bold text-lg mt-1">The First Sprout</h4>
-								<p className="mt-2 text-sm text-[var(--muted)]">
-									A community group in a small neighborhood shares surplus backyard crop harvests. We realize there's a strong desire to share but no easy way to coordinate.
-								</p>
-							</div>
-
-							<div className="border-l-2 border-[var(--brand)] pl-6 relative">
-								<div className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-[var(--brand)] border-4 border-[var(--background)]" />
-								<span className="text-sm font-bold text-[var(--brand)]">Late 2025</span>
-								<h4 className="font-bold text-lg mt-1">Building Cellar</h4>
-								<p className="mt-2 text-sm text-[var(--muted)]">
-									We designed the Cellar app prototype to make listings quick (under 30 seconds) and pickups safe and structured, keeping the warm community feel alive.
-								</p>
-							</div>
-
-							<div className="border-l-2 border-[var(--brand)] pl-6 relative">
-								<div className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-[var(--brand)] border-4 border-[var(--background)]" />
-								<span className="text-sm font-bold text-[var(--brand)]">Present</span>
-								<h4 className="font-bold text-lg mt-1">Growing Stronger</h4>
-								<p className="mt-2 text-sm text-[var(--muted)]">
-									Now expanding to more neighborhoods, local cafes, and organic grocers, helping hundreds of families share daily.
-								</p>
-							</div>
+							{t.timelineItems.map((item, idx) => (
+								<div key={idx} className="border-l-2 border-[var(--brand)] pl-6 relative">
+									<div className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-[var(--brand)] border-4 border-[var(--background)]" />
+									<span className="text-sm font-bold text-[var(--brand)]">{item.year}</span>
+									<h4 className="font-bold text-lg mt-1">{item.title}</h4>
+									<p className="mt-2 text-sm text-[var(--muted)]">
+										{item.desc}
+									</p>
+								</div>
+							))}
 						</div>
 					</div>
 				</div>
@@ -71,3 +59,4 @@ export default function OurStoryPage() {
 		</div>
 	);
 }
+

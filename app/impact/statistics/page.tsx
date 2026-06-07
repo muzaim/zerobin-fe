@@ -1,25 +1,32 @@
+"use client";
+
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
-export const metadata = {
-	title: "Food Waste Statistics — Cellar",
-	description: "The real cost of wasted food. Check out the statistics and environmental impact of food waste.",
-};
+import { useLanguageStore } from "@/lib/store";
+import { translations } from "@/lib/translations";
 
 export default function FoodWasteFacts() {
+	const { language } = useLanguageStore();
+	const t = translations[language].innerImpact.statistics;
+
+	useEffect(() => {
+		document.title = `${t.eyebrow} — Cellar`;
+	}, [t.eyebrow]);
+
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
 			{/* Hero */}
 			<section className="relative overflow-hidden py-16 sm:py-20">
 				<div className="site-shell">
 					<div className="max-w-3xl">
-						<span className="eyebrow">Food Waste Facts</span>
+						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.5rem,7vw,4rem)] leading-[1.15]">
-							The real cost of <span className="text-[#195A00]">wasted food.</span>
+							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>
 						</h1>
 						<p className="section-copy mt-6 max-w-xl">
-							We rarely think about it when letting a bag of salad turn to slime in the back of the fridge. But the numbers behind food waste are staggering.
+							{t.desc}
 						</p>
 					</div>
 				</div>
@@ -56,54 +63,32 @@ export default function FoodWasteFacts() {
 						<div className="space-y-10">
 							<div className="space-y-2">
 								<h3 className="font-[var(--font-display)] text-3xl font-bold tracking-tight text-[var(--foreground)]">
-									Understanding the scale of waste
+									{t.factsTitle}
 								</h3>
 								<p className="text-[var(--muted)] leading-relaxed">
-									Food waste represents wasted farmland, soil depletion, packaging materials, shipping fuel, and weeks of farming labor—all dumped straight to rot in massive landfill operations.
+									{t.factsDesc}
 								</p>
 							</div>
 
-							<div className="space-y-4 pt-6 border-t border-[var(--line)]">
-								<div className="flex items-baseline gap-3">
-									<span className="text-5xl font-bold font-[var(--font-display)] text-[var(--clay)]">
-										1/3
-									</span>
-									<span className="text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">
-										Globally Thrown Away
-									</span>
-								</div>
-								<p className="text-sm text-[var(--muted)] leading-relaxed">
-									Roughly one-third of all food produced globally is lost or wasted. We throw away nutrient-rich food while millions experience food insecurity right in our own cities.
-								</p>
-							</div>
-
-							<div className="space-y-4 pt-6 border-t border-[var(--line)]">
-								<div className="flex items-baseline gap-3">
-									<span className="text-5xl font-bold font-[var(--font-display)] text-[#195A00]">
-										8%
-									</span>
-									<span className="text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">
-										Of Global Emissions
-									</span>
-								</div>
-								<p className="text-sm text-[var(--muted)] leading-relaxed">
-									Food waste accounts for approximately 8% of global greenhouse emissions. Organic waste rotting in landfill operations is one of the leading contributors to atmospheric methane generation.
-								</p>
-							</div>
-
-							<div className="space-y-4 pt-6 border-t border-[var(--line)]">
-								<div className="flex items-baseline gap-3">
-									<span className="text-5xl font-bold font-[var(--font-display)] text-[var(--gold)]">
-										70%
-									</span>
-									<span className="text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">
-										Starts in the Kitchen
-									</span>
-								</div>
-								<p className="text-sm text-[var(--muted)] leading-relaxed">
-									The majority of food waste happens in our own household kitchens and local retail stores—not on shipping containers or logistics centers. This means our local choices can actually solve it.
-								</p>
-							</div>
+							{t.facts.map((fact, idx) => {
+								const value = idx === 0 ? "1/3" : idx === 1 ? "70%" : "8%";
+								const color = idx === 0 ? "text-[var(--clay)]" : idx === 1 ? "text-[#195A00]" : "text-[var(--gold)]";
+								return (
+									<div key={idx} className="space-y-4 pt-6 border-t border-[var(--line)]">
+										<div className="flex items-baseline gap-3">
+											<span className={`text-5xl font-bold font-[var(--font-display)] ${color}`}>
+												{value}
+											</span>
+											<span className="text-sm font-semibold uppercase tracking-wider font-mono text-[var(--foreground)]">
+												{fact.title}
+											</span>
+										</div>
+										<p className="text-sm text-[var(--muted)] leading-relaxed">
+											{fact.desc}
+										</p>
+									</div>
+								);
+							})}
 						</div>
 
 					</div>
@@ -115,13 +100,16 @@ export default function FoodWasteFacts() {
 				<div className="site-shell">
 					<div className="max-w-2xl mx-auto text-center">
 						<h3 className="font-[var(--font-display)] text-2xl sm:text-3xl font-bold mb-6">
-							Why local sharing matters
+							{language === "en" ? "Why local sharing matters" : "Mengapa berbagi lokal itu penting"}
 						</h3>
 						<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-6">
-							Composting is great, but feeding hungry people is far better. When food decomposes in a landfill, it releases methane—a gas far more damaging than carbon dioxide. By passing surplus food to a neighbor blocks away, you bypass the waste system entirely and strengthen your local community.
+							{language === "en"
+								? "Composting is great, but feeding hungry people is far better. When food decomposes in a landfill, it releases methane—a gas far more damaging than carbon dioxide. By passing surplus food to a neighbor blocks away, you bypass the waste system entirely and strengthen your local community."
+								: "Kompos memang baik, tetapi membagikannya untuk dikonsumsi sesama jauh lebih baik. Ketika makanan membusuk di tempat pembuangan sampah, tindakan itu melepaskan metana—gas yang jauh lebih berbahaya daripada karbon dioksida. Dengan membagikan kelebihan makanan kepada tetangga beberapa blok dari rumah Anda, Anda menghindari sistem pembuangan sampah sepenuhnya sekaligus mempererat hubungan di komunitas Anda."
+							}
 						</p>
 						<Link href="/how-it-works/donors" className="primary-button justify-center gap-2 text-sm py-2 px-5 inline-flex">
-							See how to share <ArrowRight size={16} />
+							{language === "en" ? "See how to share" : "Lihat cara berbagi"} <ArrowRight size={16} />
 						</Link>
 					</div>
 				</div>
@@ -130,3 +118,4 @@ export default function FoodWasteFacts() {
 		</div>
 	);
 }
+
