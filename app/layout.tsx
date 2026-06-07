@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist } from "next/font/google";
-import Footer from "@/components/footer";
-import Navbar from "@/components/navbar";
-import SmoothScroll from "@/components/smooth-scroll";
+import Footer from "@/components/layout/footer";
+import Navbar from "@/components/layout/navbar";
+import SmoothScroll from "@/components/layout/smooth-scroll";
+import BackToTop from "@/components/layout/back-to-top";
 import "./globals.css";
 
 const sans = Geist({
@@ -33,6 +34,7 @@ export default function RootLayout({
 					<Navbar />
 					<main>{children}</main>
 					<Footer />
+					<BackToTop />
 				</SmoothScroll>
 			</body>
 		</html>

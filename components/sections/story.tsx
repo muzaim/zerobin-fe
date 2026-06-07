@@ -26,7 +26,7 @@ export default function StorySection() {
 							Do not let it end in a bin by default. Good food can still feed
 							someone, save resources, and connect people nearby.
 						</p>
-						<a href="#download" className="secondary-button mt-6 bg-white text-[var(--brand-dark)]">
+						<a href="/#download" className="secondary-button mt-6 bg-white text-[var(--brand-dark)]">
 							Start sharing
 						</a>
 					</div>

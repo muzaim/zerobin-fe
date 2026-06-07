@@ -63,29 +63,6 @@ export default function OurStoryPage() {
 				</div>
 			</section>
 
-			{/* Call to Action */}
-			<section className="py-12 sm:py-16">
-				<div className="site-shell">
-					<div className="panel bg-[var(--brand-dark)] text-white p-8 sm:p-16 rounded-[22px] flex flex-col md:flex-row items-center justify-between gap-8">
-						<div className="max-w-xl">
-							<h3 className="font-[var(--font-display)] text-3xl sm:text-4xl font-semibold leading-tight">
-								Be a part of our story
-							</h3>
-							<p className="mt-4 text-white/70">
-								Start sharing surplus meals or pick up fresh food from neighbors today.
-							</p>
-						</div>
-						<div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-							<Link href="/" className="primary-button bg-white text-[var(--brand-dark)] hover:bg-[var(--brand-soft)] transition justify-center">
-								Back to Home
-							</Link>
-							<Link href="#download" className="secondary-button bg-transparent border-white/20 text-white hover:border-white hover:bg-white/10 transition justify-center gap-2">
-								Download App <ArrowRight size={16} />
-							</Link>
-						</div>
-					</div>
-				</div>
-			</section>
 		</div>
 	);
 }

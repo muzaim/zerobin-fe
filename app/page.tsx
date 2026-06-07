@@ -1,10 +1,10 @@
-import About from "@/components/about";
-import DownloadApp from "@/components/download";
-import Faq from "@/components/faq";
-import Hero from "@/components/hero";
-import HowItWorks from "@/components/howItWorks";
-import Impact from "@/components/impact";
-import StorySection from "@/components/story";
+import About from "@/components/sections/about";
+import DownloadApp from "@/components/sections/download";
+import Faq from "@/components/sections/faq";
+import Hero from "@/components/sections/hero";
+import HowItWorks from "@/components/sections/howItWorks";
+import Impact from "@/components/sections/impact";
+import StorySection from "@/components/sections/story";
 
 export default function Home() {
 	return (
