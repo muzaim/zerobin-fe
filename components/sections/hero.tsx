@@ -61,7 +61,7 @@ export default function Hero() {
 						</div>
 					</div>
 
-					<div className="relative z-0 mx-auto h-[400px] sm:h-[550px] lg:h-[620px] w-full max-w-[620px] flex items-center justify-center overflow-visible">
+					<div className="hidden lg:flex relative z-0 mx-auto lg:h-[620px] w-full max-w-[620px] items-center justify-center overflow-visible">
 						{/* Soft organic green background blob */}
 						<div 
 							className="absolute -inset-4 bg-[var(--brand-soft)]/70 -z-20 blur-xl opacity-90" 

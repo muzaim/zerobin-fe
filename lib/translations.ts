@@ -301,6 +301,31 @@ export type TranslationDict = {
 		btnBack: string;
 		relatedTitle: string;
 	};
+	calculator: {
+		title: string;
+		desc: string;
+		waterSaved: string;
+		co2Saved: string;
+		energySaved: string;
+		bread: string;
+		rice: string;
+		fruits: string;
+		veggies: string;
+		meat: string;
+		milk: string;
+		portionUnit: string;
+		pieceUnit: string;
+		glassUnit: string;
+		equivalentsTitle: string;
+		equivalentShower: string;
+		equivalentDrive: string;
+		equivalentLight: string;
+		introText: string;
+		smartInputLabel: string;
+		smartInputPlaceholder: string;
+		smartInputDetected: string;
+		smartInputHelp: string;
+	};
 	subscribeModal: {
 		title: string;
 		desc: string;
@@ -325,7 +350,7 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			forRecipients: "For Recipients",
 			communityGuidelines: "Community Guidelines",
 			impact: "Impact",
-			foodWasteFacts: "Food Waste Facts",
+			foodWasteFacts: "Impact Calculator",
 			successStories: "Success Stories",
 			sustainabilityGoals: "Sustainability Goals",
 			faq: "FAQ",
@@ -673,6 +698,31 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			btnBack: "Back to Blog",
 			relatedTitle: "Related Articles",
 		},
+		calculator: {
+			title: "Surplus Food Impact Calculator",
+			desc: "Find out the ecological resources saved by keeping food out of the waste bin.",
+			waterSaved: "Water Saved",
+			co2Saved: "CO2 Emissions Prevented",
+			energySaved: "Clean Energy Preserved",
+			bread: "Slices of Bread",
+			rice: "Portions of Rice",
+			fruits: "Fruits / Apples",
+			veggies: "Portions of Veggies",
+			meat: "Portions of Meat",
+			milk: "Glasses of Milk",
+			portionUnit: "portion",
+			pieceUnit: "pc",
+			glassUnit: "glass",
+			equivalentsTitle: "What does this save in daily terms?",
+			equivalentShower: "Equivalent to {val} minutes of hot showering saved",
+			equivalentDrive: "Equivalent to driving {val} km in an average gasoline car avoided",
+			equivalentLight: "Equivalent to keeping an LED light bulb on for {val} hours",
+			introText: "Adjust the counters below to select the food surplus you might share or save. Watch the numbers grow!",
+			smartInputLabel: "Describe your food waste (Smart Input)",
+			smartInputPlaceholder: "e.g. 3 slices of bread, 2 portions of rice, 5 apples...",
+			smartInputDetected: "Detected:",
+			smartInputHelp: "Type quantities & names (e.g. '3 bread, 2 rice') to calculate instantly",
+		},
 		subscribeModal: {
 			title: "Stay in the loop",
 			desc: "Join our small group of neighbors. We share stories, surplus recipes, and stats from the block — once a month, no spam.",
@@ -695,7 +745,7 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			forRecipients: "Menerima Makanan",
 			communityGuidelines: "Panduan Warga",
 			impact: "Jejak Kebaikan",
-			foodWasteFacts: "Fakta Sampah Makanan",
+			foodWasteFacts: "Kalkulator Dampak",
 			successStories: "Kisah Berbagi",
 			sustainabilityGoals: "Misi Keberlanjutan",
 			faq: "Tanya Jawab",
@@ -1042,6 +1092,31 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			notFoundDesc: "Maaf, artikel yang Anda cari tidak dapat ditemukan atau sudah dihapus.",
 			btnBack: "Kembali ke Blog",
 			relatedTitle: "Artikel Menarik Lainnya",
+		},
+		calculator: {
+			title: "Kalkulator Jejak Dampak Lingkungan",
+			desc: "Ketahui berapa banyak sumber daya alam yang terselamatkan dengan menjaga makanan agar tidak terbuang.",
+			waterSaved: "Air Bersih Diselamatkan",
+			co2Saved: "Mencegah Emisi CO2",
+			energySaved: "Energi Bersih Terjaga",
+			bread: "Irisan Roti",
+			rice: "Porsi Nasi",
+			fruits: "Buah / Apel",
+			veggies: "Porsi Sayuran",
+			meat: "Porsi Daging / Ayam",
+			milk: "Gelas Susu",
+			portionUnit: "porsi",
+			pieceUnit: "buah",
+			glassUnit: "gelas",
+			equivalentsTitle: "Apa artinya ini bagi kehidupan sehari-hari?",
+			equivalentShower: "Setara dengan menghemat {val} menit pancuran air hangat mandi",
+			equivalentDrive: "Setara dengan menghindari berkendara sejauh {val} km dengan mobil biasa",
+			equivalentLight: "Setara dengan menyalakan lampu hemat energi LED selama {val} jam",
+			introText: "Sesuaikan jumlah makanan di bawah ini yang biasanya tersisa atau ingin Anda bagikan. Lihat jejak kebaikanmu terkumpul secara instan!",
+			smartInputLabel: "Tulis sampah makanan Anda (Input Pintar)",
+			smartInputPlaceholder: "contoh: 3 potong roti, 2 porsi nasi, 5 buah apel...",
+			smartInputDetected: "Terdeteksi:",
+			smartInputHelp: "Tulis jumlah & nama makanan (misal: '3 roti, 2 nasi') untuk menghitung instan",
 		},
 		subscribeModal: {
 			title: "Tetap Terhubung",

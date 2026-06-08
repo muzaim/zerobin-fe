@@ -6,6 +6,7 @@ import { useLanguageStore } from "@/lib/store";
 
 const faqsBilingual = [
 	{
+		category: "about",
 		en: {
 			question: "What is Cellar, exactly?",
 			answer: "Cellar is a community utility app designed to stop good food from ending up in trash bins. It connects neighbors who have surplus food—whether that's fresh garden tomatoes, leftover catering, or extra groceries—with people nearby who are happy to eat it.",
@@ -16,6 +17,7 @@ const faqsBilingual = [
 		}
 	},
 	{
+		category: "about",
 		en: {
 			question: "Who is this app for?",
 			answer: "Everyone. It’s for home cooks who accidentally made a double batch of lasagna, gardeners with too many pumpkins, cafes with extra pastries at closing time, or anyone who hates seeing food go to waste.",
@@ -26,6 +28,7 @@ const faqsBilingual = [
 		}
 	},
 	{
+		category: "about",
 		en: {
 			question: "Is there any cost or catch?",
 			answer: "No catch, and no cost. Everything listed on Cellar must be shared for free. We do not run ads, and we do not charge membership fees. This is purely a neighborhood safety net and climate utility.",
@@ -36,6 +39,7 @@ const faqsBilingual = [
 		}
 	},
 	{
+		category: "how-it-works",
 		en: {
 			question: "How does the handoff work?",
 			answer: "Once a neighbor requests your listing and you approve it, you coordinate details through the in-app chat. Some prefer leaving a bag on their porch or gate, meeting in a building lobby, or handing it over directly at a public park. Choose whatever feels safe and comfortable.",
@@ -46,6 +50,7 @@ const faqsBilingual = [
 		}
 	},
 	{
+		category: "how-it-works",
 		en: {
 			question: "Can I list raw ingredients or just cooked meals?",
 			answer: "Both! You can list fresh garden produce, unopened pantry staples (cans, flour, pasta), extra eggs, or fully cooked home meals. The only rule is: if you wouldn't feed it to your own friends or family, please don't share it here.",
@@ -56,6 +61,7 @@ const faqsBilingual = [
 		}
 	},
 	{
+		category: "safety",
 		en: {
 			question: "How do you handle privacy and safety?",
 			answer: "Your exact address is never shown publicly. The map only displays a general radius (about a 5-minute walk) around your location. The exact pickup spot is only revealed to the recipient after you explicitly accept their request in the app.",
@@ -69,16 +75,16 @@ const faqsBilingual = [
 
 export default function FaqClient() {
 	const { language } = useLanguageStore();
-	const [openIndex, setOpenIndex] = useState<number | null>(null);
+	const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
-	const toggleFaq = (index: number) => {
-		setOpenIndex(openIndex === index ? null : index);
+	const toggleFaq = (question: string) => {
+		setOpenQuestion(openQuestion === question ? null : question);
 	};
 
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
 			{/* Hero */}
-			<section className="relative overflow-hidden py-16 sm:py-20">
+			<section className="relative overflow-hidden py-12 sm:py-16">
 				<div className="site-shell">
 					<div className="max-w-3xl">
 						<span className="eyebrow">FAQ</span>
@@ -100,16 +106,16 @@ export default function FaqClient() {
 			</section>
 
 			{/* FAQ Accordions */}
-			<section className="py-8">
+			<section className="py-4">
 				<div className="site-shell">
-					<div className="divide-y divide-[var(--line)] border-y border-[var(--line)] max-w-3xl">
-						{faqsBilingual.map((faqGroup, index) => {
+					<div className="divide-y divide-[var(--line)] border-t border-[var(--line)] max-w-3xl animate-in fade-in duration-300">
+						{faqsBilingual.map((faqGroup) => {
 							const faq = faqGroup[language];
-							const isOpen = openIndex === index;
+							const isOpen = openQuestion === faq.question;
 							return (
 								<div key={faq.question} className="group">
 									<button
-										onClick={() => toggleFaq(index)}
+										onClick={() => toggleFaq(faq.question)}
 										aria-expanded={isOpen}
 										className="w-full text-left flex cursor-pointer items-center justify-between gap-6 py-6 outline-none focus:text-[#195A00] transition duration-200"
 									>
@@ -121,7 +127,7 @@ export default function FaqClient() {
 										</span>
 									</button>
 									<div
-										className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out delay-150 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+										className={`grid transition-[grid-template-rows,opacity] duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
 									>
 										<div className="overflow-hidden">
 											<p className="pb-7 text-sm sm:text-base leading-relaxed text-[var(--muted)] max-w-2xl">
@@ -137,7 +143,7 @@ export default function FaqClient() {
 			</section>
 
 			{/* Simple contact nudge */}
-			<section className="py-10 border-t border-[var(--line)]">
+			<section className="py-10 border-t border-[var(--line)] mt-12">
 				<div className="site-shell flex flex-wrap items-center justify-between gap-4">
 					<p className="text-sm text-[var(--muted)]">
 						{language === "en" ? "Still have a question? We're a message away." : "Masih memiliki pertanyaan? Kami siap membantu Anda."}
