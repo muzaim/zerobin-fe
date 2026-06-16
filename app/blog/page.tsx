@@ -5,11 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, AlertCircle } from "lucide-react";
 import { blogPosts } from "@/lib/blog-data";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function BlogPage() {
-	const { language, startLoading, stopLoading } = useLanguageStore();
+	const { startLoading, stopLoading } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const tBlog = translations[language].innerBlog;
 
 	const [visibleCount, setVisibleCount] = useState(7); // initial visible grid count if not searching

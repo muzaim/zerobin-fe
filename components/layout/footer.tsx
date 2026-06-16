@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function Footer() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].footer;
 	const n = translations[language].navbar;
 

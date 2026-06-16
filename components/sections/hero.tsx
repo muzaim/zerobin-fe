@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, PackageCheck } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function Hero() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].hero;
 
 	const stats = [

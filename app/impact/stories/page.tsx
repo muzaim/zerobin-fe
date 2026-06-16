@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import StoriesSlider from "@/components/sections/stories-slider";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function SuccessStories() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerImpact.stories;
 
 	useEffect(() => {

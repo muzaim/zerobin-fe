@@ -4,12 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Globe, Download } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function Navbar() {
 	const pathname = usePathname();
-	const { language, setLanguage } = useLanguageStore();
+	const { setLanguage } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].navbar;
 
 	const isItemActive = (item: { items: { href: string }[] }) => {

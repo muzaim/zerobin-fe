@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ArrowLeft, Clock, Tag, ArrowRight } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { blogPosts, getBlogPost, BlogPost } from "@/lib/blog-data";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function BlogPostPage({
@@ -17,7 +17,8 @@ export default function BlogPostPage({
 	const { slug } = use(params);
 	const post = getBlogPost(slug);
 	const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
-	const { language, startLoading, stopLoading } = useLanguageStore();
+	const { startLoading, stopLoading } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const tBlog = translations[language].innerBlog;
 	const lenis = useLenis();
 
@@ -81,6 +82,32 @@ export default function BlogPostPage({
 
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-24">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "BlogPosting",
+						"headline": postLocal.title,
+						"image": post.coverImage,
+						"datePublished": new Date(postLocal.date).toISOString(),
+						"dateModified": new Date(postLocal.date).toISOString(),
+						"author": {
+							"@type": "Person",
+							"name": post.author
+						},
+						"publisher": {
+							"@type": "Organization",
+							"name": "ZeroBin",
+							"logo": {
+								"@type": "ImageObject",
+								"url": "https://zerobin.id/assets/brand/zerobin-og.png"
+							}
+						},
+						"description": postLocal.excerpt
+					})
+				}}
+			/>
 			<div className="site-shell">
 				{isPageLoading ? (
 					<SkeletonDetailPage tBlog={tBlog} />

@@ -2,11 +2,11 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function HowItWorksDonors() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerHowItWorks.donors;
 
 	useEffect(() => {

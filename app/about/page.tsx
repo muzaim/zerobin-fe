@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Sprout, ShieldCheck } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function AboutUsPage() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerAbout;
 
 	useEffect(() => {

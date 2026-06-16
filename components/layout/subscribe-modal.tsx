@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { X, Mail, CheckCircle2 } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function SubscribeModal() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].subscribeModal;
 
 	const [isOpen, setIsOpen] = useState(false);

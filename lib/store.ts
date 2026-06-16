@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useSearchParams } from "next/navigation";
 
 type Language = "en" | "id";
 
@@ -26,3 +27,17 @@ export const useLanguageStore = create<LanguageState>((set) => ({
 		}, 300);
 	},
 }));
+
+export function useCurrentLanguage(): Language {
+	const storeLanguage = useLanguageStore((state) => state.language);
+	try {
+		const searchParams = useSearchParams();
+		const langParam = searchParams ? searchParams.get("lang") : null;
+		if (langParam === "en" || langParam === "id") {
+			return langParam;
+		}
+	} catch (e) {
+		// Ignore error if useSearchParams is called outside of context
+	}
+	return storeLanguage;
+}

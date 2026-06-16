@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 
 const faqsBilingual = [
 	{
@@ -74,7 +74,7 @@ const faqsBilingual = [
 ];
 
 export default function FaqClient() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const [openQuestion, setOpenQuestion] = useState<string | null>(null);
 
 	const toggleFaq = (question: string) => {
@@ -83,6 +83,26 @@ export default function FaqClient() {
 
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-20">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "FAQPage",
+						"mainEntity": faqsBilingual.map((faqGroup) => {
+							const faq = faqGroup[language];
+							return {
+								"@type": "Question",
+								"name": faq.question,
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": faq.answer
+								}
+							};
+						})
+					})
+				}}
+			/>
 			{/* Hero */}
 			<section className="relative overflow-hidden py-12 sm:py-16">
 				<div className="site-shell">

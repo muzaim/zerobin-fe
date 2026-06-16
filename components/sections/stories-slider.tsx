@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 
 const reviews = [
 	{
@@ -92,7 +92,7 @@ const reviews = [
 ];
 
 export default function StoriesSlider() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const [swiperRef, setSwiperRef] = useState<SwiperType | null>(null);
 	const [activeIndex, setActiveIndex] = useState(0);
 

@@ -2,10 +2,10 @@
 
 import { ArrowRight } from "lucide-react";
 import React, { useState } from "react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 
 export default function ContactClient() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");

@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { Cookie } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function CookieConsent() {
 	const [isVisible, setIsVisible] = useState(false);
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].cookie;
 
 	useEffect(() => {

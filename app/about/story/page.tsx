@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function OurStoryPage() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerAboutStory;
 
 	useEffect(() => {
