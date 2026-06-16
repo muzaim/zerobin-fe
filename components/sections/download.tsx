@@ -93,8 +93,8 @@ export default function DownloadApp() {
 						{/* App screenshot — no phone frame */}
 						<div className="relative w-[260px] sm:w-[310px] lg:w-[340px] z-10">
 							<Image
-								src="/assets/app/cellar-screen.png"
-								alt="Cellar App Interface"
+								src="/assets/app/zerobin-screen.png"
+								alt="ZeroBin App Interface"
 								width={600}
 								height={1220}
 								priority

@@ -48,7 +48,7 @@ export default function BlogPage() {
 	}, [startLoading, stopLoading]);
 
 	useEffect(() => {
-		document.title = `${tBlog.eyebrow} — Cellar`;
+		document.title = `${tBlog.eyebrow} — ZeroBin`;
 	}, [tBlog.eyebrow]);
 
 	// Filter posts based on active category and search query

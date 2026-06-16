@@ -8,12 +8,12 @@ const faqsBilingual = [
 	{
 		category: "about",
 		en: {
-			question: "What is Cellar, exactly?",
-			answer: "Cellar is a community utility app designed to stop good food from ending up in trash bins. It connects neighbors who have surplus food—whether that's fresh garden tomatoes, leftover catering, or extra groceries—with people nearby who are happy to eat it.",
+			question: "What is ZeroBin, exactly?",
+			answer: "ZeroBin is a community utility app designed to stop good food from ending up in trash bins. It connects neighbors who have surplus food—whether that's fresh garden tomatoes, leftover catering, or extra groceries—with people nearby who are happy to eat it.",
 		},
 		id: {
-			question: "Apa itu Cellar sebenarnya?",
-			answer: "Cellar adalah aplikasi komunitas yang dirancang untuk mencegah makanan layak konsumsi terbuang di tong sampah. Kami menghubungkan tetangga yang memiliki kelebihan makanan—baik itu tomat segar hasil kebun, sisa makanan katering, atau kelebihan belanjaan—dengan orang-orang di sekitar yang senang menyantapnya.",
+			question: "Apa itu ZeroBin sebenarnya?",
+			answer: "ZeroBin adalah aplikasi komunitas yang dirancang untuk mencegah makanan layak konsumsi terbuang di tong sampah. Kami menghubungkan tetangga yang memiliki kelebihan makanan—baik itu tomat segar hasil kebun, sisa makanan katering, atau kelebihan belanjaan—dengan orang-orang di sekitar yang senang menyantapnya.",
 		}
 	},
 	{
@@ -31,11 +31,11 @@ const faqsBilingual = [
 		category: "about",
 		en: {
 			question: "Is there any cost or catch?",
-			answer: "No catch, and no cost. Everything listed on Cellar must be shared for free. We do not run ads, and we do not charge membership fees. This is purely a neighborhood safety net and climate utility.",
+			answer: "No catch, and no cost. Everything listed on ZeroBin must be shared for free. We do not run ads, and we do not charge membership fees. This is purely a neighborhood safety net and climate utility.",
 		},
 		id: {
 			question: "Apakah ada biaya atau ketentuan tersembunyi?",
-			answer: "Sama sekali tidak ada ketentuan tersembunyi dan 100% gratis. Segala hal yang diunggah di Cellar harus dibagikan secara gratis. Kami tidak memasang iklan dan tidak mengenakan biaya keanggotaan. Gerakan ini murni jaring pengaman sosial lingkungan dan upaya menjaga iklim.",
+			answer: "Sama sekali tidak ada ketentuan tersembunyi dan 100% gratis. Segala hal yang diunggah di ZeroBin harus dibagikan secara gratis. Kami tidak memasang iklan dan tidak mengenakan biaya keanggotaan. Gerakan ini murni jaring pengaman sosial lingkungan dan upaya menjaga iklim.",
 		}
 	},
 	{
@@ -90,9 +90,9 @@ export default function FaqClient() {
 						<span className="eyebrow">FAQ</span>
 						<h1 className="display-title mt-6 text-[clamp(2.5rem,7vw,4rem)] leading-[1.15]">
 							{language === "en" ? (
-								<>Everything you need to <span className="text-[#195A00]">know about Cellar.</span></>
+								<>Everything you need to <span className="text-[#195A00]">know about ZeroBin.</span></>
 							) : (
-								<>Segala hal yang perlu Anda <span className="text-[#195A00]">ketahui tentang Cellar.</span></>
+								<>Segala hal yang perlu Anda <span className="text-[#195A00]">ketahui tentang ZeroBin.</span></>
 							)}
 						</h1>
 						<p className="section-copy mt-6 max-w-xl">

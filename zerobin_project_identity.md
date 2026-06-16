@@ -1,6 +1,6 @@
-# Cellar: Project Identity & Design Specification
+# ZeroBin: Project Identity & Design Specification
 
-This document defines the "soul" (philosophy, tone, copy guidelines) and visual identity (design tokens, colors, layout structures) of **Cellar**. It serves as a blueprint for developers or AI agents to build the Cellar mobile application (e.g., using Flutter) to ensure perfect alignment with the landing page.
+This document defines the "soul" (philosophy, tone, copy guidelines) and visual identity (design tokens, colors, layout structures) of **ZeroBin**. It serves as a blueprint for developers or AI agents to build the ZeroBin mobile application (e.g., using Flutter) to ensure perfect alignment with the landing page.
 
 ---
 
@@ -8,7 +8,7 @@ This document defines the "soul" (philosophy, tone, copy guidelines) and visual 
 
 > **"A calmer way to share what would be wasted."**
 
-Cellar is **not** a marketplace, a gig-economy app, or a commercial platform. It is a quiet, local utility designed to connect neighbors to share surplus food. 
+ZeroBin is **not** a marketplace, a gig-economy app, or a commercial platform. It is a quiet, local utility designed to connect neighbors to share surplus food. 
 
 ### Core Values:
 *   **Respect & Trust**: Hand-offs are simple and human, built on community trust.
@@ -53,33 +53,33 @@ The colors are warm, organic, and earth-toned, using off-whites and forest green
 
 ## 3. Core Mobile App Flows
 
-To build the Cellar Flutter app, the following three core screen flows must be implemented:
+To build the ZeroBin Flutter app, the following three core screen flows must be implemented:
 
 ### Flow 1: Discover Feed (Find Food Nearby)
 *   **Overview**: A clean, chronological list or map view of active food offers in the neighborhood.
 *   **Mockup Details**:
-    *   Simple image card showing the food item.
-    *   Badge: Distance (e.g. `200m away`, `400m away`).
-    *   Details: Servings count/left (e.g. `2 portions`, `1 bag left`).
-    *   Timestamp (e.g. `10m ago`).
-    *   No prices. Everything is free.
+	*   Simple image card showing the food item.
+	*   Badge: Distance (e.g. `200m away`, `400m away`).
+	*   Details: Servings count/left (e.g. `2 portions`, `1 bag left`).
+	*   Timestamp (e.g. `10m ago`).
+	*   No prices. Everything is free.
 
 ### Flow 2: Share / List Food
 *   **Overview**: A simple, fast form to list surplus food.
 *   **Fields**:
-    *   **Photo**: Quick camera snap.
-    *   **Title**: What are you sharing? (e.g. "Sarah's Sourdough", "James's Plums").
-    *   **Quantity**: Portions or weight.
-    *   **Description**: Ingredients, allergy notes, details.
-    *   **Pickup Window**: Timeframe when the recipient can collect it.
-    *   **Location / Meeting Spot**: Agree on direct pickup or a public spot.
+	*   **Photo**: Quick camera snap.
+	*   **Title**: What are you sharing? (e.g. "Sarah's Sourdough", "James's Plums").
+	*   **Quantity**: Portions or weight.
+	*   **Description**: Ingredients, allergy notes, details.
+	*   **Pickup Window**: Timeframe when the recipient can collect it.
+	*   **Location / Meeting Spot**: Agree on direct pickup or a public spot.
 
 ### Flow 3: Connect & Chat
 *   **Overview**: A minimal direct messaging system for neighbors to coordinate hand-offs.
 *   **Details**:
-    *   Instigated when a recipient requests a listing.
-    *   Kept clean and private.
-    *   Provides quick-actions for "Share agreed spot", "Confirm Handoff", and "Mark as Picked Up".
+	*   Instigated when a recipient requests a listing.
+	*   Kept clean and private.
+	*   Provides quick-actions for "Share agreed spot", "Confirm Handoff", and "Mark as Picked Up".
 
 ---
 
@@ -100,7 +100,7 @@ Here is a starting configuration for a Flutter `ThemeData` based on this specifi
 ```dart
 import 'package:flutter/material.dart';
 
-class CellarTheme {
+class ZeroBinTheme {
   static const Color background = Color(0xFFFBFAF5);
   static const Color foreground = Color(0xFF1B1B16);
   static const Color muted = Color(0xFF6D6A5F);

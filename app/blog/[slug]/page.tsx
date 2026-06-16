@@ -46,7 +46,7 @@ export default function BlogPostPage({
 		}
 
 		if (postLocal) {
-			document.title = `${postLocal.title} — Cellar`;
+			document.title = `${postLocal.title} — ZeroBin`;
 		}
 
 		const filtered = blogPosts.filter((p) => p.slug !== slug);

@@ -17,7 +17,7 @@ export const useLanguageStore = create<LanguageState>((set) => ({
 	stopLoading: () => set({ isNavigating: false }),
 	setLanguage: (language) => {
 		if (typeof window !== "undefined") {
-			localStorage.setItem("cellar-language", language);
+			localStorage.setItem("zerobin-language", language);
 		}
 		// Simulate transition delay for satisfies visual feedback
 		set({ isNavigating: true });

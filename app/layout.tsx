@@ -21,9 +21,9 @@ const display = Fraunces({
 });
 
 export const metadata: Metadata = {
-	title: "Cellar - Share Surplus Food Nearby",
+	title: "ZeroBin - Share Surplus Food Nearby",
 	description:
-		"Cellar helps households, cafes, and community groups share surplus food before it goes to waste.",
+		"ZeroBin helps households, cafes, and community groups share surplus food before it goes to waste.",
 };
 
 export default function RootLayout({

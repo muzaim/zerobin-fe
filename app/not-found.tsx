@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
 	useEffect(() => {
-		document.title = "404 - Page Not Found — Cellar";
+		document.title = "404 - Page Not Found — ZeroBin";
 	}, []);
 
 	return (
@@ -53,7 +53,7 @@ export default function NotFound() {
 
 				{/* Subtle footer note */}
 				<p className="mt-12 text-xs text-[var(--muted)]/50 font-mono tracking-wide">
-					Cellar · Every meal deserves a plate, not a bin.
+					ZeroBin · Pass it on.
 				</p>
 
 			</div>

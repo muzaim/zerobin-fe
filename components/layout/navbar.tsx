@@ -92,7 +92,7 @@ export default function Navbar() {
 	const [leaveTimeout, setLeaveTimeout] = useState<NodeJS.Timeout | null>(null);
 
 	useEffect(() => {
-		const saved = localStorage.getItem("cellar-language") as "en" | "id";
+		const saved = localStorage.getItem("zerobin-language") as "en" | "id";
 		if (saved && (saved === "en" || saved === "id")) {
 			setLanguage(saved);
 		}
@@ -158,7 +158,7 @@ export default function Navbar() {
 					{/* Logo */}
 					<Link href="/" className="flex items-center relative z-50" onClick={() => setIsOpen(false)}>
 						<span className="font-[var(--font-display)] text-[1.6rem] font-bold italic tracking-tight text-neutral-900">
-							Cellar
+							ZeroBin
 						</span>
 					</Link>
 

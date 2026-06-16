@@ -10,7 +10,7 @@ export default function OurImpactPage() {
 	const t = translations[language].innerAboutImpact;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (

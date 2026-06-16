@@ -10,7 +10,7 @@ export default function CommunityGuidelines() {
 	const t = translations[language].innerHowItWorks.guidelines;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (

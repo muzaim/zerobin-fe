@@ -12,7 +12,7 @@ export default function CookieConsent() {
 
 	useEffect(() => {
 		// Check if consent has already been given
-		const consent = localStorage.getItem("cellar-cookie-consent");
+		const consent = localStorage.getItem("zerobin-cookie-consent");
 		if (!consent) {
 			// Small delay before displaying for a premium feel
 			const timer = setTimeout(() => {
@@ -23,7 +23,7 @@ export default function CookieConsent() {
 	}, []);
 
 	const handleConsent = (choice: "accepted" | "essential") => {
-		localStorage.setItem("cellar-cookie-consent", choice);
+		localStorage.setItem("zerobin-cookie-consent", choice);
 		setIsVisible(false);
 	};
 

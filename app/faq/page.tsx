@@ -1,7 +1,7 @@
 import FaqClient from "./FaqClient";
 
 export const metadata = {
-	title: "FAQ — Cellar",
+	title: "FAQ — ZeroBin",
 	description: "Have questions about how sharing works, privacy, or who can join? We’ve gathered the most common questions from our community.",
 };
 

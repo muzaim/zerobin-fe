@@ -30,10 +30,10 @@ export default function Faq() {
 								{t.deciding}
 							</p>
 							<a
-								href="mailto:hello@cellar.id"
+								href="mailto:hello@zerobin.id"
 								className="mt-1 inline-block font-bold text-[var(--brand-dark)]"
 							>
-								hello@cellar.id
+								hello@zerobin.id
 							</a>
 						</div>
 					</div>

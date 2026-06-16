@@ -10,7 +10,7 @@ export default function HowItWorksRecipients() {
 	const t = translations[language].innerHowItWorks.recipients;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (
@@ -109,8 +109,8 @@ export default function HowItWorksRecipients() {
 									</h4>
 									<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
 										{language === "en"
-											? "No. Everything shared on Cellar is 100% free. Offering money or trading items is not allowed. A warm thank-you message is the only currency we support here."
-											: "Tidak boleh. Semua yang dibagikan di Cellar 100% gratis. Menawarkan uang atau menukarkan barang tidak diperbolehkan. Pesan terima kasih yang tulus adalah satu-satunya 'mata uang' yang kami dukung di sini."
+											? "No. Everything shared on ZeroBin is 100% free. Offering money or trading items is not allowed. A warm thank-you message is the only currency we support here."
+											: "Tidak boleh. Semua yang dibagikan di ZeroBin 100% gratis. Menawarkan uang atau menukarkan barang tidak diperbolehkan. Pesan terima kasih yang tulus adalah satu-satunya 'mata uang' yang kami dukung di sini."
 										}
 									</p>
 								</div>

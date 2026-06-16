@@ -11,7 +11,7 @@ export default function SustainabilityGoals() {
 	const t = translations[language].innerImpact.goals;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (
@@ -45,8 +45,8 @@ export default function SustainabilityGoals() {
 							</h3>
 							<p className="text-[var(--muted)] leading-relaxed text-base">
 								{language === "en"
-									? "Cellar targets concrete local changes. Rather than purchasing carbon credits or publishing corporate compliance spreadsheets, we invest our efforts directly in preventing local waste, building neighborhood trust, and supporting families."
-									: "Cellar menyasar perubahan lokal yang konkret. Alih-alih membeli sertifikat karbon atau menerbitkan laporan kepatuhan korporat, kami mencurahkan tenaga kami langsung untuk mencegah sampah makanan lokal, membangun rasa saling percaya antar tetangga, dan membantu sesama."
+									? "ZeroBin targets concrete local changes. Rather than purchasing carbon credits or publishing corporate compliance spreadsheets, we invest our efforts directly in preventing local waste, building neighborhood trust, and supporting families."
+									: "ZeroBin menyasar perubahan lokal yang konkret. Alih-alih membeli sertifikat karbon atau menerbitkan laporan kepatuhan korporat, kami mencurahkan tenaga kami langsung untuk mencegah sampah makanan lokal, membangun rasa saling percaya antar tetangga, dan membantu sesama."
 								}
 							</p>
 						</div>
