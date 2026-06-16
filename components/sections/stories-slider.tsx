@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 
 const reviews = [
 	{
@@ -61,12 +61,12 @@ const reviews = [
 		id: 4,
 		en: {
 			title: "The Chili Harvest",
-			text: "My chili plants went wild this season! I posted a bag of fresh red chilies on Cellar and a neighbor used them to make sambal for her family dinner. Simple and human.",
+			text: "My chili plants went wild this season! I posted a bag of fresh red chilies on ZeroBin and a neighbor used them to make sambal for her family dinner. Simple and human.",
 			role: "Cilandak • Urban Gardener",
 		},
 		id_locale: {
 			title: "Panen Cabai Melimpah",
-			text: "Tanaman cabai saya sedang berbuah lebat musim ini! Saya mengunggah sekantong cabai merah segar di Cellar dan seorang tetangga menggunakannya untuk membuat sambal makan malam keluarganya. Sederhana dan manusiawi.",
+			text: "Tanaman cabai saya sedang berbuah lebat musim ini! Saya mengunggah sekantong cabai merah segar di ZeroBin dan seorang tetangga menggunakannya untuk membuat sambal makan malam keluarganya. Sederhana dan manusiawi.",
 			role: "Cilandak • Pekebun Kota",
 		},
 		name: "Bintang",
@@ -92,7 +92,7 @@ const reviews = [
 ];
 
 export default function StoriesSlider() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const [swiperRef, setSwiperRef] = useState<SwiperType | null>(null);
 	const [activeIndex, setActiveIndex] = useState(0);
 

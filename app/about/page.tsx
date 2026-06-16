@@ -4,15 +4,15 @@ import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Users, Sprout, ShieldCheck } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function AboutUsPage() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerAbout;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (
@@ -23,7 +23,7 @@ export default function AboutUsPage() {
 					<div className="max-w-3xl">
 						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.8rem,8vw,4.5rem)] leading-[1.1]">
-							{t.titlePrefix} <span className="text-[#195A00]">{t.titleHighlight}</span>, not in landfills.
+							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>{t.titleSuffix}
 						</h1>
 						<p className="section-copy mt-8 max-w-2xl">
 							{t.desc}

@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { X, Mail, CheckCircle2 } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function SubscribeModal() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].subscribeModal;
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +17,7 @@ export default function SubscribeModal() {
 	useEffect(() => {
 		// Check if user has already dismissed or subscribed
 		if (typeof window !== "undefined") {
-			const hasSubscribedOrDismissed = localStorage.getItem("cellar-newsletter-dismissed");
+			const hasSubscribedOrDismissed = localStorage.getItem("zerobin-newsletter-dismissed");
 			if (hasSubscribedOrDismissed) {
 				return;
 			}
@@ -25,11 +25,19 @@ export default function SubscribeModal() {
 
 		// Trigger 1: Show after 10 seconds delay
 		const delayTimer = setTimeout(() => {
+			if (typeof window !== "undefined") {
+				const hasSubscribedOrDismissed = localStorage.getItem("zerobin-newsletter-dismissed");
+				if (hasSubscribedOrDismissed) return;
+			}
 			setIsOpen(true);
 		}, 10000);
 
 		// Trigger 2: Exit intent (mouse leaves screen)
 		const handleMouseLeave = (e: MouseEvent) => {
+			if (typeof window !== "undefined") {
+				const hasSubscribedOrDismissed = localStorage.getItem("zerobin-newsletter-dismissed");
+				if (hasSubscribedOrDismissed) return;
+			}
 			if (e.clientY < 20) {
 				setIsOpen(true);
 			}
@@ -46,7 +54,7 @@ export default function SubscribeModal() {
 	const handleClose = () => {
 		setIsOpen(false);
 		if (typeof window !== "undefined") {
-			localStorage.setItem("cellar-newsletter-dismissed", "true");
+			localStorage.setItem("zerobin-newsletter-dismissed", "true");
 		}
 	};
 
@@ -60,7 +68,7 @@ export default function SubscribeModal() {
 			setIsSubmitting(false);
 			setIsSubmitted(true);
 			if (typeof window !== "undefined") {
-				localStorage.setItem("cellar-newsletter-dismissed", "true");
+				localStorage.setItem("zerobin-newsletter-dismissed", "true");
 			}
 			// Close after 3 seconds on success
 			setTimeout(() => {

@@ -2,15 +2,15 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function HowItWorksDonors() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerHowItWorks.donors;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (
@@ -123,8 +123,8 @@ export default function HowItWorksDonors() {
 									</h4>
 									<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
 										{language === "en"
-											? "No. Cellar is completely free. It is built as a community utility, not a business. No ads, no hidden costs."
-											: "Tidak ada. Cellar sepenuhnya gratis. Aplikasi ini dibangun sebagai sarana sosial komunitas, bukan bisnis komersial. Tanpa iklan, tanpa biaya tersembunyi."
+											? "No. ZeroBin is completely free. It is built as a community utility, not a business. No ads, no hidden costs."
+											: "Tidak ada. ZeroBin sepenuhnya gratis. Aplikasi ini dibangun sebagai sarana sosial komunitas, bukan bisnis komersial. Tanpa iklan, tanpa biaya tersembunyi."
 										}
 									</p>
 								</div>

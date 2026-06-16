@@ -5,8 +5,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Clock, Tag, ArrowRight } from "lucide-react";
 import { useLenis } from "lenis/react";
-import { blogPosts, getBlogPost, BlogPost } from "@/lib/blog-data";
-import { useLanguageStore } from "@/lib/store";
+import { blogPosts, getBlogPost, fetchBlogPosts, fetchBlogPost, BlogPost } from "@/lib/blog-data";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function BlogPostPage({
@@ -15,9 +15,18 @@ export default function BlogPostPage({
 	params: Promise<{ slug: string }>;
 }) {
 	const { slug } = use(params);
-	const post = getBlogPost(slug);
+	const [post, setPost] = useState<BlogPost | undefined>(() => getBlogPost(slug));
 	const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
-	const { language, startLoading, stopLoading } = useLanguageStore();
+
+	useEffect(() => {
+		fetchBlogPost(slug).then((data) => {
+			if (data) {
+				setPost(data);
+			}
+		});
+	}, [slug]);
+	const { startLoading, stopLoading } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const tBlog = translations[language].innerBlog;
 	const lenis = useLenis();
 
@@ -46,16 +55,16 @@ export default function BlogPostPage({
 		}
 
 		if (postLocal) {
-			document.title = `${postLocal.title} — Cellar`;
+			document.title = `${postLocal.title} — ZeroBin`;
 		}
 
-		const filtered = blogPosts.filter((p) => p.slug !== slug);
-		const shuffled = [...filtered]
-			.sort(() => 0.5 - Math.random())
-			.slice(0, 3);
-		setTimeout(() => {
+		fetchBlogPosts().then((posts) => {
+			const filtered = posts.filter((p) => p.slug !== slug);
+			const shuffled = [...filtered]
+				.sort(() => 0.5 - Math.random())
+				.slice(0, 3);
 			setRelatedPosts(shuffled);
-		}, 0);
+		});
 	}, [slug, postLocal, lenis]);
 
 	if (!post || !postLocal) {
@@ -81,6 +90,32 @@ export default function BlogPostPage({
 
 	return (
 		<div className="min-h-screen bg-[var(--background)] pt-32 pb-24">
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "BlogPosting",
+						"headline": postLocal.title,
+						"image": post.coverImage,
+						"datePublished": new Date(postLocal.date).toISOString(),
+						"dateModified": new Date(postLocal.date).toISOString(),
+						"author": {
+							"@type": "Person",
+							"name": post.author
+						},
+						"publisher": {
+							"@type": "Organization",
+							"name": "ZeroBin",
+							"logo": {
+								"@type": "ImageObject",
+								"url": "https://zerobin.id/assets/brand/zerobin-og.png"
+							}
+						},
+						"description": postLocal.excerpt
+					})
+				}}
+			/>
 			<div className="site-shell">
 				{isPageLoading ? (
 					<SkeletonDetailPage tBlog={tBlog} />

@@ -47,9 +47,9 @@ When you find yourself with extra food, the immediate questions are: *Who wants 
 
 Without a simple platform, the friction is too high, and the trash bin becomes the path of least resistance.
 
-## Cellar Was Built for Those Exact Moments
+## ZeroBin Was Built for Those Exact Moments
 
-Cellar is not a grand, complicated solution. It is a quiet, simple tool built for that specific moment when you have a surplus and want to let a neighbor know.
+ZeroBin is not a grand, complicated solution. It is a quiet, simple tool built for that specific moment when you have a surplus and want to let a neighbor know.
 
 No transaction fees, no marketplace pressure. Just simple community sharing.
 
@@ -78,9 +78,9 @@ Saat mendapati diri kita memiliki kelebihan makanan, pertanyaan yang langsung mu
 
 Tanpa adanya aplikasi atau wadah yang sederhana, hambatan tersebut terasa terlalu tinggi, dan tong sampah akhirnya menjadi pilihan yang paling mudah.
 
-## Cellar Dirancang untuk Momen-Momen Tersebut
+## ZeroBin Dirancang untuk Momen-Momen Tersebut
 
-Cellar bukanlah solusi yang muluk-muluk dan rumit. Ini adalah aplikasi sederhana dan tenang yang dirancang khusus untuk momen ketika Anda memiliki makanan berlebih dan ingin memberi tahu tetangga sekitar.
+ZeroBin bukanlah solusi yang muluk-muluk dan rumit. Ini adalah aplikasi sederhana dan tenang yang dirancang khusus untuk momen ketika Anda memiliki makanan berlebih dan ingin memberi tahu tetangga sekitar.
 
 Tanpa biaya transaksi, tanpa tekanan pasar komersial. Murni aktivitas saling berbagi di komunitas.
 
@@ -148,7 +148,7 @@ Tulis catatan singkat mengenai makanannya. Cantumkan:
 
 Semua kendali ada di tangan Anda. Anda bisa menentukan jendela waktu penjemputan (misalnya: "Bisa diambil antara pukul 16.00 hingga 18.00 hari ini").
 
-Jika Anda lebih menyukai penjemputan tanpa kontak fisik, beri tahu penerima. Banyak anggota Cellar yang meletakkan makanan di dalam tas belanja di teras rumah atau menggantungnya di pagar setelah permintaan disetujui.
+Jika Anda lebih menyukai penjemputan tanpa kontak fisik, beri tahu penerima. Banyak anggota ZeroBin yang meletakkan makanan di dalam tas belanja di teras rumah atau menggantungnya di pagar setelah permintaan disetujui.
 
 ## Mulailah dari Hal Kecil
 
@@ -160,10 +160,10 @@ Unggahan pertama adalah satu-satunya bagian yang terasa sedikit asing. Setelah A
 		categoryEn: "Stories",
 		categoryId: "Kisah",
 		en: {
-			title: "From Kitchens to Porches: Real Stories from Cellar Users",
+			title: "From Kitchens to Porches: Real Stories from ZeroBin Users",
 			excerpt: "Three short stories of ordinary neighbors who started sharing their surplus food — and how it changed their connection to their street.",
 			content: `
-Statistics show impact, but stories show the heart of the community. Here are three quick accounts from actual Cellar users.
+Statistics show impact, but stories show the heart of the community. Here are three quick accounts from actual ZeroBin users.
 
 ---
 
@@ -181,7 +181,7 @@ Statistics show impact, but stories show the heart of the community. Here are th
 
 **David, Backyard Gardener**
 
-*"My tomato plants went wild this summer. I had baskets of organic tomatoes I couldn't possibly consume. I put them on Cellar. A young mother picked them up to make fresh pasta sauce. Knowing food I grew myself is feeding neighbors is a great feeling."*
+*"My tomato plants went wild this summer. I had baskets of organic tomatoes I couldn't possibly consume. I put them on ZeroBin. A young mother picked them up to make fresh pasta sauce. Knowing food I grew myself is feeding neighbors is a great feeling."*
 
 ---
 
@@ -189,16 +189,16 @@ Sharing food connects us in a way that regular transactions never can. It starts
 			`.trim(),
 		},
 		id: {
-			title: "Dari Dapur Hingga Teras Depan: Kisah Nyata Pengguna Cellar",
+			title: "Dari Dapur Hingga Teras Depan: Kisah Nyata Pengguna ZeroBin",
 			excerpt: "Tiga cerita pendek dari tetangga biasa yang mulai membagikan kelebihan makanan mereka—dan bagaimana hal itu merekatkan hubungan sosial di jalan mereka.",
 			content: `
-Statistik menunjukkan angka, tetapi cerita memperlihatkan ketulusan hati komunitas kita. Berikut tiga catatan singkat dari para pengguna nyata Cellar.
+Statistik menunjukkan angka, tetapi cerita memperlihatkan ketulusan hati komunitas kita. Berikut tiga catatan singkat dari para pengguna nyata ZeroBin.
 
 ---
 
 **Clara, Memasak di Rumah**
 
-*"Saya selalu memasak sup dalam panci besar. Biasanya, kami memakannya selama tiga hari berturut-turut sampai bosan, atau membuang sisanya. Minggu lalu, saya mengunggah dua porsi sup labu kuning di Cellar. Seorang mahasiswa yang tinggal beberapa rumah dari sini mengajukan permintaan. Kami melakukan serah-terima singkat di teras depan. Rasanya menyenangkan mengetahui masakan saya tidak terbuang sia-sia, sekaligus bisa menyapa tetangga baru."*
+*"Saya selalu memasak sup dalam panci besar. Biasanya, kami memakannya selama tiga hari berturut-turut sampai bosan, atau membuang sisanya. Minggu lalu, saya mengunggah dua porsi sup labu kuning di ZeroBin. Seorang mahasiswa yang tinggal beberapa rumah dari sini mengajukan permintaan. Kami melakukan serah-terima singkat di teras depan. Rasanya menyenangkan mengetahui masakan saya tidak terbuang sia-sia, sekaligus bisa menyapa tetangga baru."*
 
 ---
 
@@ -210,7 +210,7 @@ Statistik menunjukkan angka, tetapi cerita memperlihatkan ketulusan hati komunit
 
 **David, Berkebun di Rumah**
 
-*"Pohon tomat saya berbuah sangat lebat musim panas ini. Saya sampai memiliki beberapa keranjang tomat organik yang tidak mungkin habis dikonsumsi sendiri. Saya membagikannya di Cellar. Seorang ibu muda mengambilnya untuk membuat saus pasta segar. Mengetahui makanan yang saya tanam dengan keringat sendiri kini menyambung gizi tetangga adalah kepuasan yang luar biasa."*
+*"Pohon tomat saya berbuah sangat lebat musim panas ini. Saya sampai memiliki beberapa keranjang tomat organik yang tidak mungkin habis dikonsumsi sendiri. Saya membagikannya di ZeroBin. Seorang ibu muda mengambilnya untuk membuat saus pasta segar. Mengetahui makanan yang saya tanam dengan keringat sendiri kini menyambung gizi tetangga adalah kepuasan yang luar biasa."*
 
 ---
 
@@ -223,7 +223,7 @@ Aktivitas berbagi makanan mendekatkan hubungan bertetangga dengan cara yang tida
 		categoryId: "Tips",
 		en: {
 			title: "Safety First: Tips for Sharing Homemade Meals Safely",
-			excerpt: "Building trust is at the core of Cellar. Here are key practices for keeping food sharing hygienic and safe for everyone.",
+			excerpt: "Building trust is at the core of ZeroBin. Here are key practices for keeping food sharing hygienic and safe for everyone.",
 			content: `
 Trust is the foundation of community food sharing. While sharing food is simple, keeping safety in mind ensures everyone remains healthy and comfortable.
 
@@ -248,7 +248,7 @@ Simple attention to safety details makes the community reliable, comfortable, an
 		},
 		id: {
 			title: "Mengutamakan Keamanan: Tips Berbagi Masakan Rumah dengan Aman",
-			excerpt: "Saling percaya adalah fondasi utama Cellar. Berikut adalah beberapa langkah penting untuk menjaga aktivitas berbagi makanan tetap higienis dan aman bagi semua orang.",
+			excerpt: "Saling percaya adalah fondasi utama ZeroBin. Berikut adalah beberapa langkah penting untuk menjaga aktivitas berbagi makanan tetap higienis dan aman bagi semua orang.",
 			content: `
 Rasa saling percaya adalah dasar dari aktivitas berbagi makanan di komunitas. Meskipun berbagi makanan itu mudah, tetap memperhatikan aspek keamanan memastikan semua orang tetap sehat dan nyaman.
 
@@ -337,7 +337,7 @@ Here is how to ensure your hard-earned harvest is enjoyed, not wasted.
 
 Canning, pickling, and freezing are great ways to extend the harvest. Cucumbers become pickles, berries become jams, and herbs can be frozen in olive oil blocks.
 
-## List on Cellar
+## List on ZeroBin
 
 For items you can't preserve or consume, share them immediately. Freshly harvested, organic backyard garden produce is highly prized in local communities. 
 
@@ -358,7 +358,7 @@ Berikut cara memastikan hasil panen yang Anda rawat dengan susah payah dapat din
 
 Membuat acar, selai, dan membekukan bahan pangan adalah cara hebat untuk memperpanjang usia simpan hasil panen. Ketimun bisa dijadikan acar segar, buah beri bisa diolah menjadi selai manis, dan rempah daun bisa dibekukan di dalam balok minyak zaitun untuk bumbu masak nanti.
 
-## Bagikan Lewat Cellar
+## Bagikan Lewat ZeroBin
 
 Untuk hasil kebun yang tidak sempat Anda awetkan atau konsumsi sendiri, segera bagikan kepada tetangga sekitar. Hasil panen kebun rumahan yang segar dan organik sangat disukai oleh komunitas sekitar karena kualitas kesegarannya.
 
@@ -513,7 +513,7 @@ for (let i = 0; i < 40; i++) {
 
 	blogPosts.push({
 		slug,
-		author: "The Cellar Team",
+		author: "The ZeroBin Team",
 		coverImage: unsplashImages[i % unsplashImages.length],
 		en: {
 			title: i === 0 ? base.en.title : `${base.en.title}${indexSuffixEn}`,
@@ -535,5 +535,41 @@ for (let i = 0; i < 40; i++) {
 }
 
 export function getBlogPost(slug: string): BlogPost | undefined {
+	return blogPosts.find((p) => p.slug === slug);
+}
+
+export async function fetchBlogPosts(): Promise<BlogPost[]> {
+	try {
+		const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.zerobin.id";
+		const res = await fetch(`${apiUrl}/api/blog`, {
+			next: { revalidate: 3600 }
+		});
+		if (res.ok) {
+			const data = await res.json();
+			if (Array.isArray(data) && data.length > 0) {
+				return data;
+			}
+		}
+	} catch (error) {
+		console.warn("Failed to fetch blog posts from API, falling back to local data", error);
+	}
+	return blogPosts;
+}
+
+export async function fetchBlogPost(slug: string): Promise<BlogPost | undefined> {
+	try {
+		const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.zerobin.id";
+		const res = await fetch(`${apiUrl}/api/blog/${slug}`, {
+			next: { revalidate: 3600 }
+		});
+		if (res.ok) {
+			const data = await res.json();
+			if (data && data.slug) {
+				return data;
+			}
+		}
+	} catch (error) {
+		console.warn(`Failed to fetch blog post (${slug}) from API, falling back to local data`, error);
+	}
 	return blogPosts.find((p) => p.slug === slug);
 }

@@ -4,12 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Globe, Download } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function Navbar() {
 	const pathname = usePathname();
-	const { language, setLanguage } = useLanguageStore();
+	const { setLanguage } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].navbar;
 
 	const isItemActive = (item: { items: { href: string }[] }) => {
@@ -78,6 +79,10 @@ export default function Navbar() {
 					href: "/faq",
 				},
 				{
+					label: t.foodSafetyDisclaimer,
+					href: "/safety",
+				},
+				{
 					label: t.contactSupport,
 					href: "/contact",
 				},
@@ -92,7 +97,7 @@ export default function Navbar() {
 	const [leaveTimeout, setLeaveTimeout] = useState<NodeJS.Timeout | null>(null);
 
 	useEffect(() => {
-		const saved = localStorage.getItem("cellar-language") as "en" | "id";
+		const saved = localStorage.getItem("zerobin-language") as "en" | "id";
 		if (saved && (saved === "en" || saved === "id")) {
 			setLanguage(saved);
 		}
@@ -158,7 +163,7 @@ export default function Navbar() {
 					{/* Logo */}
 					<Link href="/" className="flex items-center relative z-50" onClick={() => setIsOpen(false)}>
 						<span className="font-[var(--font-display)] text-[1.6rem] font-bold italic tracking-tight text-neutral-900">
-							Cellar
+							ZeroBin
 						</span>
 					</Link>
 

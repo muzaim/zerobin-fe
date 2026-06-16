@@ -1,16 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
-import ScrollReveal from "@/components/ui/scroll-reveal";
 
 export default function OurStoryPage() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerAboutStory;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (
@@ -18,7 +17,7 @@ export default function OurStoryPage() {
 			{/* Story Hero */}
 			<section className="relative overflow-hidden py-16 sm:py-24">
 				<div className="site-shell">
-					<ScrollReveal className="max-w-3xl">
+					<div className="max-w-3xl">
 						<span className="eyebrow">{t.eyebrow}</span>
 						<h1 className="display-title mt-6 text-[clamp(2.8rem,8vw,4.5rem)] leading-[1.1]">
 							{t.titlePrefix}<span className="text-[#195A00]">{t.titleHighlight}</span>
@@ -26,7 +25,7 @@ export default function OurStoryPage() {
 						<p className="section-copy mt-8 max-w-2xl">
 							{t.desc}
 						</p>
-					</ScrollReveal>
+					</div>
 				</div>
 			</section>
 
@@ -34,16 +33,16 @@ export default function OurStoryPage() {
 			<section className="py-12">
 				<div className="site-shell">
 					<div className="grid gap-12 md:grid-cols-[1fr_2fr]">
-						<ScrollReveal>
+						<div>
 							<h3 className="font-[var(--font-display)] text-2xl font-bold">{t.narrativeTitle}</h3>
 							<p className="mt-4 text-[var(--muted)] leading-relaxed">
 								{t.narrativeDesc1}
 							</p>
-						</ScrollReveal>
+						</div>
 
 						<div className="space-y-12">
 							{t.timelineItems.map((item, idx) => (
-								<ScrollReveal key={idx} delay={idx * 150} distance="16px">
+								<div key={idx}>
 									<div className="border-l-2 border-[var(--brand)] pl-6 relative">
 										<div className="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-[var(--brand)] border-4 border-[var(--background)]" />
 										<span className="text-sm font-bold text-[var(--brand)]">{item.year}</span>
@@ -52,7 +51,7 @@ export default function OurStoryPage() {
 											{item.desc}
 										</p>
 									</div>
-								</ScrollReveal>
+								</div>
 							))}
 						</div>
 					</div>
@@ -62,4 +61,3 @@ export default function OurStoryPage() {
 		</div>
 	);
 }
-

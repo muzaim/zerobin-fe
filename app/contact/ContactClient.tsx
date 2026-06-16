@@ -2,10 +2,10 @@
 
 import { ArrowRight } from "lucide-react";
 import React, { useState } from "react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 
 export default function ContactClient() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
@@ -38,8 +38,8 @@ export default function ContactClient() {
 								</h1>
 								<p className="section-copy mt-6 max-w-xl">
 									{language === "en" 
-										? "We don't have an offshore call center or automated chat robots. When you write to us, it goes straight to the small group of neighbors managing Cellar. We'll do our best to reply within a few hours."
-										: "Kami tidak memiliki pusat panggilan eksternal atau robot obrolan otomatis. Ketika Anda menulis kepada kami, pesan tersebut akan langsung diterima oleh kelompok kecil tetangga yang mengelola Cellar. Kami akan berusaha sebaik mungkin untuk membalas dalam beberapa jam."
+										? "We don't have an offshore call center or automated chat robots. When you write to us, it goes straight to the small group of neighbors managing ZeroBin. We'll do our best to reply within a few hours."
+										: "Kami tidak memiliki pusat panggilan eksternal atau robot obrolan otomatis. Ketika Anda menulis kepada kami, pesan tersebut akan langsung diterima oleh kelompok kecil tetangga yang mengelola ZeroBin. Kami akan berusaha sebaik mungkin untuk membalas dalam beberapa jam."
 									}
 								</p>
 							</div>
@@ -51,9 +51,9 @@ export default function ContactClient() {
 									</span>
 									<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
 										{language === "en" ? (
-											<>Send us a message at <a href="mailto:hello@cellar.id" className="font-semibold text-[#195A00] hover:underline">hello@cellar.id</a> for general inquiries, feedback, or partnerships.</>
+											<>Send us a message at <a href="mailto:hello@zerobin.id" className="font-semibold text-[#195A00] hover:underline">hello@zerobin.id</a> for general inquiries, feedback, or partnerships.</>
 										) : (
-											<>Kirim pesan kepada kami di <a href="mailto:hello@cellar.id" className="font-semibold text-[#195A00] hover:underline">hello@cellar.id</a> untuk pertanyaan umum, masukan, atau kemitraan.</>
+											<>Kirim pesan kepada kami di <a href="mailto:hello@zerobin.id" className="font-semibold text-[#195A00] hover:underline">hello@zerobin.id</a> untuk pertanyaan umum, masukan, atau kemitraan.</>
 										)}
 									</p>
 								</div>
@@ -64,8 +64,8 @@ export default function ContactClient() {
 									</span>
 									<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed">
 										{language === "en"
-											? 'Open the Cellar app, head to settings, and tap "Help Chat" for quick support regarding active food listings, coordinates, or pickup safety.'
-											: 'Buka aplikasi Cellar, masuk ke pengaturan, lalu ketuk "Bantuan Chat" untuk dukungan cepat terkait kiriman makanan aktif, koordinasi lokasi, atau keamanan penjemputan.'
+											? 'Open the ZeroBin app, head to settings, and tap "Help Chat" for quick support regarding active food listings, coordinates, or pickup safety.'
+											: 'Buka aplikasi ZeroBin, masuk ke pengaturan, lalu ketuk "Bantuan Chat" untuk dukungan cepat terkait kiriman makanan aktif, koordinasi lokasi, atau keamanan penjemputan.'
 										}
 									</p>
 								</div>

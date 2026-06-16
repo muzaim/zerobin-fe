@@ -4,15 +4,15 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import StoriesSlider from "@/components/sections/stories-slider";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function SuccessStories() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].innerImpact.stories;
 
 	useEffect(() => {
-		document.title = `${t.eyebrow} — Cellar`;
+		document.title = `${t.eyebrow} — ZeroBin`;
 	}, [t.eyebrow]);
 
 	return (
@@ -65,8 +65,8 @@ export default function SuccessStories() {
 						</h3>
 						<p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-6">
 							{language === "en"
-								? "Every single story on Cellar starts exactly the same way: someone has a bit of extra food, spends 30 seconds taking a photo, and posts it. You don't need to coordinate large-scale donation programs or fill out stacks of paperwork. Just share what you can, when you can."
-								: "Setiap cerita di Cellar selalu dimulai dari hal yang sama: seseorang yang kelebihan makanan meluangkan 30 detik untuk memotretnya dan mengunggahnya. Anda tidak perlu mengoordinasikan program donasi besar atau mengisi bertumpuk dokumen. Cukup bagikan apa yang Anda miliki, kapan saja Anda bisa."
+								? "Every single story on ZeroBin starts exactly the same way: someone has a bit of extra food, spends 30 seconds taking a photo, and posts it. You don't need to coordinate large-scale donation programs or fill out stacks of paperwork. Just share what you can, when you can."
+								: "Setiap cerita di ZeroBin selalu dimulai dari hal yang sama: seseorang yang kelebihan makanan meluangkan 30 detik untuk memotretnya dan mengunggahnya. Anda tidak perlu mengoordinasikan program donasi besar atau mengisi bertumpuk dokumen. Cukup bagikan apa yang Anda miliki, kapan saja Anda bisa."
 							}
 						</p>
 						<Link href="/how-it-works/donors" className="primary-button justify-center gap-2 text-sm py-2 px-5 inline-flex">

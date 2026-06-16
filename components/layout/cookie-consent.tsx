@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { Cookie } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function CookieConsent() {
 	const [isVisible, setIsVisible] = useState(false);
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].cookie;
 
 	useEffect(() => {
 		// Check if consent has already been given
-		const consent = localStorage.getItem("cellar-cookie-consent");
+		const consent = localStorage.getItem("zerobin-cookie-consent");
 		if (!consent) {
 			// Small delay before displaying for a premium feel
 			const timer = setTimeout(() => {
@@ -23,7 +23,7 @@ export default function CookieConsent() {
 	}, []);
 
 	const handleConsent = (choice: "accepted" | "essential") => {
-		localStorage.setItem("cellar-cookie-consent", choice);
+		localStorage.setItem("zerobin-cookie-consent", choice);
 		setIsVisible(false);
 	};
 

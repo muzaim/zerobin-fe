@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function Faq() {
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].faq;
 
 	const toggleFaq = (index: number) => {
@@ -30,10 +30,10 @@ export default function Faq() {
 								{t.deciding}
 							</p>
 							<a
-								href="mailto:hello@cellar.id"
+								href="mailto:hello@zerobin.id"
 								className="mt-1 inline-block font-bold text-[var(--brand-dark)]"
 							>
-								hello@cellar.id
+								hello@zerobin.id
 							</a>
 						</div>
 					</div>

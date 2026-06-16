@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function DownloadApp() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].download;
 
 	const featureCards = [
@@ -93,8 +93,8 @@ export default function DownloadApp() {
 						{/* App screenshot — no phone frame */}
 						<div className="relative w-[260px] sm:w-[310px] lg:w-[340px] z-10">
 							<Image
-								src="/assets/app/cellar-screen.png"
-								alt="Cellar App Interface"
+								src="/assets/app/zerobin-screen.png"
+								alt="ZeroBin App Interface"
 								width={600}
 								height={1220}
 								priority

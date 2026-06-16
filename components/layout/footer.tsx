@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { useLanguageStore } from "@/lib/store";
+import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function Footer() {
-	const { language } = useLanguageStore();
+	const language = useCurrentLanguage();
 	const t = translations[language].footer;
 	const n = translations[language].navbar;
 
@@ -66,7 +66,7 @@ export default function Footer() {
 					<div>
 						<Link href="/" className="inline-flex items-center group">
 							<span className="font-[var(--font-display)] text-[1.5rem] font-bold italic tracking-tight text-white">
-								Cellar
+								ZeroBin
 							</span>
 						</Link>
 						<p className="mt-5 text-sm leading-7 text-white/52 max-w-[230px]">
