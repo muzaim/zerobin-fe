@@ -15,8 +15,9 @@ export type TranslationDict = {
 		faq: string;
 		generalQuestions: string;
 		contactSupport: string;
-		blog: string;
 		downloadApp: string;
+		foodSafetyDisclaimer: string;
+		blog: string;
 	};
 	footer: {
 		tagline: string;
@@ -312,6 +313,16 @@ export type TranslationDict = {
 		successTitle: string;
 		successDesc: string;
 	};
+	safety: {
+		eyebrow: string;
+		titlePrefix: string;
+		titleHighlight: string;
+		desc: string;
+		sections: {
+			title: string;
+			desc: string;
+		}[];
+	};
 };
 
 export const translations: { en: TranslationDict; id: TranslationDict } = {
@@ -334,6 +345,7 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			contactSupport: "Contact Support",
 			blog: "Blog",
 			downloadApp: "Download App",
+			foodSafetyDisclaimer: "Food Safety & Disclaimer",
 		},
 		footer: {
 			tagline: "ZeroBin · Food sharing platform",
@@ -685,6 +697,26 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			successTitle: "You're in!",
 			successDesc: "Thanks for joining us. We'll send you our next neighborhood dispatch soon.",
 		},
+		safety: {
+			eyebrow: "Food Safety & Rules",
+			titlePrefix: "Sharing with trust, ",
+			titleHighlight: "dining with safety.",
+			desc: "ZeroBin is built on neighborhood trust. Because food is shared directly from home kitchens, a mutual commitment to safety keeps our streets healthy and connected.",
+			sections: [
+				{
+					title: "Donors: Keep it Clean",
+					desc: "Only share food that has been stored and prepared in a clean environment. Declare all ingredients and potential allergens (nuts, dairy, gluten) honestly. Avoid sharing high-risk items like raw seafood or food past its safe expiration date."
+				},
+				{
+					title: "Recipients: Inspect & Consume",
+					desc: "Inspect the food upon pickup. Donors share in good faith, but recipients must check for freshness and wash produce. Consume cooked meals promptly or store them in a refrigerator immediately."
+				},
+				{
+					title: "Disclaimer & Liability Waiver",
+					desc: "ZeroBin acts as a social directory, not a food manufacturer or distributor. We do not inspect, prepare, or handle any food listed on the platform. By using ZeroBin, you agree that you list and consume food at your own risk."
+				}
+			]
+		},
 	},
 	id: {
 		navbar: {
@@ -705,6 +737,7 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			contactSupport: "Hubungi Kami",
 			blog: "Blog",
 			downloadApp: "Unduh Aplikasi",
+			foodSafetyDisclaimer: "Keamanan Pangan & Ketentuan",
 		},
 		footer: {
 			tagline: "ZeroBin · Berbagi makanan antartetangga",
@@ -1055,6 +1088,26 @@ export const translations: { en: TranslationDict; id: TranslationDict } = {
 			btnDismiss: "Tidak, terima kasih. Saya ingin melihat-lihat dulu",
 			successTitle: "Berhasil Terhubung!",
 			successDesc: "Terima kasih telah bergabung. Kami akan segera mengirimkan kabar lingkungan terbaru untuk Anda.",
+		},
+		safety: {
+			eyebrow: "Keamanan & Ketentuan",
+			titlePrefix: "Berbagi dengan percaya, ",
+			titleHighlight: "menyantap dengan aman.",
+			desc: "ZeroBin didirikan atas dasar rasa percaya. Karena makanan dibagikan langsung dari dapur rumah, komitmen bersama terhadap keamanan pangan menjaga kita tetap sehat.",
+			sections: [
+				{
+					title: "Bagi Pembagi: Jaga Kebersihan",
+					desc: "Hanya bagikan makanan yang disiapkan di lingkungan bersih. Sebutkan bahan pemicu alergi (kacang, gluten, susu) secara jujur. Hindari membagikan makanan laut mentah atau makanan kedaluwarsa."
+				},
+				{
+					title: "Bagi Penerima: Periksa & Santap",
+					desc: "Periksa kondisi makanan saat penjemputan. Pembagi berbagi dengan niat baik, namun penerima wajib memastikan kesegaran makanan. Segera konsumsi atau simpan dalam lemari pendingin."
+				},
+				{
+					title: "Pernyataan Batas Tanggung Jawab",
+					desc: "ZeroBin bertindak sebagai media penghubung sosial warga, bukan produsen atau penyalur makanan. Kami tidak memeriksa kelayakan makanan secara langsung. Penggunaan platform sepenuhnya merupakan tanggung jawab masing-masing pihak."
+				}
+			]
 		},
 	},
 };

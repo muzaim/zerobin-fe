@@ -8,6 +8,7 @@ import BackToTop from "@/components/layout/back-to-top";
 import CookieConsent from "@/components/layout/cookie-consent";
 import TopProgressBar from "@/components/layout/top-progress-bar";
 import SubscribeModal from "@/components/layout/subscribe-modal";
+import PwaRegister from "@/components/layout/pwa-register";
 import "./globals.css";
 
 const sans = Geist({
@@ -107,6 +108,7 @@ export default function RootLayout({
 					<BackToTop />
 					<CookieConsent />
 					<SubscribeModal />
+					<PwaRegister />
 				</SmoothScroll>
 			</body>
 		</html>

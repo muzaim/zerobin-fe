@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
-import { blogPosts } from "@/lib/blog-data";
+import { fetchBlogPosts } from "@/lib/blog-data";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const baseUrl = "https://zerobin.id";
 	const staticPages = [
 		"",
@@ -43,7 +43,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		];
 	});
 
-	const blogSitemaps = blogPosts.flatMap((post) => {
+	const posts = await fetchBlogPosts();
+
+	const blogSitemaps = posts.flatMap((post) => {
 		const url = `${baseUrl}/blog/${post.slug}`;
 		return [
 			{

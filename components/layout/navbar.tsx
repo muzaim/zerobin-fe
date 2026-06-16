@@ -79,6 +79,10 @@ export default function Navbar() {
 					href: "/faq",
 				},
 				{
+					label: t.foodSafetyDisclaimer,
+					href: "/safety",
+				},
+				{
 					label: t.contactSupport,
 					href: "/contact",
 				},

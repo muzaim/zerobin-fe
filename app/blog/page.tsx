@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, AlertCircle } from "lucide-react";
-import { blogPosts } from "@/lib/blog-data";
+import { blogPosts, fetchBlogPosts, BlogPost } from "@/lib/blog-data";
 import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
@@ -19,6 +19,13 @@ export default function BlogPage() {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [activeCategory, setActiveCategory] = useState("all");
 	const loaderRef = useRef<HTMLDivElement | null>(null);
+	const [posts, setPosts] = useState<BlogPost[]>(blogPosts);
+
+	useEffect(() => {
+		fetchBlogPosts().then((data) => {
+			setPosts(data);
+		});
+	}, []);
 
 	// Category mapping
 	const categories = {
@@ -53,7 +60,7 @@ export default function BlogPage() {
 	}, [tBlog.eyebrow]);
 
 	// Filter posts based on active category and search query
-	const filteredPosts = blogPosts.filter((post) => {
+	const filteredPosts = posts.filter((post) => {
 		const matchesCategory = 
 			activeCategory === "all" || 
 			post.en.category.toLowerCase() === activeCategory.toLowerCase();
@@ -71,7 +78,7 @@ export default function BlogPage() {
 
 	// Infinite scroll implementation (only active when not filtering/searching)
 	const isFiltering = searchQuery !== "" || activeCategory !== "all";
-	const hasMore = !isFiltering && visibleCount < blogPosts.length;
+	const hasMore = !isFiltering && visibleCount < posts.length;
 
 	useEffect(() => {
 		if (isFiltering || isPageLoading) return;
@@ -79,11 +86,11 @@ export default function BlogPage() {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				const first = entries[0];
-				if (first.isIntersecting && !isLoadingMore && visibleCount < blogPosts.length) {
+				if (first.isIntersecting && !isLoadingMore && visibleCount < posts.length) {
 					setIsLoadingMore(true);
 					// Premium micro-delay to simulate loading natural data
 					setTimeout(() => {
-						setVisibleCount((prev) => Math.min(prev + 6, blogPosts.length));
+						setVisibleCount((prev) => Math.min(prev + 6, posts.length));
 						setIsLoadingMore(false);
 					}, 800);
 				}
@@ -104,8 +111,8 @@ export default function BlogPage() {
 	}, [isLoadingMore, visibleCount, isFiltering, isPageLoading]);
 
 	// Layout separation: featured vs grid
-	let featuredPost: typeof blogPosts[0] | null = null;
-	let gridPosts: typeof blogPosts = [];
+	let featuredPost: BlogPost | null = null;
+	let gridPosts: BlogPost[] = [];
 
 	if (isPageLoading) {
 		// Just skeleton layout
@@ -119,7 +126,7 @@ export default function BlogPage() {
 		gridPosts = rest.slice(0, visibleCount - 1);
 	}
 
-	const getLocalPost = (post: typeof blogPosts[0]) => {
+	const getLocalPost = (post: BlogPost) => {
 		return post[language];
 	};
 

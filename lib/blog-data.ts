@@ -537,3 +537,39 @@ for (let i = 0; i < 40; i++) {
 export function getBlogPost(slug: string): BlogPost | undefined {
 	return blogPosts.find((p) => p.slug === slug);
 }
+
+export async function fetchBlogPosts(): Promise<BlogPost[]> {
+	try {
+		const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.zerobin.id";
+		const res = await fetch(`${apiUrl}/api/blog`, {
+			next: { revalidate: 3600 }
+		});
+		if (res.ok) {
+			const data = await res.json();
+			if (Array.isArray(data) && data.length > 0) {
+				return data;
+			}
+		}
+	} catch (error) {
+		console.warn("Failed to fetch blog posts from API, falling back to local data", error);
+	}
+	return blogPosts;
+}
+
+export async function fetchBlogPost(slug: string): Promise<BlogPost | undefined> {
+	try {
+		const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.zerobin.id";
+		const res = await fetch(`${apiUrl}/api/blog/${slug}`, {
+			next: { revalidate: 3600 }
+		});
+		if (res.ok) {
+			const data = await res.json();
+			if (data && data.slug) {
+				return data;
+			}
+		}
+	} catch (error) {
+		console.warn(`Failed to fetch blog post (${slug}) from API, falling back to local data`, error);
+	}
+	return blogPosts.find((p) => p.slug === slug);
+}
