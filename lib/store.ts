@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
 type Language = "en" | "id";
 
@@ -30,14 +30,33 @@ export const useLanguageStore = create<LanguageState>((set) => ({
 
 export function useCurrentLanguage(): Language {
 	const storeLanguage = useLanguageStore((state) => state.language);
+	const [mounted, setMounted] = useState(false);
+
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	// Server-side and initial hydration rendering must match default
+	if (!mounted) {
+		return "en";
+	}
+
 	try {
-		const searchParams = useSearchParams();
-		const langParam = searchParams ? searchParams.get("lang") : null;
-		if (langParam === "en" || langParam === "id") {
-			return langParam;
+		if (typeof window !== "undefined") {
+			const searchParams = new URLSearchParams(window.location.search);
+			const langParam = searchParams.get("lang");
+			if (langParam === "en" || langParam === "id") {
+				return langParam;
+			}
+			
+			const saved = localStorage.getItem("zerobin-language") as Language;
+			if (saved === "en" || saved === "id") {
+				return saved;
+			}
 		}
 	} catch (e) {
-		// Ignore error if useSearchParams is called outside of context
+		// Ignore
 	}
+
 	return storeLanguage;
 }

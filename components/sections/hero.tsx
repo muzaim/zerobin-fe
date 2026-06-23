@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, PackageCheck } from "lucide-react";
-import {  useLanguageStore , useCurrentLanguage } from "@/lib/store";
+import { useCurrentLanguage } from "@/lib/store";
 import { translations } from "@/lib/translations";
 
 export default function Hero() {
@@ -17,133 +17,73 @@ export default function Hero() {
 	];
 
 	return (
-		<section className="relative isolate overflow-hidden pt-28 sm:pt-32 lg:min-h-screen lg:pt-28">
-			<div className="site-shell relative z-10">
-				<div className="grid min-h-[calc(100vh-80px)] items-center gap-12 pb-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10 lg:pb-6">
-					<div className="relative z-10 max-w-3xl">
-						<h1 className="display-title mt-5 text-[clamp(2.5rem,8.5vw,4.6rem)]">
-							{t.titlePrefix}{" "}
-							<span className="text-[#195A00]">{t.titleHighlight}</span>
-						</h1>
+		<section className="relative isolate overflow-hidden min-h-screen flex items-center justify-center pt-28 pb-16">
+			{/* Subtle Background Watermark Image */}
+			<div className="absolute inset-0 -z-20 select-none pointer-events-none">
+				<Image
+					src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1600&q=80"
+					alt="ZeroBin community food sharing background"
+					fill
+					priority
+					className="object-cover opacity-[0.16] mix-blend-multiply"
+				/>
+				{/* Soft radial overlay fading out to background color */}
+				<div className="absolute inset-0 bg-radial from-transparent via-[var(--background)]/40 to-[var(--background)]" />
+			</div>
 
-						<p className="section-copy mt-6 max-w-2xl">
-							{t.desc}
-						</p>
+			{/* Soft organic green background blob behind centered text */}
+			<div 
+				className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] max-w-[800px] max-h-[800px] bg-[var(--brand-soft)]/35 rounded-full blur-[90px] -z-10 opacity-80 select-none pointer-events-none animate-morph-blob" 
+			/>
 
-						<div className="mt-8 flex flex-col gap-3 sm:flex-row">
-							<Link
-								href="/#download"
-								className="primary-button gap-2"
-							>
-								<PackageCheck size={18} />
-								{t.btnShare}
-							</Link>
-							<Link
-								href="/#how-it-works"
-								className="secondary-button gap-2"
-							>
-								<ArrowDown size={18} />
-								{t.btnHow}
-							</Link>
-						</div>
+			<div className="site-shell relative z-10 w-full">
+				<div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
+					
+					{/* Main Text Content */}
+					<h1 className="display-title text-[clamp(2.5rem,8vw,5rem)] leading-[1.06] max-w-3xl opacity-0 animate-fade-in-up">
+						{t.titlePrefix}{" "}
+						<span className="text-[#195A00] block sm:inline">{t.titleHighlight}</span>
+					</h1>
 
-						<div className="mt-10 grid max-w-2xl grid-cols-3 gap-3  py-5">
-							{stats.map((stat) => (
-								<div key={stat.label}>
-									<p className="font-[var(--font-display)] text-3xl font-semibold text-[var(--brand-dark)] sm:text-4xl">
-										{stat.value}
-									</p>
-									<p className="mt-1 text-sm leading-5 text-[var(--muted)]">
-										{stat.label}
-									</p>
-								</div>
-							))}
-						</div>
+					<p className="section-copy mt-8 max-w-2xl text-center leading-relaxed opacity-0 animate-fade-in-up delay-100">
+						{t.desc}
+					</p>
+
+					{/* CTA Buttons */}
+					<div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center w-full sm:w-auto opacity-0 animate-fade-in-up delay-200">
+						<Link
+							href="/#download"
+							className="primary-button gap-2 px-8 py-4 text-base"
+						>
+							<PackageCheck size={18} />
+							{t.btnShare}
+						</Link>
+						<Link
+							href="/#how-it-works"
+							className="secondary-button gap-2 px-8 py-4 text-base"
+						>
+							<ArrowDown size={18} />
+							{t.btnHow}
+						</Link>
 					</div>
 
-					<div className="hidden lg:flex relative z-0 mx-auto lg:h-[620px] w-full max-w-[620px] items-center justify-center overflow-visible">
-						{/* Soft organic green background blob */}
-						<div 
-							className="absolute -inset-4 bg-[var(--brand-soft)]/70 -z-20 blur-xl opacity-90" 
-							style={{ borderRadius: "60% 40% 50% 50% / 50% 60% 40% 50%" }} 
-						/>
-
-						{/* Soft green background organic card border shape */}
-						<div 
-							className="absolute w-[88%] aspect-[4/3] bg-[#195A00]/8 rounded-3xl -z-10 rotate-[2.5deg] border border-[#195A00]/12"
-						/>
-
-						{/* Single Large Polaroid Card */}
-						<div className="absolute w-[86%] aspect-[4/3] bg-white p-3.5 pb-8 sm:p-5 sm:pb-12 rounded-3xl border border-[var(--line)] shadow-[0_20px_45px_rgba(0,0,0,0.06)] rotate-[-1.5deg] transition-all duration-500 z-10">
-							<div className="relative w-full h-full overflow-hidden rounded-xl sm:rounded-2xl">
-								<Image
-									src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=1000&h=750&q=85"
-									alt="Neighbors sharing home-cooked food at a community table"
-									fill
-									priority
-									className="object-cover"
-									sizes="(max-width: 1024px) 100vw, 550px"
-								/>
-							</div>
-							<p className="mt-3 text-center text-[10px] sm:text-xs font-mono text-[var(--muted)] font-bold tracking-wider uppercase">
-								{t.polaroidCaption}
-							</p>
-						</div>
-
-						{/* Floating Badge 1 (Sarah's Sourdough Bread Listing) */}
-						<div className="absolute left-[-4%] top-[14%] z-20 flex items-center gap-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-[var(--line)] shadow-[0_10px_25px_rgba(31,36,22,0.08)] hover:-translate-y-1 transition-transform duration-300 sm:flex hidden">
-							<div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[var(--line)] font-sans">
-								<Image
-									src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=80&h=80&q=85"
-									alt="Freshly baked sourdough bread"
-									fill
-									className="object-cover"
-								/>
-							</div>
-							<div className="font-sans text-left">
-								<div className="flex items-center gap-1.5">
-									<span className="h-1.5 w-1.5 rounded-full bg-[var(--brand)] animate-pulse" />
-									<p className="text-[9px] font-bold tracking-wider uppercase font-mono text-[var(--brand)]">
-										{t.badgeActive}
-									</p>
-								</div>
-								<p className="text-xs font-bold text-[var(--foreground)] mt-0.5">
-									{t.badgeSarah}
+					{/* Centered Stats Grid */}
+					<div className="mt-16 w-full max-w-2xl border-t border-[var(--line)]/70 pt-8 grid grid-cols-3 gap-4 text-center opacity-0 animate-fade-in-up delay-300">
+						{stats.map((stat) => (
+							<div key={stat.label} className="space-y-1">
+								<p className="font-[var(--font-display)] text-3xl font-bold text-[var(--brand-dark)] sm:text-4xl">
+									{stat.value}
 								</p>
-								<p className="text-[10px] text-[var(--muted)] font-medium">
-									{t.badgeSarahDetails}
+								<p className="text-xs sm:text-sm text-[var(--muted)] font-medium">
+									{stat.label}
 								</p>
 							</div>
-						</div>
-
-						{/* Floating Badge 2 (James's Fresh Plums Listing) */}
-						<div className="absolute right-[-2%] bottom-[16%] z-20 flex items-center gap-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-[var(--line)] shadow-[0_10px_25px_rgba(31,36,22,0.08)] hover:-translate-y-1 transition-transform duration-300 sm:flex hidden">
-							<div className="relative h-10 w-10 overflow-hidden rounded-lg border border-[var(--line)] font-sans">
-								<Image
-									src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?auto=format&fit=crop&w=80&h=80&q=85"
-									alt="Fresh plums"
-									fill
-									className="object-cover"
-								/>
-							</div>
-							<div className="font-sans text-left">
-								<div className="flex items-center gap-1.5">
-									<p className="text-[9px] text-[var(--muted)] font-mono font-bold uppercase">
-										10m ago
-									</p>
-								</div>
-								<p className="text-xs font-bold text-[var(--foreground)] mt-0.5">
-									{t.badgeJames}
-								</p>
-								<p className="text-[10px] text-[var(--muted)] font-medium">
-									{t.badgeJamesDetails}
-								</p>
-							</div>
-						</div>
+						))}
 					</div>
+
 				</div>
+
 			</div>
 		</section>
 	);
 }
-
